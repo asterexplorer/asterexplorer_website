@@ -26,8 +26,8 @@ const Explorer = () => {
             <div className="container">
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '4rem' }}>
                     <div>
-                        <div style={{ color: 'var(--primary)', fontWeight: '700', fontSize: '0.9rem', marginBottom: '1rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Management Center</div>
-                        <h2 style={{ maxWidth: '400px' }}>Your Secure <span className="text-gradient">Aster Cloud</span></h2>
+                        <div style={{ color: 'var(--primary)', fontWeight: '700', fontSize: '0.9rem', marginBottom: '1rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Infrastructure Management</div>
+                        <h2 style={{ maxWidth: '400px' }}>Enterprise <span className="text-gradient">Asset Portal</span></h2>
                     </div>
                     <div style={{ display: 'flex', gap: '1rem' }}>
                         <div className="card" style={{ padding: '1rem 1.5rem', display: 'flex', alignItems: 'center', gap: '1rem', borderRadius: '16px', background: 'var(--bg-surface)' }}>
@@ -55,9 +55,23 @@ const Explorer = () => {
                                         alignItems: 'center',
                                         justifyContent: 'center',
                                         color: 'var(--primary)',
-                                        border: '1.5px solid rgba(45, 212, 191, 0.1)'
+                                        border: '1.5px solid rgba(45, 212, 191, 0.1)',
+                                        position: 'relative'
                                     }}>
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+                                        {file.date === new Date().toISOString().split('T')[0] && (
+                                            <div style={{
+                                                position: 'absolute',
+                                                top: '-5px',
+                                                right: '-5px',
+                                                width: '12px',
+                                                height: '12px',
+                                                background: 'var(--accent)',
+                                                borderRadius: '50%',
+                                                border: '2px solid var(--bg-surface)',
+                                                boxShadow: '0 0 10px var(--accent)'
+                                            }}></div>
+                                        )}
                                     </div>
                                     <button style={{ background: 'transparent', border: 'none', color: 'var(--text-tertiary)', cursor: 'pointer' }}>
                                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>

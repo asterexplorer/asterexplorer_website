@@ -37,8 +37,8 @@ const Contact = () => {
 
                     {/* Contact Info Column */}
                     <div>
-                        <div style={{ color: 'var(--primary)', fontWeight: '700', fontSize: '0.9rem', marginBottom: '1rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Get in Touch</div>
-                        <h2 style={{ marginBottom: '2.5rem' }}>Ready to Launch Your <span className="text-gradient">Next Project?</span></h2>
+                        <div style={{ color: 'var(--primary)', fontWeight: '700', fontSize: '0.9rem', marginBottom: '1rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Strategic Consultation</div>
+                        <h2 style={{ marginBottom: '2.5rem' }}>Partner with us to accelerate <span className="text-gradient">Business ROI.</span></h2>
 
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                             <div className="card" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', padding: '1.5rem' }}>
@@ -110,10 +110,10 @@ const Contact = () => {
                                 />
                             </div>
                             <div>
-                                <label style={{ fontSize: '0.85rem', fontWeight: '700', color: 'var(--text-secondary)', marginBottom: '0.5rem', display: 'block' }}>EMAIL ADDRESS</label>
+                                <label style={{ fontSize: '0.85rem', fontWeight: '700', color: 'var(--text-secondary)', marginBottom: '0.5rem', display: 'block' }}>BUSINESS EMAIL</label>
                                 <input
                                     type="email"
-                                    placeholder="your@email.com"
+                                    placeholder="yourname@corporation.com"
                                     value={formData.email}
                                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                     required
@@ -130,7 +130,7 @@ const Contact = () => {
                                 />
                             </div>
                             <div>
-                                <label style={{ fontSize: '0.85rem', fontWeight: '700', color: 'var(--text-secondary)', marginBottom: '0.5rem', display: 'block' }}>PROJECT DETAILS</label>
+                                <label style={{ fontSize: '0.85rem', fontWeight: '700', color: 'var(--text-secondary)', marginBottom: '0.5rem', display: 'block' }}>INQUIRY DETAILS</label>
                                 <textarea
                                     placeholder="Tell me about your project..."
                                     value={formData.message}

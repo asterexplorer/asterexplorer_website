@@ -3,24 +3,28 @@ import React from 'react';
 const Services = () => {
     const services = [
         {
-            title: "Web Platforms",
-            description: "High-performance architectures using React, Next.js, and specialized cloud engines.",
-            icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+            title: "Website Development",
+            description: "End-to-end full-stack development using modern frameworks like React and Next.js. We build scalable, high-performance web applications tailored to your business logic and growth requirements.",
+            icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>,
+            tag: "Core Engineering"
         },
         {
-            title: "Mobile Apps",
-            description: "Cross-platform mobile environments built on React Native and native architectures.",
-            icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+            title: "Mobile App Development",
+            description: "Native and cross-platform mobile solutions for iOS and Android. Our apps focus on seamless user experience, offline capabilities, and high-speed performance for the modern mobile user.",
+            icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>,
+            tag: "Mobile Solutions"
         },
         {
-            title: "Cloud Infrastructure",
-            description: "Scalable backend systems and database logic for complex enterprise ecosystems.",
-            icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+            title: "Database Development",
+            description: "Architecting robust data models and secure storage systems. We handle SQL/NoSQL integrations, data migration, and cloud-native database solutions to ensure your business data is always safe and accessible.",
+            icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>,
+            tag: "Data Architecture"
         },
         {
-            title: "Data Security",
-            description: "Specialized encryption and secure transmission protocols for sensitive data assets.",
-            icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            title: "Website Designing",
+            description: "Creative UI/UX design that prioritizes brand identity and conversion. We create visually stunning, accessible, and user-centric designs that turn visitors into loyal customers through intuitive interfaces.",
+            icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>,
+            tag: "Creative UX"
         }
     ];
 

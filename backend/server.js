@@ -70,37 +70,6 @@ app.get('/api/weather', (req, res) => {
     res.json(weather_data);
 });
 
-// Social Feed endpoint
-app.get('/api/social/feed', (req, res) => {
-    const feed = [
-        {
-            id: 1,
-            platform: "X",
-            user: "@AsterSystem",
-            content: "Excited to announce our new partnership with NovaTech Solutions! 🚀 #DigitalTransformation #TechNews",
-            timestamp: "2h ago",
-            likes: 142
-        },
-        {
-            id: 2,
-            platform: "LinkedIn",
-            user: "Aster Explorer",
-            content: "We've just integrated full Stripe payment support into our client portals. Scaling made simple. 💳",
-            timestamp: "5h ago",
-            likes: 89
-        },
-        {
-            id: 3,
-            platform: "Instagram",
-            user: "@aster_sys",
-            content: "Behind the scenes: Finalizing the UI for Project Nebula. Stay tuned. 🎨 #DesignSystems #UI",
-            timestamp: "1d ago",
-            likes: 210
-        }
-    ];
-    res.json(feed);
-});
-
 // Contact endpoint
 app.post('/api/contact', async (req, res) => {
     const { name, email, message } = req.body;
@@ -138,83 +107,52 @@ app.post('/api/contact', async (req, res) => {
     }
 });
 
-// Files explorer endpoint
-app.get('/api/explorer/files', (req, res) => {
-    const files = [
-        { id: 1, name: "System_Config.sys", size: "1.2 MB", type: "System", date: "2024-01-24" },
-        { id: 2, name: "Neural_Network_v4.py", size: "450 KB", type: "Code", date: "2024-01-23" },
-        { id: 3, name: "Deep_Space_Scan.png", size: "15 MB", type: "Image", date: "2024-01-22" },
-        { id: 4, name: "Encryption_Key.key", size: "2 KB", type: "Security", date: "2024-01-24" },
-        { id: 5, name: "Project_Nexus.pdf", size: "3.8 MB", type: "Document", date: "2024-01-20" },
+// Trending Skills/Topics endpoint
+app.get('/api/trending', (req, res) => {
+    const trends = [
+        { id: 1, topic: "Agentic AI Workflows", growth: "+820%", category: "AI", status: "Explosive", image: "/assets/trends/ai_agents.png" },
+        { id: 2, topic: "Spatial UI Systems", growth: "+310%", category: "Mixed Reality", status: "Rising", image: "/assets/trends/spatial_ui.png" },
+        { id: 3, topic: "Post-Quantum Security", growth: "+440%", category: "Cybersecurity", status: "Critical", image: "/assets/trends/quantum_security.png" },
+        { id: 4, topic: "Edge Intelligence", growth: "+210%", category: "Cloud", status: "Hot", image: "/assets/trends/edge_intel.png" },
+        { id: 5, topic: "Carbon-Aware Cloud", growth: "+180%", category: "Sustainability", status: "Steady", image: "/assets/trends/carbon_cloud.png" },
+        { id: 6, topic: "WebGPU Applications", growth: "+290%", category: "Graphics", status: "Rising", image: "/assets/trends/webgpu.png" },
+        { id: 7, topic: "Decentralized Identity", growth: "+350%", category: "Blockchain", status: "Hot", image: "/assets/trends/decentralized_id.png" },
+        { id: 8, topic: "Bio-Digital Interfaces", growth: "+120%", category: "HealthTech", status: "Emerging", image: "/assets/trends/bio_digital.png" },
+        { id: 9, topic: "Low-Code DevOps", growth: "+240%", category: "Development", status: "Steady", image: "/assets/trends/lowcode_devops.png" },
+        { id: 10, topic: "Autonomous Supply Networks", growth: "+410%", category: "Logistics", status: "Rising", image: "/assets/trends/supply_networks.png" }
     ];
-    res.json(files);
+    res.json(trends);
 });
 
-// Freelancers endpoint
-app.get('/api/freelancers', (req, res) => {
-    const freelancers = [
+// Testimonials endpoint
+app.get('/api/testimonials', (req, res) => {
+    const testimonials = [
         {
             id: 1,
-            name: "Alex Rivera",
-            role: "Full-Stack Developer",
-            skills: ["React", "Node.js", "AWS"],
-            rate: "$85/hr",
-            rating: 4.9,
-            image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&h=200&auto=format&fit=crop",
-            category: "Development"
+            name: "Sarah Jenkins",
+            role: "CTO, CloudScale",
+            content: "Aster Explorer transformed our development workflow. The talent they provide is truly top-tier.",
+            rating: 5,
+            image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=100&h=100&auto=format&fit=crop"
         },
         {
             id: 2,
-            name: "Sarah Chen",
-            role: "UI/UX Designer",
-            skills: ["Figma", "Webflow", "Spline"],
-            rate: "$95/hr",
-            rating: 5.0,
-            image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&h=200&auto=format&fit=crop",
-            category: "Design"
+            name: "David Chen",
+            role: "Founder, FintechGo",
+            content: "The most secure and efficient way to scale our engineering team during high-growth phases.",
+            rating: 5,
+            image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=100&h=100&auto=format&fit=crop"
         },
         {
             id: 3,
-            name: "Marcus Thorne",
-            role: "AI/ML Engineer",
-            skills: ["Python", "PyTorch", "OpenAI"],
-            rate: "$120/hr",
-            rating: 4.8,
-            image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&h=200&auto=format&fit=crop",
-            category: "Artificial Intelligence"
-        },
-        {
-            id: 4,
-            name: "Elena Rodriguez",
-            role: "Product Manager",
-            skills: ["Agile", "Jira", "Strategy"],
-            rate: "$75/hr",
-            rating: 4.7,
-            image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&h=200&auto=format&fit=crop",
-            category: "Management"
-        },
-        {
-            id: 5,
-            name: "Jordan Lee",
-            role: "Mobile App Developer",
-            skills: ["Swift", "Kotlin", "Flutter"],
-            rate: "$90/hr",
-            rating: 4.9,
-            image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=200&h=200&auto=format&fit=crop",
-            category: "Development"
-        },
-        {
-            id: 6,
-            name: "Amara Okoro",
-            role: "Motion Designer",
-            skills: ["After Effects", "Cinema 4D"],
-            rate: "$110/hr",
-            rating: 5.0,
-            image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=200&h=200&auto=format&fit=crop",
-            category: "Design"
+            name: "Elena Rossi",
+            role: "Design Lead, Bloom",
+            content: "Innovative design systems and seamless execution. Highly recommended for complex UI projects.",
+            rating: 4,
+            image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=100&h=100&auto=format&fit=crop"
         }
     ];
-    res.json(freelancers);
+    res.json(testimonials);
 });
 
 app.listen(port, () => {

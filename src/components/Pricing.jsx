@@ -5,26 +5,26 @@ const Pricing = () => {
 
     const plans = [
         {
-            name: "Starter",
-            price: 499,
-            description: "Perfect for personal projects and simple landing pages.",
-            features: ["Single Page Website", "Responsive Design", "Basic SEO", "1 Month Support"],
-            amount: 49900 // In cents
+            name: "Corporate Presence",
+            price: 799,
+            description: "A professional 5-page business website designed to establish authority.",
+            features: ["Custom UI/UX Design", "Responsive Layout", "SEO Foundation", "Contact Integration"],
+            amount: 79900 // In cents
         },
         {
-            name: "Professional",
-            price: 1299,
-            description: "Ideal for growing businesses and startups.",
-            features: ["Multi-page Website", "Mobile App Core", "Database Integration", "3 Months Support"],
-            amount: 129900,
+            name: "E-Commerce Suite",
+            price: 1899,
+            description: "A fully functional online store with secure payment and inventory management.",
+            features: ["Product Catalog", "Stripe/PayPal Integration", "User Accounts", "Performance Shield"],
+            amount: 189900,
             featured: true
         },
         {
-            name: "Enterprise",
-            price: 2999,
-            description: "Custom solutions for complex institutional systems.",
-            features: ["Full Ecosystem", "Advanced Security", "Database Management", "Lifetime Support"],
-            amount: 299900
+            name: "Enterprise Custom",
+            price: 4999,
+            description: "Bespoke digital ecosystems with custom functionality and headless architecture.",
+            features: ["Headless CMS", "API Integrations", "Advanced Security Suite", "24/7 Strategic Support"],
+            amount: 499900
         }
     ];
 
@@ -55,7 +55,7 @@ const Pricing = () => {
             <div className="container">
                 <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
                     <span style={{ color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '0.2rem', fontSize: '0.9rem', fontWeight: '600' }}>Investment</span>
-                    <h2 style={{ marginTop: '1rem' }}>Flexible <span className="text-gradient">Pricing Plans</span></h2>
+                    <h2 style={{ marginTop: '1rem' }}>Website <span className="text-gradient">Creation Plans</span></h2>
                 </div>
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem' }}>
