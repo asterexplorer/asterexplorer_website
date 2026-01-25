@@ -8,7 +8,7 @@ const Contact = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
-        setStatus({ type: 'info', msg: 'Initiating transmission...' });
+        setStatus({ type: 'info', msg: 'Sending message...' });
 
         try {
             const response = await fetch('http://localhost:5000/api/contact', {
@@ -18,13 +18,13 @@ const Contact = () => {
             });
             const data = await response.json();
             if (data.success) {
-                setStatus({ type: 'success', msg: data.message });
+                setStatus({ type: 'success', msg: 'Message sent successfully!' });
                 setFormData({ name: '', email: '', message: '' });
             } else {
-                setStatus({ type: 'error', msg: 'Transmission failed. Re-attempt later.' });
+                setStatus({ type: 'error', msg: 'Failed to send message. Please try again.' });
             }
         } catch (error) {
-            setStatus({ type: 'error', msg: 'Subspace interference detected. Connection failed.' });
+            setStatus({ type: 'error', msg: 'Connection error. Please try again later.' });
         } finally {
             setIsSubmitting(false);
         }
@@ -57,7 +57,7 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <div style={{ fontSize: '0.85rem', color: 'var(--text-tertiary)', fontWeight: '600' }}>LOCATION</div>
-                                    <div style={{ fontSize: '1.1rem', fontWeight: '700' }}>Tokyo / Remote</div>
+                                    <div style={{ fontSize: '1.1rem', fontWeight: '700' }}>Chennai / Remote</div>
                                 </div>
                             </div>
 
@@ -156,7 +156,7 @@ const Contact = () => {
                                 style={{ width: '100%', padding: '1.2rem', marginTop: '1rem' }}
                                 disabled={isSubmitting}
                             >
-                                {isSubmitting ? 'Transmitting...' : 'Send Message'}
+                                {isSubmitting ? 'Sending...' : 'Send Message'}
                             </button>
                         </form>
                     </div>

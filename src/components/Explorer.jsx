@@ -37,7 +37,7 @@ const Explorer = () => {
                     <div style={{ display: 'flex', gap: '1rem' }}>
                         <div className="card" style={{ padding: '1rem 1.5rem', display: 'flex', alignItems: 'center', gap: '1rem', borderRadius: '16px', background: 'var(--bg-surface)' }}>
                             <div style={{ width: '8px', height: '8px', background: '#10b981', borderRadius: '50%', boxShadow: '0 0 10px #10b981' }}></div>
-                            <span style={{ fontSize: '0.9rem', fontWeight: '600' }}>Server: Tokyo-North</span>
+                            <span style={{ fontSize: '0.9rem', fontWeight: '600' }}>Server: Chennai-South</span>
                         </div>
                     </div>
                 </div>

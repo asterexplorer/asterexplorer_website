@@ -3,60 +3,54 @@ import React from 'react';
 const Services = () => {
     const services = [
         {
-            title: "Website",
-            description: "Boutique high-fidelity websites. Built with modern tech like React and Vite for ultimate speed and SEO.",
-            features: ["Portfolio Sites", "Business Landing Pages", "E-commerce"],
-            icon: "🌐"
+            title: "Web Platforms",
+            description: "High-performance architectures using React, Next.js, and specialized cloud engines.",
+            icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
         },
         {
             title: "Mobile Apps",
-            description: "Premium cross-platform mobile experiences for iOS and Android. Smooth, native-like performance.",
-            features: ["React Native", "UI/UX Optimization", "App Store Launch"],
-            icon: "📱"
+            description: "Cross-platform mobile environments built on React Native and native architectures.",
+            icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
         },
         {
-            title: "Graphic Design",
-            description: "Visual identities that stand out. From logo design to modern interface layouts and marketing assets.",
-            features: ["Logo & Branding", "UI/UX Design", "Social Media Kits"],
-            icon: "🎨"
+            title: "Cloud Infrastructure",
+            description: "Scalable backend systems and database logic for complex enterprise ecosystems.",
+            icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
         },
         {
-            title: "Database Manage",
-            description: "Secure and scalable database architectures. Expert management of SQL and NoSQL environments.",
-            features: ["Database Architecture", "Performance Tuning", "Backup Solutions"],
-            icon: "�️"
+            title: "Data Security",
+            description: "Specialized encryption and secure transmission protocols for sensitive data assets.",
+            icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
         }
     ];
 
     return (
-        <section id="services" style={{ padding: '8rem 0', background: 'var(--bg-surface)' }}>
+        <section id="services" className="section-padding" style={{ background: 'var(--bg-surface)' }}>
             <div className="container">
                 <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
-                    <h2 style={{ marginBottom: '1.5rem' }}>Specialized <span className="text-gradient">Services</span></h2>
-                    <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}> Delivering technical excellence across multiple domains to help your business scale.</p>
+                    <span style={{ color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '0.2rem', fontSize: '0.9rem', fontWeight: '600' }}>Our Capabilities</span>
+                    <h2 style={{ marginTop: '1rem' }}>Specialized <span className="text-gradient">Services</span></h2>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2.5rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2.5rem' }}>
                     {services.map((service, index) => (
-                        <div key={index} className="card" style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: '1.5rem',
-                            borderTop: index === 1 ? '4px solid var(--primary)' : '1px solid var(--glass-border)'
-                        }}>
-                            <div style={{ fontSize: '3rem' }}>{service.icon}</div>
-                            <h3 style={{ fontSize: '1.5rem' }}>{service.title}</h3>
-                            <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>{service.description}</p>
-                            <div style={{ marginTop: 'auto' }}>
-                                <ul style={{ listStyle: 'none', padding: 0 }}>
-                                    {service.features.map(feat => (
-                                        <li key={feat} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.8rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                            {feat}
-                                        </li>
-                                    ))}
-                                </ul>
+                        <div key={index} className="card">
+                            <div style={{
+                                width: '56px',
+                                height: '56px',
+                                borderRadius: '16px',
+                                background: 'rgba(45, 212, 191, 0.05)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                color: 'var(--primary)',
+                                marginBottom: '2rem',
+                                border: '1px solid var(--glass-border)'
+                            }}>
+                                {service.icon}
                             </div>
+                            <h3 style={{ marginBottom: '1rem', fontSize: '1.4rem' }}>{service.title}</h3>
+                            <p style={{ color: 'var(--text-secondary)', lineHeight: '1.7' }}>{service.description}</p>
                         </div>
                     ))}
                 </div>

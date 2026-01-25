@@ -2,63 +2,53 @@ import React from 'react';
 
 const About = () => {
     return (
-        <section id="about" style={{ padding: '8rem 0' }}>
+        <section id="about" className="section-padding" style={{ background: 'var(--bg-deep)' }}>
             <div className="container">
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', alignItems: 'center' }}>
-
-                    {/* Text Content */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '5rem', alignItems: 'center' }}>
                     <div>
-                        <h2 style={{ marginBottom: '2rem' }}>
-                            <span className="text-gradient">Professional Solutions</span>
+                        <span style={{ color: 'var(--primary)', fontWeight: '700', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>About Aster</span>
+                        <h2 style={{ marginTop: '1rem', marginBottom: '2rem' }}>
+                            Human-Centric <br />
+                            <span className="text-gradient">Digital Solutions</span>
                         </h2>
                         <div className="card" style={{ padding: '2.5rem', background: 'var(--bg-surface)' }}>
                             <p style={{ marginBottom: '1.5rem', color: 'var(--text-secondary)', fontSize: '1.1rem' }}>
-                                Aster System is a digital solutions company specializing in website and mobile app development. We help businesses and startups transform their ideas into powerful, user-friendly digital products. Our focus is on clean design, high performance, and secure systems that deliver real results. From business websites to advanced mobile applications, we build solutions that are scalable, reliable, and future-ready. At Aster System, innovation meets technology to explore new possibilities for your brand’s digital growth.
+                                Aster Explorer is a digital solutions company specializing in website and mobile app development. We help businesses and startups transform their ideas into powerful, user-friendly digital products. Our focus is on clean design, high performance, and secure systems that deliver real results. From business websites to advanced mobile applications, we build solutions that are scalable, reliable, and future-ready. At Aster Explorer, innovation meets technology to explore new possibilities for your brand’s digital growth.
                             </p>
 
                             <ul style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
-                                {[
-                                    { label: 'Website', icon: '🌐' },
-                                    { label: 'Mobile Apps', icon: '📱' },
-                                    { label: 'Graphic Design', icon: '🎨' },
-                                    { label: 'Database Manage', icon: '🗄️' }
-                                ].map(service => (
-                                    <li key={service.label} style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', fontWeight: '600' }}>
-                                        <span style={{ fontSize: '1.2rem' }}>{service.icon}</span> {service.label}
-                                    </li>
-                                ))}
+                                <li style={{ display: 'flex', gap: '0.8rem', alignItems: 'center', color: 'var(--text-primary)', fontWeight: '600' }}>
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                    Expert Devs
+                                </li>
+                                <li style={{ display: 'flex', gap: '0.8rem', alignItems: 'center', color: 'var(--text-primary)', fontWeight: '600' }}>
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                    Secure Core
+                                </li>
+                                <li style={{ display: 'flex', gap: '0.8rem', alignItems: 'center', color: 'var(--text-primary)', fontWeight: '600' }}>
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                    Global Scale
+                                </li>
+                                <li style={{ display: 'flex', gap: '0.8rem', alignItems: 'center', color: 'var(--text-primary)', fontWeight: '600' }}>
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                    Cloud Ready
+                                </li>
                             </ul>
                         </div>
                     </div>
 
-                    {/* Visual Element (Abstract or Image) */}
-                    <div style={{ position: 'relative' }}>
-                        <div
-                            className="glass-panel"
-                            style={{
-                                aspectRatio: '1',
-                                borderRadius: '50%',
-                                background: 'radial-gradient(circle at 30% 30%, rgba(112,0,255,0.4), rgba(0,0,0,0) 70%)',
-                                border: '1px solid rgba(255,255,255,0.1)',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                position: 'relative',
-                                overflow: 'hidden'
-                            }}
-                        >
-                            <div style={{
-                                position: 'absolute',
-                                inset: 0,
-                                background: 'url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1080&auto=format&fit=crop")',
-                                backgroundSize: 'cover',
-                                opacity: 0.6,
-                                mixBlendMode: 'overlay'
-                            }} />
-                            <span style={{ fontSize: '27rem' }}>👨‍🚀</span>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
+                        <div className="card" style={{ padding: '2rem', textAlign: 'center' }}>
+                            <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🏗️</div>
+                            <h3>50+</h3>
+                            <p style={{ color: 'var(--text-tertiary)', fontSize: '0.8rem', fontWeight: '700' }}>PLATFORMS BUILT</p>
+                        </div>
+                        <div className="card" style={{ padding: '2rem', textAlign: 'center', marginTop: '2rem' }}>
+                            <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>🌐</div>
+                            <h3>20+</h3>
+                            <p style={{ color: 'var(--text-tertiary)', fontSize: '0.8rem', fontWeight: '700' }}>COUNTRIES SERVED</p>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>

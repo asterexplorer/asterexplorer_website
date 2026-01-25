@@ -1,4 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import WeatherWidget from './WeatherWidget';
+
+const navLinks = [
+  { name: 'About', href: '#about' },
+  { name: 'Services', href: '#services' },
+  { name: 'Clients', href: '#clients' },
+  { name: 'Pricing', href: '#pricing' },
+  { name: 'Portfolio', href: '#portfolio' },
+  { name: 'Contact', href: '#contact' },
+];
 
 const Navbar = () => {
   const [time, setTime] = useState(new Date());
@@ -23,70 +33,71 @@ const Navbar = () => {
     });
   };
 
-  const navLinks = [
-    { name: 'Freelancers', href: '#freelancers' },
-    { name: 'Portfolio', href: '#portfolio' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Services', href: '#services' },
-    { name: 'Contact', href: '#contact' },
-  ];
 
   return (
     <header
       style={{
         position: 'fixed',
-        top: '1.5rem',
+        top: 0,
         left: 0,
         width: '100%',
         zIndex: 1000,
-        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-        padding: '0 2rem'
+        background: isScrolled ? 'rgba(255, 255, 255, 0.95)' : 'transparent',
+        backdropFilter: isScrolled ? 'blur(15px)' : 'none',
+        borderBottom: isScrolled ? '1px solid rgba(0,0,0,0.08)' : '1px solid transparent',
+        transition: 'var(--transition-smooth)',
+        height: isScrolled ? '70px' : '90px',
+        display: 'flex',
+        alignItems: 'center'
       }}
     >
-      <div
-        className="container"
-        style={{
-          maxWidth: '1200px',
-          background: isScrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.8)',
-          backdropFilter: 'blur(20px)',
-          border: '1px solid rgba(0, 0, 0, 0.08)',
-          borderRadius: '100px',
-          padding: isScrolled ? '0.75rem 2rem' : '1rem 2.5rem',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          boxShadow: isScrolled ? '0 10px 30px rgba(0,0,0,0.08)' : '0 4px 15px rgba(0,0,0,0.03)',
-          transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
-        }}
-      >
+      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
         <a href="#" style={{
-          fontSize: '1.25rem',
+          fontSize: '1.5rem',
           fontWeight: '800',
           fontFamily: 'var(--font-heading)',
-          color: '#0f172a',
+          color: isScrolled ? '#0f172a' : 'var(--text-primary)',
           display: 'flex',
           alignItems: 'center',
-          gap: '0.8rem'
+          gap: '0.8rem',
+          textDecoration: 'none',
+          transition: 'color 0.3s ease'
         }}>
-          <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ffffff' }}>
+          <div style={{
+            width: '32px',
+            height: '32px',
+            borderRadius: '8px',
+            background: 'var(--primary)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: isScrolled ? 'white' : 'var(--bg-deep)'
+          }}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>
           </div>
-          <span style={{ letterSpacing: '-0.02em' }}>ASTER</span>
+          <span style={{
+            letterSpacing: '-0.01em',
+            lineHeight: 1,
+            display: 'flex',
+            alignItems: 'center'
+          }}>ASTER EXPLORER</span>
         </a>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '3rem' }}>
-          <ul style={{ display: 'flex', gap: '2rem' }} className="desktop-menu">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+          <ul style={{ display: 'flex', gap: '1.10rem', listStyle: 'none' }} className="desktop-menu">
             {navLinks.map((link) => (
               <li key={link.name}>
                 <a
                   href={link.href}
                   className="nav-link"
                   style={{
-                    fontSize: '0.875rem',
+                    fontSize: '0.9rem',
                     fontWeight: '600',
-                    color: '#475569',
+                    color: isScrolled ? '#475569' : 'var(--text-secondary)',
                     transition: 'all 0.3s ease',
-                    position: 'relative'
+                    position: 'relative',
+                    textDecoration: 'none',
+                    letterSpacing: '0.02em'
                   }}
                 >
                   {link.name}
@@ -95,16 +106,20 @@ const Navbar = () => {
             ))}
           </ul>
 
+          <WeatherWidget />
           <div
             style={{
               fontFamily: "'Share Tech Mono', monospace",
               fontSize: '0.9rem',
               color: 'var(--primary)',
-              background: 'rgba(45, 212, 191, 0.1)',
-              padding: '0.5rem 1.2rem',
-              borderRadius: '100px',
-              border: '1px solid rgba(45, 212, 191, 0.2)',
-              letterSpacing: '0.15em',
+              background: 'rgba(45, 212, 191, 0.05)',
+              padding: '0 1.2rem',
+              height: '40px',
+              display: 'flex',
+              alignItems: 'center',
+              borderRadius: '8px',
+              border: '1px solid var(--glass-border)',
+              letterSpacing: '0.1em',
               fontWeight: '700'
             }}
           >

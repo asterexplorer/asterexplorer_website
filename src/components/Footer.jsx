@@ -64,8 +64,9 @@ const Footer = () => {
                         fontSize: '1.2rem',
                         fontWeight: '700',
                         color: 'var(--primary)',
-                        letterSpacing: '0.1em'
-                    }}>ASTER SYSTEM</a>
+                        letterSpacing: '0.1em',
+                        textDecoration: 'none'
+                    }}>ASTER EXPLORER</a>
                 </div>
 
                 <p style={{ color: 'var(--text-tertiary)', fontSize: '0.9rem', maxWidth: '400px', margin: '0 auto 2rem' }}>
@@ -74,7 +75,7 @@ const Footer = () => {
 
                 <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', alignItems: 'center' }}>
                     <p style={{ color: 'var(--text-tertiary)', fontSize: '0.8rem' }}>
-                        &copy; {new Date().getFullYear()} Aster System
+                        &copy; {new Date().getFullYear()} Aster Explorer
                     </p>
                     <a href="/LICENSE" style={{
                         color: 'var(--text-tertiary)',

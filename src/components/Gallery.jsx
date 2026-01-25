@@ -2,25 +2,25 @@ import React from 'react';
 
 const projects = [
     {
-        title: 'Nebula Dashboard',
-        desc: 'A futuristic analytics platform visualizing deep space data trajectories.',
-        tags: ['React', 'D3.js', 'WebGL'],
+        title: 'Enterprise ERP System',
+        desc: 'A comprehensive management platform with real-time analytics and inventory tracking.',
+        tags: ['React', 'Node.js', 'PostgreSQL'],
         color: '#00C2FF',
         icon: '📊'
     },
     {
-        title: 'Cosmic Chat',
-        desc: 'Real-time encrypted communication across the galaxy using quantum entanglement protocols.',
-        tags: ['Socket.io', 'Node', 'Crypto'],
+        title: 'Secure FinTech App',
+        desc: 'Mobile application featuring end-to-end encrypted banking and global asset management.',
+        tags: ['React Native', 'Swift', 'AWS'],
         color: '#7D00FF',
-        icon: '💬'
+        icon: '💳'
     },
     {
-        title: 'Stellar Commerce',
-        desc: 'Seamless e-commerce solution for interstellar trade and asset management.',
-        tags: ['Next.js', 'Stripe', 'Solidity'],
+        title: 'AI Commerce Engine',
+        desc: 'Seamless e-commerce integration with AI-driven personalized product recommendations.',
+        tags: ['Next.js', 'PyTorch', 'Stripe'],
         color: '#FF00E5',
-        icon: '💳'
+        icon: '🛍️'
     }
 ];
 
@@ -61,17 +61,9 @@ const Gallery = () => {
                                 display: 'flex',
                                 flexDirection: 'column',
                                 height: '100%',
-                                group: 'card'
-                            }}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.transform = 'translateY(-10px) scale(1.02)';
-                                e.currentTarget.style.borderColor = `rgba(${parseInt(project.color.slice(1, 3), 16)}, ${parseInt(project.color.slice(3, 5), 16)}, ${parseInt(project.color.slice(5, 7), 16)}, 0.5)`;
-                                e.currentTarget.querySelector('.icon-bg').style.transform = 'scale(1.2) rotate(10deg)';
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                                e.currentTarget.style.borderColor = 'var(--glass-border)';
-                                e.currentTarget.querySelector('.icon-bg').style.transform = 'scale(1) rotate(0deg)';
+                                border: '1px solid var(--glass-border)',
+                                borderRadius: '16px',
+                                background: 'rgba(255,255,255,0.02)'
                             }}
                         >
                             {/* Decorative Background Blur */}
@@ -85,25 +77,22 @@ const Gallery = () => {
                                     background: project.color,
                                     filter: 'blur(80px)',
                                     opacity: 0.2,
-                                    transition: 'opacity 0.3s ease',
                                     zIndex: 0
                                 }}
                             />
 
                             <div
-                                className="icon-bg"
                                 style={{
                                     width: '60px',
                                     height: '60px',
                                     borderRadius: '16px',
-                                    background: `linear-gradient(135deg, ${project.color}22 0%, ${project.color}11 100%)`,
+                                    background: 'rgba(255,255,255,0.03)',
                                     marginBottom: '2rem',
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center',
-                                    border: `1px solid ${project.color}44`,
+                                    border: '1px solid var(--glass-border)',
                                     fontSize: '1.8rem',
-                                    transition: 'transform 0.5s var(--transition-bounce)',
                                     zIndex: 1
                                 }}
                             >
