@@ -1,16 +1,9 @@
-# React + Vite
+Nice, Aster Explorer sounds like a strong brand 🌟
+Here are a few “About” section options for your freelancer business — you can use them for your website, app, or profile.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aster Explorer is a freelance-based digital service brand providing modern solutions in website development, app development, UI/UX design, and software solutions.
+We focus on building fast, secure, and user-friendly digital products for startups, businesses, and individuals worldwide.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+At Aster Explorer, we explore technology to create smart digital solutions.
+We work as a freelance business providing website development, mobile app development, UI/UX design, and branding services.
+Our goal is to combine creativity with technology to help clients build strong online identities and reliable digital products.
