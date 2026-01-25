@@ -12,12 +12,7 @@ const Explorer = () => {
                 setFiles(data);
             } catch (error) {
                 console.error("Error fetching files:", error);
-                setFiles([
-                    { id: 1, name: "Neural_Link.sys", size: "2.4 MB", type: "Core", date: "Jan 24, 2026" },
-                    { id: 2, name: "Aster_UI_v2.fig", size: "185 KB", type: "Design", date: "Jan 23, 2026" },
-                    { id: 3, name: "Security_Protocol.key", size: "12 KB", type: "Security", date: "Jan 24, 2026" },
-                    { id: 4, name: "Cloud_Vector.svg", size: "45 KB", type: "Asset", date: "Jan 22, 2026" },
-                ]);
+                setFiles([]);
             } finally {
                 setLoading(false);
             }

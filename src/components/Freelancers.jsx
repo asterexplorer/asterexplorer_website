@@ -2,69 +2,24 @@ import React, { useState } from 'react';
 
 const Freelancers = () => {
     const [filter, setFilter] = useState('All');
+    const [freelancers, setFreelancers] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    const freelancers = [
-        {
-            id: 1,
-            name: "Alex Rivera",
-            role: "Full-Stack Developer",
-            skills: ["React", "Node.js", "AWS"],
-            rate: "$85/hr",
-            rating: 4.9,
-            image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&h=200&auto=format&fit=crop",
-            category: "Development"
-        },
-        {
-            id: 2,
-            name: "Sarah Chen",
-            role: "UI/UX Designer",
-            skills: ["Figma", "Webflow", "Spline"],
-            rate: "$95/hr",
-            rating: 5.0,
-            image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&h=200&auto=format&fit=crop",
-            category: "Design"
-        },
-        {
-            id: 3,
-            name: "Marcus Thorne",
-            role: "AI/ML Engineer",
-            skills: ["Python", "PyTorch", "OpenAI"],
-            rate: "$120/hr",
-            rating: 4.8,
-            image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&h=200&auto=format&fit=crop",
-            category: "Artificial Intelligence"
-        },
-        {
-            id: 4,
-            name: "Elena Rodriguez",
-            role: "Product Manager",
-            skills: ["Agile", "Jira", "Strategy"],
-            rate: "$75/hr",
-            rating: 4.7,
-            image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&h=200&auto=format&fit=crop",
-            category: "Management"
-        },
-        {
-            id: 5,
-            name: "Jordan Lee",
-            role: "Mobile App Developer",
-            skills: ["Swift", "Kotlin", "Flutter"],
-            rate: "$90/hr",
-            rating: 4.9,
-            image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=200&h=200&auto=format&fit=crop",
-            category: "Development"
-        },
-        {
-            id: 6,
-            name: "Amara Okoro",
-            role: "Motion Designer",
-            skills: ["After Effects", "Cinema 4D"],
-            rate: "$110/hr",
-            rating: 5.0,
-            image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=200&h=200&auto=format&fit=crop",
-            category: "Design"
-        }
-    ];
+    React.useEffect(() => {
+        const fetchFreelancers = async () => {
+            try {
+                const response = await fetch('http://localhost:5000/api/freelancers');
+                const data = await response.json();
+                setFreelancers(data);
+                setLoading(true);
+            } catch (error) {
+                console.error("Freelancers fetch failed:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchFreelancers();
+    }, []);
 
     const categories = ['All', 'Development', 'Design', 'Artificial Intelligence', 'Management'];
 

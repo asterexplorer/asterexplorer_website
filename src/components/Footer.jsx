@@ -85,6 +85,26 @@ const Footer = () => {
                         transition: '0.2s'
                     }} className="license-link">MIT License</a>
                 </div>
+
+                <div style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
+                    <div style={{
+                        width: '30px',
+                        height: '1px',
+                        background: 'linear-gradient(90deg, transparent, var(--primary), transparent)',
+                        opacity: 0.3
+                    }}></div>
+                    <p style={{
+                        color: 'var(--text-secondary)',
+                        fontSize: '0.8rem',
+                        fontWeight: '500',
+                        letterSpacing: '0.05em',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem'
+                    }}>
+                        Made with <span style={{ color: '#ff4757', display: 'inline-block', animation: 'heartbeat 1.5s ease-in-out infinite' }}>❤️</span> in Tamil Nadu
+                    </p>
+                </div>
             </div>
 
             <style>{`
@@ -94,6 +114,13 @@ const Footer = () => {
                 .license-link:hover {
                     opacity: 1 !important;
                     color: var(--primary);
+                }
+                @keyframes heartbeat {
+                    0% { transform: scale(1); }
+                    14% { transform: scale(1.2); }
+                    28% { transform: scale(1); }
+                    42% { transform: scale(1.2); }
+                    70% { transform: scale(1); }
                 }
             `}</style>
         </footer>

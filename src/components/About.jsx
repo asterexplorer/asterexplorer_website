@@ -16,7 +16,7 @@ const About = () => {
                                 Aster Explorer is a digital solutions company specializing in website and mobile app development. We help businesses and startups transform their ideas into powerful, user-friendly digital products. Our focus is on clean design, high performance, and secure systems that deliver real results. From business websites to advanced mobile applications, we build solutions that are scalable, reliable, and future-ready. At Aster Explorer, innovation meets technology to explore new possibilities for your brand’s digital growth.
                             </p>
 
-                            <ul style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+                            <ul style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '3rem' }}>
                                 <li style={{ display: 'flex', gap: '0.8rem', alignItems: 'center', color: 'var(--text-primary)', fontWeight: '600' }}>
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                                     Expert Devs
@@ -34,6 +34,36 @@ const About = () => {
                                     Cloud Ready
                                 </li>
                             </ul>
+
+                            <div style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '1.5rem',
+                                padding: '1.5rem',
+                                background: 'rgba(255,255,255,0.02)',
+                                borderRadius: '16px',
+                                border: '1px solid var(--glass-border)'
+                            }}>
+                                <div style={{
+                                    width: '64px',
+                                    height: '64px',
+                                    borderRadius: '50%',
+                                    background: 'linear-gradient(135deg, var(--primary), #6366f1)',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    fontSize: '1.5rem',
+                                    color: 'white',
+                                    fontWeight: 'bold',
+                                    boxShadow: '0 8px 16px rgba(0,0,0,0.2)'
+                                }}>
+                                    PD
+                                </div>
+                                <div>
+                                    <h4 style={{ margin: 0, fontSize: '1.1rem', color: 'var(--text-primary)' }}>Prabhu Durairai</h4>
+                                    <p style={{ margin: '0.2rem 0 0', fontSize: '0.85rem', color: 'var(--primary)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Chief Executive Officer</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 

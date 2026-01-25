@@ -1,0 +1,21 @@
+{
+    "name": "aster-explorer-backend",
+    "version": "1.0.0",
+    "description": "Node.js backend for Aster Explorer",
+    "main": "server.js",
+    "type": "module",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "node --watch server.js"
+    },
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.7",
+        "express": "^4.21.2",
+        "express-oauth2-jwt-bearer": "^1.7.4",
+        "nodemailer": "^6.10.0",
+        "pg": "^8.17.2",
+        "redis": "^5.10.0",
+        "stripe": "latest"
+    }
+}
