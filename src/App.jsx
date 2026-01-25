@@ -5,7 +5,7 @@ import Stats from './components/Stats';
 import About from './components/About';
 import Services from './components/Services';
 import ServiceSummary from './components/ServiceSummary';
-import ProjectBoard from './components/ProjectBoard';
+
 import Clients from './components/Clients';
 import Pricing from './components/Pricing';
 import Trending from './components/Trending';
@@ -42,7 +42,7 @@ function App() {
       <div className="reveal"><About /></div>
       <div className="reveal"><Services /></div>
       <div className="reveal"><ServiceSummary /></div>
-      <div className="reveal"><ProjectBoard /></div>
+
       <div className="reveal"><Clients /></div>
       <div className="reveal"><Pricing /></div>
       <div className="reveal"><Trending /></div>

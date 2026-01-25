@@ -4,7 +4,7 @@ import WeatherWidget from './WeatherWidget';
 const navLinks = [
   { name: 'Services', href: '#services' },
   { name: 'Solutions', href: '#summary' },
-  { name: 'Projects', href: '#projects' },
+
   { name: 'Reviews', href: '#testimonials' },
   { name: 'Pricing', href: '#pricing' },
   { name: 'Trends', href: '#trending' },
