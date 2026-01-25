@@ -4,8 +4,6 @@ import WeatherWidget from './WeatherWidget';
 const navLinks = [
   { name: 'Services', href: '#services' },
   { name: 'Solutions', href: '#summary' },
-
-  { name: 'Reviews', href: '#testimonials' },
   { name: 'Pricing', href: '#pricing' },
   { name: 'Trends', href: '#trending' },
   { name: 'About', href: '#about' },
@@ -15,6 +13,7 @@ const Navbar = () => {
   const [time, setTime] = useState(new Date());
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => setTime(new Date()), 1000);
@@ -40,7 +39,6 @@ const Navbar = () => {
     });
   };
 
-
   return (
     <header
       style={{
@@ -49,88 +47,68 @@ const Navbar = () => {
         left: 0,
         width: '100%',
         zIndex: 1000,
-        background: isScrolled ? 'rgba(3, 3, 5, 0.8)' : 'transparent',
-        backdropFilter: isScrolled ? 'blur(20px)' : 'none',
-        borderBottom: isScrolled ? '1px solid rgba(255, 255, 255, 0.05)' : '1px solid transparent',
-        transition: 'all 0.4s cubic-bezier(0.23, 1, 0.32, 1)',
-        height: isScrolled ? '64px' : '80px',
+        background: isScrolled ? 'rgba(3, 3, 5, 0.75)' : 'transparent',
+        backdropFilter: isScrolled ? 'blur(20px) saturate(180%)' : 'none',
+        borderBottom: isScrolled ? '1px solid rgba(255, 255, 255, 0.08)' : '1px solid transparent',
+        transition: 'all 0.5s cubic-bezier(0.23, 1, 0.32, 1)',
+        height: isScrolled ? '72px' : '90px',
         display: 'flex',
         alignItems: 'center'
       }}
     >
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+
+        {/* Logo Section */}
         <a href="#" style={{
-          fontSize: '0.8rem',
+          fontSize: '0.9rem',
           fontWeight: '900',
           fontFamily: 'var(--font-heading)',
           color: 'var(--text-primary)',
           display: 'flex',
           alignItems: 'center',
-          gap: '0.6rem',
+          gap: '0.8rem',
           textDecoration: 'none',
-          transition: 'all 0.3s ease',
-          letterSpacing: '0.1em'
-        }}>
+          transition: 'all 0.4s cubic-bezier(0.23, 1, 0.32, 1)',
+          letterSpacing: '0.15em'
+        }} className="navbar-logo">
           <div style={{
-            width: '30px',
-            height: '30px',
-            borderRadius: '8px',
+            width: '36px',
+            height: '36px',
+            borderRadius: '12px',
             background: 'linear-gradient(135deg, var(--primary), var(--secondary))',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             color: 'white',
-            boxShadow: 'var(--shadow-glow)'
+            boxShadow: '0 0 20px rgba(45, 212, 191, 0.3)',
+            position: 'relative',
+            overflow: 'hidden'
           }}>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.3) 50%, transparent 60%)', backgroundSize: '200% 200%', animation: 'shimmer 3s infinite' }}></div>
           </div>
-          <span style={{
-            lineHeight: 1,
-            display: 'flex',
-            alignItems: 'center'
-          }}>AST<span style={{ color: 'var(--primary)' }}>ER</span></span>
+          <span style={{ lineHeight: 1, display: 'flex', alignItems: 'center' }}>
+            ASTER <span style={{ color: 'var(--primary)', marginLeft: '0.4rem' }}>EXPLORER</span>
+          </span>
         </a>
 
-        {/* Left-side Info Group */}
-        <div className="desktop-menu" style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginLeft: '1rem' }}>
-          <WeatherWidget />
-          <div
-            style={{
-              fontFamily: "'Share Tech Mono', monospace",
-              fontSize: '0.8rem',
-              color: 'var(--primary)',
-              background: 'rgba(45, 212, 191, 0.05)',
-              padding: '0 1rem',
-              height: '36px',
-              display: 'flex',
-              alignItems: 'center',
-              borderRadius: '8px',
-              border: '1px solid var(--glass-border)',
-              letterSpacing: '0.1em',
-              fontWeight: '700'
-            }}
-          >
-            {formatTime(time)}
-          </div>
-        </div>
-
-        <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
-          <ul style={{ display: 'flex', gap: '1.5rem', listStyle: 'none' }} className="desktop-menu">
+        {/* Desktop Navigation */}
+        <nav style={{ display: 'flex', alignItems: 'center', gap: '3rem' }} className="desktop-menu">
+          <ul style={{ display: 'flex', gap: '2rem', listStyle: 'none', margin: 0, padding: 0 }}>
             {navLinks.map((link) => (
               <li key={link.name}>
                 <a
                   href={link.href}
                   className="nav-link"
                   style={{
-                    fontSize: '0.85rem',
-                    fontWeight: '700',
+                    fontSize: '0.8rem',
+                    fontWeight: '800',
                     color: 'var(--text-primary)',
-                    transition: 'all 0.3s ease',
-                    position: 'relative',
                     textDecoration: 'none',
                     letterSpacing: '0.1em',
                     textTransform: 'uppercase',
-                    opacity: 0.7
+                    opacity: 0.6,
+                    transition: '0.3s'
                   }}
                 >
                   {link.name}
@@ -139,56 +117,102 @@ const Navbar = () => {
             ))}
           </ul>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <a href="#contact" className="btn btn-primary" style={{
-              padding: '0.6rem 1.4rem',
-              fontSize: '0.8rem',
-              height: '36px',
-              borderRadius: '8px'
+          {/* Status Dashboard Area */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '1.2rem',
+            padding: '0.4rem 1.2rem',
+            background: 'rgba(255,255,255,0.03)',
+            borderRadius: '100px',
+            border: '1px solid var(--glass-border)',
+            backdropFilter: 'blur(10px)'
+          }}>
+            <WeatherWidget />
+            <div style={{ width: '1px', height: '16px', background: 'var(--glass-border)' }}></div>
+            <div style={{
+              fontFamily: "'Share Tech Mono', monospace",
+              fontSize: '0.75rem',
+              color: 'var(--primary)',
+              fontWeight: '700',
+              letterSpacing: '0.1em'
             }}>
-              Connect
-            </a>
+              {formatTime(time)}
+            </div>
           </div>
-        </div>
+
+          <a href="#contact" className="btn btn-primary" style={{
+            padding: '0.8rem 2rem',
+            fontSize: '0.75rem',
+            borderRadius: '100px',
+            boxShadow: '0 10px 20px rgba(45, 212, 191, 0.2)'
+          }}>
+            PROPOSAL
+          </a>
+        </nav>
+
+        {/* Mobile Menu Toggle (Simplified) */}
+        <button
+          className="mobile-toggle"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          style={{
+            display: 'none',
+            background: 'none',
+            border: 'none',
+            color: 'var(--text-primary)',
+            fontSize: '1.5rem',
+            cursor: 'pointer'
+          }}
+        >
+          {isMobileMenuOpen ? '✕' : '☰'}
+        </button>
+
       </div>
 
-      <style>{`
-        .nav-link:hover {
-          opacity: 1 !important;
-          color: var(--primary) !important;
-          transform: translateY(-2px);
-        }
-        .nav-link::after {
-          content: '';
-          position: absolute;
-          bottom: -8px;
-          left: 50%;
-          width: 0;
-          height: 3px;
-          background: var(--primary);
-          transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-          border-radius: 10px;
-          transform: translateX(-50%);
-          box-shadow: 0 0 10px var(--primary);
-        }
-        .nav-link:hover::after {
-          width: 100%;
-        }
-        @media (max-width: 1100px) {
-          .desktop-menu { display: none !important; }
-        }
-      `}</style>
-
+      {/* Sleek Scroll Progress Bar */}
       <div style={{
         position: 'absolute',
         bottom: 0,
         left: 0,
         width: `${scrollProgress}%`,
-        height: '3px',
+        height: '2px',
         background: 'linear-gradient(to right, var(--primary), var(--secondary))',
-        transition: 'width 0.1s ease-out',
-        boxShadow: '0 0 15px var(--primary)'
+        boxShadow: '0 0 10px var(--primary)',
+        transition: 'width 0.1s ease-out'
       }}></div>
+
+      <style>{`
+        @keyframes shimmer {
+          0% { background-position: -200% 0; }
+          100% { background-position: 200% 0; }
+        }
+        .navbar-logo:hover {
+          transform: scale(1.02);
+        }
+        .nav-link:hover {
+          opacity: 1 !important;
+          color: var(--primary) !important;
+        }
+        .nav-link::after {
+          content: '';
+          position: absolute;
+          bottom: -10px;
+          left: 50%;
+          width: 0;
+          height: 2px;
+          background: var(--primary);
+          transition: all 0.3s ease;
+          transform: translateX(-50%);
+          border-radius: 4px;
+        }
+        .nav-link:hover::after {
+          width: 100%;
+        }
+        @media (max-width: 1200px) {
+          .desktop-menu { display: none !important; }
+          .mobile-toggle { display: block !important; }
+        }
+      `}</style>
     </header>
   );
 };

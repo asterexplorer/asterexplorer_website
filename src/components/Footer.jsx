@@ -1,130 +1,246 @@
 import React from 'react';
 
 const Footer = () => {
+    const footerLinks = {
+        Platform: [
+            { name: 'Architecture', href: '#services' },
+            { name: 'Solutions', href: '#summary' },
+            { name: 'Pricing', href: '#pricing' },
+            { name: 'Intelligence', href: '#trending' }
+        ],
+        Company: [
+            { name: 'About Vision', href: '#about' },
+            { name: 'Strategy', href: '#' },
+            { name: 'Network', href: '#' },
+            { name: 'Contact', href: '#contact' }
+        ],
+        Legal: [
+            { name: 'Privacy Policy', href: '#' },
+            { name: 'Terms of Service', href: '#' },
+            { name: 'License', href: '/LICENSE' }
+        ]
+    };
+
     const socialLinks = [
         { name: 'GitHub', href: '#', color: '#f0f6fc', icon: <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" /> },
         { name: 'X', href: '#', color: '#ffffff', icon: <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" /> },
         { name: 'LinkedIn', href: '#', color: '#0077b5', icon: <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 1-2 2 2 2 0 0 1 2-2z" /> },
-        { name: 'Instagram', href: '#', color: '#e4405f', icon: <React.Fragment><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></React.Fragment> },
+        { name: 'Instagram', href: '#', color: '#e4405f', icon: <g><rect x="2" y="2" width="20" height="20" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></g> },
+        { name: 'Facebook', href: '#', color: '#1877f2', icon: <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /> },
+        { name: 'YouTube', href: '#', color: '#ff0000', icon: <g><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" /><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" /></g> },
+        { name: 'TikTok', href: '#', color: '#00f2ea', icon: <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" /> },
+        { name: 'Discord', href: '#', color: '#5865f2', icon: <path d="M9 7.5L6.5 10L9 12.5M15 7.5L17.5 10L15 12.5M12 21c4.97 0 9-4.03 9-9s-4.03-9-9-9-9 4.03-9 9 4.03 9 9 9z" /> }
     ];
 
     return (
-        <footer style={{ padding: '6rem 0', borderTop: '1px solid var(--glass-border)', background: 'linear-gradient(to top, rgba(11,11,15,0.8), transparent)' }}>
-            <div className="container" style={{ textAlign: 'center' }}>
-                <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', marginBottom: '3rem' }}>
-                    {socialLinks.map((social) => (
-                        <a
-                            key={social.name}
-                            href={social.href}
-                            className="social-icon"
-                            aria-label={social.name}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.color = social.color;
-                                e.currentTarget.style.borderColor = social.color + '44';
-                                e.currentTarget.style.background = social.color + '15';
-                                e.currentTarget.style.boxShadow = `0 10px 20px ${social.color}22`;
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.color = 'var(--text-secondary)';
-                                e.currentTarget.style.borderColor = 'var(--glass-border)';
-                                e.currentTarget.style.background = 'rgba(255,255,255,0.03)';
-                                e.currentTarget.style.boxShadow = 'none';
-                            }}
-                            style={{
-                                color: 'var(--text-secondary)',
-                                transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                width: '50px',
-                                height: '50px',
-                                borderRadius: '12px',
-                                background: 'rgba(255,255,255,0.03)',
-                                border: '1px solid var(--glass-border)',
-                            }}
-                        >
-                            <svg
-                                viewBox="0 0 24 24"
-                                width="24"
-                                height="24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="1.5"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                            >
-                                {social.icon}
-                            </svg>
-                        </a>
+        <footer style={{
+            padding: '8rem 0 4rem',
+            background: 'var(--bg-deep)',
+            borderTop: '1px solid var(--glass-border)',
+            position: 'relative',
+            overflow: 'hidden'
+        }}>
+            <div className="glow-bg" style={{ bottom: '-10%', right: '-5%', width: '500px', height: '500px', opacity: '0.05' }}></div>
+
+            <div className="container">
+                <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: '1.5fr repeat(3, 1fr)',
+                    gap: '4rem',
+                    marginBottom: '6rem'
+                }}>
+                    {/* Brand Column */}
+                    <div>
+                        <a href="#" style={{
+                            fontSize: '1.2rem',
+                            fontWeight: '900',
+                            color: 'var(--text-primary)',
+                            letterSpacing: '0.2rem',
+                            textDecoration: 'none',
+                            display: 'block',
+                            marginBottom: '1.5rem'
+                        }}>ASTER <span style={{ color: 'var(--primary)' }}>EXPLORER</span></a>
+                        <p style={{
+                            color: 'var(--text-secondary)',
+                            fontSize: '0.95rem',
+                            lineHeight: '1.8',
+                            maxWidth: '300px',
+                            marginBottom: '2.5rem'
+                        }}>
+                            Architecting high-performance digital ecosystems for the modern global enterprise.
+                        </p>
+                        <div style={{ display: 'flex', gap: '1.2rem', flexWrap: 'wrap' }}>
+                            {socialLinks.map((social) => (
+                                <a
+                                    key={social.name}
+                                    href={social.href}
+                                    style={{
+                                        color: 'var(--text-tertiary)',
+                                        transition: '0.3s',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        width: '40px',
+                                        height: '40px',
+                                        borderRadius: '10px',
+                                        background: 'rgba(255,255,255,0.02)',
+                                        border: '1px solid var(--glass-border)'
+                                    }}
+                                    className="footer-social"
+                                    onMouseEnter={(e) => {
+                                        e.currentTarget.style.color = social.color;
+                                        e.currentTarget.style.borderColor = social.color;
+                                        e.currentTarget.style.background = `${social.color}10`;
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.currentTarget.style.color = 'var(--text-tertiary)';
+                                        e.currentTarget.style.borderColor = 'var(--glass-border)';
+                                        e.currentTarget.style.background = 'rgba(255,255,255,0.02)';
+                                    }}
+                                >
+                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        {social.icon}
+                                    </svg>
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Links Columns */}
+                    {Object.entries(footerLinks).map(([title, links]) => (
+                        <div key={title}>
+                            <h4 style={{
+                                color: 'var(--text-primary)',
+                                fontSize: '0.9rem',
+                                fontWeight: '800',
+                                textTransform: 'uppercase',
+                                letterSpacing: '0.15em',
+                                marginBottom: '2rem'
+                            }}>{title}</h4>
+                            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                                {links.map((link) => (
+                                    <li key={link.name}>
+                                        <a
+                                            href={link.href}
+                                            style={{
+                                                color: 'var(--text-tertiary)',
+                                                textDecoration: 'none',
+                                                fontSize: '0.9rem',
+                                                transition: '0.3s'
+                                            }}
+                                            className="footer-link"
+                                        >
+                                            {link.name}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     ))}
                 </div>
 
-                <div style={{ marginBottom: '1.5rem' }}>
-                    <a href="#" style={{
-                        fontSize: '1.2rem',
-                        fontWeight: '700',
-                        color: 'var(--primary)',
-                        letterSpacing: '0.1em',
-                        textDecoration: 'none'
-                    }}>ASTER EXPLORER</a>
-                </div>
+                {/* Bottom Area: System Status & Copyright */}
+                <div style={{
+                    paddingTop: '3rem',
+                    borderTop: '1px solid var(--glass-border)',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    flexWrap: 'wrap',
+                    gap: '2rem'
+                }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                        <p style={{
+                            color: 'var(--text-primary)',
+                            fontSize: '0.85rem',
+                            fontWeight: '700',
+                            letterSpacing: '0.05em'
+                        }}>
+                            &copy; 2026 ASTER EXPLORER. <span style={{ color: 'var(--text-tertiary)', fontWeight: '400' }}>INTELLIGENCE AMPLIFIED.</span>
+                        </p>
+                        <p style={{ color: 'var(--text-tertiary)', fontSize: '0.75rem', letterSpacing: '0.02em' }}>
+                            All systems operational. ISO 27001 Certified Security Infrastructure.
+                        </p>
+                    </div>
 
-                <p style={{ color: 'var(--text-tertiary)', fontSize: '0.9rem', maxWidth: '400px', margin: '0 auto 2rem' }}>
-                    Pioneering the digital frontier with immersive experiences and cognitive cloud solutions.
-                </p>
-
-                <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', alignItems: 'center' }}>
-                    <p style={{ color: 'var(--text-tertiary)', fontSize: '0.8rem' }}>
-                        &copy; {new Date().getFullYear()} Aster Explorer
-                    </p>
-                    <a href="/LICENSE" style={{
-                        color: 'var(--text-tertiary)',
-                        fontSize: '0.8rem',
-                        textDecoration: 'none',
-                        opacity: 0.5,
-                        transition: '0.2s'
-                    }} className="license-link">MIT License</a>
-                </div>
-
-                <div style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem' }}>
                     <div style={{
-                        width: '30px',
-                        height: '1px',
-                        background: 'linear-gradient(90deg, transparent, var(--primary), transparent)',
-                        opacity: 0.3
-                    }}></div>
-                    <p style={{
-                        color: 'var(--text-secondary)',
-                        fontSize: '0.8rem',
-                        fontWeight: '500',
-                        letterSpacing: '0.05em',
                         display: 'flex',
                         alignItems: 'center',
-                        gap: '0.5rem'
+                        gap: '2.5rem',
+                        flexWrap: 'wrap'
                     }}>
-                        Made with <span style={{ color: '#ff4757', display: 'inline-block', animation: 'heartbeat 1.5s ease-in-out infinite' }}>❤️</span> in Tamil Nadu
-                    </p>
+                        {/* Status Indicator */}
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+                            <div style={{
+                                width: '8px',
+                                height: '8px',
+                                borderRadius: '50%',
+                                background: '#10b981',
+                                boxShadow: '0 0 10px #10b981',
+                                animation: 'pulse 2s infinite'
+                            }}></div>
+                            <span style={{
+                                fontSize: '0.75rem',
+                                color: 'var(--text-secondary)',
+                                fontWeight: '700',
+                                letterSpacing: '0.1em',
+                                textTransform: 'uppercase'
+                            }}>System Status: Online</span>
+                        </div>
+
+                        {/* Region */}
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+                            <span style={{
+                                fontSize: '0.75rem',
+                                color: 'var(--text-tertiary)',
+                                fontWeight: '500',
+                                borderLeft: '1px solid var(--glass-border)',
+                                paddingLeft: '2.5rem'
+                            }}>
+                                HQ: TAMIL NADU, INDIA <span style={{ color: '#ff4757', marginLeft: '0.5rem', animation: 'heartbeat 1.5s infinite', display: 'inline-block' }}>❤️</span>
+                            </span>
+                        </div>
+
+                        {/* Version */}
+                        <div style={{
+                            padding: '0.2rem 0.6rem',
+                            background: 'rgba(255,255,255,0.05)',
+                            borderRadius: '4px',
+                            border: '1px solid var(--glass-border)',
+                            fontSize: '0.65rem',
+                            fontFamily: "'Share Tech Mono', monospace",
+                            color: 'var(--primary)'
+                        }}>
+                            v2.4.0-STABLE
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <style>{`
-                .social-icon:hover {
-                    transform: translateY(-5px) scale(1.1);
+                .footer-link:hover {
+                    color: var(--primary) !important;
+                    padding-left: 5px;
                 }
-                .license-link:hover {
-                    opacity: 1 !important;
-                    color: var(--primary);
+                .footer-social:hover {
+                    background: rgba(45, 212, 191, 0.05) !important;
+                    transform: translateY(-3px);
+                    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
                 }
                 @keyframes heartbeat {
                     0% { transform: scale(1); }
-                    14% { transform: scale(1.2); }
+                    14% { transform: scale(1.1); }
                     28% { transform: scale(1); }
-                    42% { transform: scale(1.2); }
+                    42% { transform: scale(1.1); }
                     70% { transform: scale(1); }
+                }
+                @keyframes pulse {
+                    0% { transform: scale(0.95); opacity: 0.5; }
+                    50% { transform: scale(1.05); opacity: 1; }
+                    100% { transform: scale(0.95); opacity: 0.5; }
                 }
             `}</style>
         </footer>
     );
 };
-
 export default Footer;

@@ -3,64 +3,149 @@ import React from 'react';
 const Services = () => {
     const services = [
         {
-            title: "Website Development",
-            description: "End-to-end full-stack development using modern frameworks like React and Next.js. We build scalable, high-performance web applications tailored to your business logic and growth requirements.",
-            icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>,
-            tag: "Core Engineering"
+            title: "Web Platforms",
+            description: "High-performance architectures built with React, Next.js, and Node.js. We focus on scalability and sub-second load times.",
+            tech: ["Architecture", "PWA", "APIs"],
+            icon: "🌐"
         },
         {
-            title: "Mobile App Development",
-            description: "Native and cross-platform mobile solutions for iOS and Android. Our apps focus on seamless user experience, offline capabilities, and high-speed performance for the modern mobile user.",
-            icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>,
-            tag: "Mobile Solutions"
+            title: "Mobile Engines",
+            description: "Deeply integrated iOS and Android solutions using React Native and Flutter for seamless native experiences.",
+            tech: ["Native UI", "Syncing", "Offline"],
+            icon: "📱"
         },
         {
-            title: "Database Development",
-            description: "Architecting robust data models and secure storage systems. We handle SQL/NoSQL integrations, data migration, and cloud-native database solutions to ensure your business data is always safe and accessible.",
-            icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>,
-            tag: "Data Architecture"
+            title: "Data Intelligence",
+            description: "Secure cloud database systems and AI-driven data pipelines for robust business infrastructure.",
+            tech: ["SQL/NoSQL", "DevOps", "AI"],
+            icon: "☁️"
         },
         {
-            title: "Website Designing",
-            description: "Creative UI/UX design that prioritizes brand identity and conversion. We create visually stunning, accessible, and user-centric designs that turn visitors into loyal customers through intuitive interfaces.",
-            icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>,
-            tag: "Creative UX"
+            title: "Visual Systems",
+            description: "Strategic UI/UX design systems that prioritize user retention and high-conversion brand identity.",
+            tech: ["Product Design", "Design Ops", "UX"],
+            icon: "🎨"
         }
     ];
 
     return (
-        <section id="services" className="section-padding" style={{ background: 'var(--bg-surface)' }}>
-            <div className="container">
-                <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
-                    <span style={{ color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '0.2rem', fontSize: '0.9rem', fontWeight: '600' }}>Our Capabilities</span>
-                    <h2 style={{ marginTop: '1rem' }}>Specialized <span className="text-gradient">Services</span></h2>
-                </div>
+        <section id="services" className="section-padding" style={{ background: 'var(--bg-surface)', position: 'relative', overflow: 'hidden' }}>
+            <div className="glow-bg" style={{ top: '20%', left: '-10%', width: '500px', height: '500px', opacity: '0.05' }}></div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2.5rem' }}>
-                    {services.map((service, index) => (
-                        <div key={index} className="card">
-                            <div style={{
-                                width: '56px',
-                                height: '56px',
-                                borderRadius: '16px',
-                                background: 'rgba(45, 212, 191, 0.05)',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                color: 'var(--primary)',
-                                marginBottom: '2rem',
-                                border: '1px solid var(--glass-border)'
-                            }}>
-                                {service.icon}
-                            </div>
-                            <h3 style={{ marginBottom: '1rem', fontSize: '1.4rem' }}>{service.title}</h3>
-                            <p style={{ color: 'var(--text-secondary)', lineHeight: '1.7' }}>{service.description}</p>
+            <div className="container">
+                <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '8rem', alignItems: 'center' }}>
+
+                    {/* Left Side: Services Info */}
+                    <div>
+                        <span style={{ color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '0.3rem', fontSize: '0.85rem', fontWeight: '800' }}>Platform Capabilities</span>
+                        <h2 style={{ marginTop: '1.5rem', marginBottom: '3.5rem', fontSize: 'clamp(2.5rem, 4vw, 4rem)' }}>
+                            The Aster <span className="text-gradient">Ecosystem</span>
+                        </h2>
+
+                        <div style={{ display: 'grid', gap: '2rem' }}>
+                            {services.map((service, index) => (
+                                <div key={index} className="card" style={{
+                                    display: 'flex',
+                                    gap: '2rem',
+                                    padding: '2rem',
+                                    background: 'rgba(255,255,255,0.01)',
+                                    border: '1px solid var(--glass-border)',
+                                    transition: 'all 0.3s ease',
+                                    position: 'relative',
+                                    overflow: 'hidden'
+                                }}>
+                                    <div style={{
+                                        fontSize: '2rem',
+                                        width: '60px',
+                                        height: '60px',
+                                        background: 'rgba(45, 212, 191, 0.05)',
+                                        borderRadius: '16px',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        flexShrink: 0,
+                                        border: '1px solid rgba(45, 212, 191, 0.1)'
+                                    }}>
+                                        {service.icon}
+                                    </div>
+                                    <div>
+                                        <h3 style={{ fontSize: '1.3rem', marginBottom: '0.8rem', fontWeight: '800' }}>{service.title}</h3>
+                                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.7', marginBottom: '1.2rem' }}>{service.description}</p>
+                                        <div style={{ display: 'flex', gap: '1rem' }}>
+                                            {service.tech.map((t, i) => (
+                                                <span key={i} style={{
+                                                    fontSize: '0.65rem',
+                                                    fontWeight: '900',
+                                                    color: 'var(--primary)',
+                                                    textTransform: 'uppercase',
+                                                    letterSpacing: '0.1em',
+                                                    background: 'rgba(45, 212, 191, 0.05)',
+                                                    padding: '0.3rem 0.8rem',
+                                                    borderRadius: '6px'
+                                                }}>
+                                                    {t}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
-                    ))}
+                    </div>
+
+                    {/* Right Side: Visualization */}
+                    <div style={{ position: 'relative' }}>
+                        <div style={{
+                            position: 'relative',
+                            zIndex: 2,
+                            borderRadius: '40px',
+                            background: 'rgba(255,255,255,0.02)',
+                            border: '1px solid var(--glass-border)',
+                            padding: '1rem',
+                            boxShadow: '0 60px 120px -30px rgba(0,0,0,0.7)',
+                            animation: 'float 10s infinite ease-in-out'
+                        }}>
+                            <img
+                                src="/services-main.png"
+                                alt="Aster Ecosystem Visualization"
+                                style={{
+                                    width: '100%',
+                                    borderRadius: '32px',
+                                    display: 'block'
+                                }}
+                            />
+                        </div>
+
+                        {/* Glow effect */}
+                        <div style={{
+                            position: 'absolute',
+                            inset: '-30px',
+                            background: 'radial-gradient(circle, var(--primary) 0%, var(--secondary) 100%)',
+                            filter: 'blur(80px)',
+                            opacity: '0.1',
+                            zIndex: 1
+                        }}></div>
+
+                        <div className="card" style={{
+                            marginTop: '3rem',
+                            padding: '2.5rem',
+                            textAlign: 'center',
+                            background: 'linear-gradient(135deg, rgba(45, 212, 191, 0.05), rgba(147, 51, 234, 0.05))',
+                            border: '1px solid var(--glass-border)'
+                        }}>
+                            <h4 style={{ marginBottom: '1rem', color: 'var(--primary)' }}>Ready to scale?</h4>
+                            <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>
+                                Let our engineers audit your current architecture and propose a high-performance roadmap.
+                            </p>
+                            <a href="#contact" className="btn btn-primary" style={{ padding: '1rem 2.5rem', fontSize: '0.9rem' }}>Get Free Consultation</a>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
     );
 };
+
 
 export default Services;
