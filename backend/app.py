@@ -1,9 +1,24 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from flask_mail import Mail, Message
 import datetime
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
+
+# Email Configuration
+app.config['MAIL_SERVER'] = os.getenv('MAIL_SERVER', 'smtp.gmail.com')
+app.config['MAIL_PORT'] = int(os.getenv('MAIL_PORT', 587))
+app.config['MAIL_USE_TLS'] = os.getenv('MAIL_USE_TLS', 'True').lower() == 'true'
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
+app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_DEFAULT_SENDER')
+
+mail = Mail(app)
 
 @app.route('/api/status', methods=['GET'])
 def get_status():
@@ -22,11 +37,24 @@ def contact():
     
     # In a real app, you'd save this to a database or send an email
     print(f"New message from {name} ({email}): {message}")
-    
-    return jsonify({
-        "success": True,
-        "message": f"Transmission received, {name}. We will contact you soon."
-    })
+
+    try:
+        msg = Message(
+            subject=f"New Contact Form Submission from {name}",
+            recipients=[os.getenv('RECEIVER_EMAIL', os.getenv('MAIL_USERNAME'))],
+            body=f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
+        )
+        mail.send(msg)
+        return jsonify({
+            "success": True,
+            "message": f"Transmission received, {name}. We will contact you soon."
+        })
+    except Exception as e:
+        print(f"Error sending email: {e}")
+        return jsonify({
+            "success": False,
+            "message": "Transmission failed. Subspace interference detected."
+        }), 500
 
 @app.route('/api/explorer/files', methods=['GET'])
 def get_files():

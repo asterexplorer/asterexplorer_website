@@ -47,15 +47,15 @@ const Navbar = () => {
         className="container"
         style={{
           maxWidth: '1200px',
-          background: isScrolled ? 'rgba(15, 23, 42, 0.7)' : 'rgba(255, 255, 255, 0.02)',
+          background: isScrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.8)',
           backdropFilter: 'blur(20px)',
-          border: '1px solid var(--glass-border)',
+          border: '1px solid rgba(0, 0, 0, 0.08)',
           borderRadius: '100px',
           padding: isScrolled ? '0.75rem 2rem' : '1rem 2.5rem',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          boxShadow: isScrolled ? '0 20px 40px rgba(0,0,0,0.3)' : 'none',
+          boxShadow: isScrolled ? '0 10px 30px rgba(0,0,0,0.08)' : '0 4px 15px rgba(0,0,0,0.03)',
           transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
         }}
       >
@@ -63,12 +63,12 @@ const Navbar = () => {
           fontSize: '1.25rem',
           fontWeight: '800',
           fontFamily: 'var(--font-heading)',
-          color: 'var(--text-primary)',
+          color: '#0f172a',
           display: 'flex',
           alignItems: 'center',
           gap: '0.8rem'
         }}>
-          <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#050508' }}>
+          <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ffffff' }}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>
           </div>
           <span style={{ letterSpacing: '-0.02em' }}>ASTER</span>
@@ -84,7 +84,7 @@ const Navbar = () => {
                   style={{
                     fontSize: '0.875rem',
                     fontWeight: '600',
-                    color: 'var(--text-secondary)',
+                    color: '#475569',
                     transition: 'all 0.3s ease',
                     position: 'relative'
                   }}
@@ -103,7 +103,7 @@ const Navbar = () => {
               background: 'rgba(45, 212, 191, 0.1)',
               padding: '0.5rem 1.2rem',
               borderRadius: '100px',
-              border: '1px solid var(--primary-glow)',
+              border: '1px solid rgba(45, 212, 191, 0.2)',
               letterSpacing: '0.15em',
               fontWeight: '700'
             }}
