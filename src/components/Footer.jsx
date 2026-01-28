@@ -145,6 +145,9 @@ const Footer = () => {
 
                     <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', opacity: 0.7 }}>
+                            <span style={{ fontSize: '0.75rem', fontWeight: '800', color: 'var(--primary)', letterSpacing: '0.05em' }}>CEO : PRABHU DURAIRAJ</span>
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', opacity: 0.7 }}>
                             <span style={{ fontSize: '1rem' }}>🇮🇳</span>
                             <span style={{ fontSize: '0.75rem', fontWeight: '600', color: 'var(--text-secondary)', letterSpacing: '0.05em' }}>CHENNAI, INDIA</span>
                         </div>
