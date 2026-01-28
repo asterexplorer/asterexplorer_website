@@ -41,74 +41,56 @@ const Contact = () => {
         <section id="contact" style={{ padding: '6rem 0', background: 'var(--bg-deep)', position: 'relative', overflow: 'hidden' }}>
             <div className="glow-bg" style={{ top: '10%', right: '-10%', width: '600px', height: '600px', opacity: '0.1' }}></div>
 
-            <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-                <div style={{ textAlign: 'center', marginBottom: '6rem' }}>
-                    <span style={{ color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '0.3rem', fontSize: '0.9rem', fontWeight: '800' }}>Partnership HUB</span>
-                    <h2 style={{ marginTop: '1.5rem', fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}>Let's Build the <span className="text-gradient">Future Together.</span></h2>
-                    <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '1.5rem auto 0', fontSize: '1.1rem' }}>
-                        Ready to scale? Select your project type below and our strategy team will reach out within 2 hours.
+            <div className="container" style={{ position: 'relative', zIndex: 1, paddingBottom: '4rem' }}>
+                <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+                    <div style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.8rem',
+                        padding: '0.5rem 1.2rem',
+                        background: 'rgba(255,255,255,0.03)',
+                        borderRadius: '100px',
+                        border: '1px solid var(--glass-border)',
+                        marginBottom: '1.5rem'
+                    }}>
+                        <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--primary)', boxShadow: '0 0 10px var(--primary)' }}></div>
+                        <span style={{
+                            color: 'var(--text-secondary)',
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.2rem',
+                            fontSize: '0.75rem',
+                            fontWeight: '800'
+                        }}>Partnership Proposal</span>
+                    </div>
+
+                    <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: '900', lineHeight: '1.1' }}>
+                        Start Your <span className="text-gradient">Project</span>
+                    </h2>
+                    <p style={{ color: 'var(--text-tertiary)', maxWidth: '600px', margin: '1.5rem auto 0', fontSize: '1.1rem', lineHeight: '1.6' }}>
+                        Ready to scale? Fill out the proposal form below and our strategy team will reach out within 2 hours.
                     </p>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '4rem', alignItems: 'start' }}>
-
-                    {/* Left: Quick Contact & FAQ */}
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
-                        <div style={{ display: 'grid', gap: '1.5rem' }}>
-                            <div className="card" style={{ padding: '2rem', border: '1px solid rgba(45, 212, 191, 0.1)', background: 'rgba(10, 10, 15, 0.5)' }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-                                    <div style={{ fontSize: '2rem' }}>⚡</div>
-                                    <div>
-                                        <h4 style={{ fontSize: '1.1rem', marginBottom: '0.3rem' }}>Rapid Response</h4>
-                                        <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>98% of inquiries answered within 120 minutes.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="card" style={{ padding: '2rem', border: '1px solid rgba(147, 51, 234, 0.1)', background: 'rgba(10, 10, 15, 0.5)' }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-                                    <div style={{ fontSize: '2rem' }}>🔒</div>
-                                    <div>
-                                        <h4 style={{ fontSize: '1.1rem', marginBottom: '0.3rem' }}>Secure & Confidential</h4>
-                                        <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>All discussions are protected by standard NDA protocols.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div style={{ padding: '2rem', borderRadius: '24px', background: 'linear-gradient(135deg, rgba(45, 212, 191, 0.05), rgba(147, 51, 234, 0.05))', border: '1px solid var(--glass-border)' }}>
-                            <h4 style={{ marginBottom: '1.5rem', color: 'var(--primary)' }}>Direct Channels</h4>
-                            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
-                                <a href="mailto:hello@aster.dev" style={{ color: 'var(--text-primary)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.1rem' }}>
-                                    <span>📩</span> hello@aster.dev
-                                </a>
-                                <div style={{ color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '10px', fontSize: '1.1rem' }}>
-                                    <span>📍</span> Chennai HQ / Global-Remote
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Right: Master Form */}
-                    <div className="card" style={{ padding: '3.5rem', transform: 'none', background: 'var(--bg-surface)', border: '1px solid var(--glass-border)', boxShadow: '0 30px 60px rgba(0,0,0,0.4)' }}>
+                <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+                    <div className="card" style={{ padding: '3.5rem', background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', borderRadius: '24px', backdropFilter: 'blur(20px)' }}>
                         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                             {status.msg && (
                                 <div style={{
-                                    padding: '1.2rem',
-                                    borderRadius: '12px',
+                                    padding: '1rem',
+                                    borderRadius: '8px',
                                     background: status.type === 'success' ? 'rgba(16, 185, 129, 0.1)' : 'rgba(244, 63, 94, 0.1)',
                                     border: `1px solid ${status.type === 'success' ? '#10b981' : '#f43f5e'}`,
                                     color: status.type === 'success' ? '#10b981' : '#f43f5e',
                                     textAlign: 'center',
-                                    fontWeight: '700'
+                                    fontWeight: '600'
                                 }}>
                                     {status.msg}
                                 </div>
                             )}
 
                             <div>
-                                <label style={{ fontSize: '0.8rem', fontWeight: '800', color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1rem', display: 'block' }}>Project Focus</label>
-                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                                <label style={{ fontSize: '0.9rem', fontWeight: '700', color: 'var(--text-primary)', marginBottom: '1rem', display: 'block' }}>I am interested in...</label>
+                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '1rem' }}>
                                     {projectTypes.map(type => (
                                         <button
                                             key={type.id}
@@ -117,19 +99,20 @@ const Contact = () => {
                                             style={{
                                                 padding: '1rem',
                                                 borderRadius: '12px',
-                                                background: formData.projectType === type.id ? 'rgba(45, 212, 191, 0.1)' : 'rgba(255,255,255,0.03)',
-                                                border: formData.projectType === type.id ? '2px solid var(--primary)' : '1px solid var(--glass-border)',
-                                                color: formData.projectType === type.id ? 'var(--primary)' : 'var(--text-secondary)',
+                                                background: formData.projectType === type.id ? 'var(--primary)' : 'rgba(255,255,255,0.03)',
+                                                border: formData.projectType === type.id ? 'none' : '1px solid var(--glass-border)',
+                                                color: formData.projectType === type.id ? 'var(--bg-deep)' : 'var(--text-secondary)',
                                                 cursor: 'pointer',
                                                 transition: 'all 0.3s ease',
                                                 display: 'flex',
-                                                flexDirection: 'column',
                                                 alignItems: 'center',
-                                                gap: '0.5rem',
-                                                fontWeight: '600'
+                                                justifyContent: 'center',
+                                                gap: '0.6rem',
+                                                fontWeight: '700',
+                                                fontSize: '0.9rem'
                                             }}
                                         >
-                                            <span style={{ fontSize: '1.5rem' }}>{type.icon}</span>
+                                            <span style={{ fontSize: '1.2rem' }}>{type.icon}</span>
                                             {type.label}
                                         </button>
                                     ))}
@@ -138,49 +121,86 @@ const Contact = () => {
 
                             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
                                 <div className="input-group">
+                                    <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', fontWeight: '700', color: 'var(--text-secondary)' }}>Your Name</label>
                                     <input
                                         type="text"
-                                        placeholder="Full Name"
+                                        placeholder="John Doe"
                                         value={formData.name}
                                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                         required
                                         className="form-input"
+                                        style={{ width: '100%', padding: '1rem', borderRadius: '12px', background: 'rgba(0,0,0,0.2)', border: '1px solid var(--glass-border)', color: 'white' }}
                                     />
                                 </div>
                                 <div className="input-group">
+                                    <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', fontWeight: '700', color: 'var(--text-secondary)' }}>Work Email</label>
                                     <input
                                         type="email"
-                                        placeholder="Work Email"
+                                        placeholder="john@company.com"
                                         value={formData.email}
                                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                         required
                                         className="form-input"
+                                        style={{ width: '100%', padding: '1rem', borderRadius: '12px', background: 'rgba(0,0,0,0.2)', border: '1px solid var(--glass-border)', color: 'white' }}
                                     />
                                 </div>
                             </div>
 
                             <div className="input-group">
+                                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', fontWeight: '700', color: 'var(--text-secondary)' }}>Project Details</label>
                                 <textarea
-                                    placeholder="Brief project description & goals..."
+                                    placeholder="Tell us about your project goals, timeline, and budget..."
                                     value={formData.message}
                                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                                     required
-                                    rows="4"
-
+                                    rows="5"
                                     className="form-input"
-                                    style={{ resize: 'none' }}
+                                    style={{ width: '100%', padding: '1rem', borderRadius: '12px', background: 'rgba(0,0,0,0.2)', border: '1px solid var(--glass-border)', color: 'white', resize: 'vertical' }}
                                 />
                             </div>
 
                             <button
                                 type="submit"
-                                className="btn btn-primary"
-                                style={{ width: '100%', padding: '1.4rem', fontSize: '1.2rem', borderRadius: '16px' }}
+                                style={{
+                                    width: '100%',
+                                    padding: '1.2rem',
+                                    fontSize: '1rem',
+                                    borderRadius: '12px',
+                                    background: 'var(--primary)',
+                                    color: 'var(--bg-deep)',
+                                    fontWeight: '800',
+                                    border: 'none',
+                                    cursor: 'pointer',
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '0.1em',
+                                    boxShadow: '0 10px 30px rgba(45, 212, 191, 0.3)',
+                                    transition: 'transform 0.2s',
+                                    marginTop: '1rem'
+                                }}
                                 disabled={isSubmitting}
+                                onMouseEnter={(e) => e.target.style.transform = 'scale(1.02)'}
+                                onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
                             >
-                                {isSubmitting ? 'SECURELY SENDING...' : 'INITIATE CONTACT'}
+                                {isSubmitting ? 'Sending Proposal...' : 'Send Proposal'}
                             </button>
                         </form>
+                    </div>
+
+                    <div style={{ marginTop: '4rem', display: 'flex', justifyContent: 'center', gap: '3rem', flexWrap: 'wrap', textAlign: 'center' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: 'var(--text-secondary)' }}>
+                            <span style={{ fontSize: '1.2rem' }}>📩</span>
+                            <div>
+                                <div style={{ fontSize: '0.8rem', opacity: 0.7 }}>Email Us</div>
+                                <a href="mailto:hello@aster.dev" style={{ color: 'var(--text-primary)', fontWeight: '600', textDecoration: 'none' }}>hello@aster.dev</a>
+                            </div>
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: 'var(--text-secondary)' }}>
+                            <span style={{ fontSize: '1.2rem' }}>📍</span>
+                            <div>
+                                <div style={{ fontSize: '0.8rem', opacity: 0.7 }}>Location</div>
+                                <span style={{ color: 'var(--text-primary)', fontWeight: '600' }}>Chennai HQ / Global-Remote</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

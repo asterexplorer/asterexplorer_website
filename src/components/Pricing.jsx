@@ -115,9 +115,11 @@ const Pricing = () => {
 
                 <div style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
-                    gap: '2rem',
-                    padding: '1rem'
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+                    gap: '2.5rem',
+                    padding: '1rem',
+                    maxWidth: '1200px',
+                    margin: '0 auto'
                 }}>
                     {plans.map((plan) => (
                         <div
@@ -128,11 +130,13 @@ const Pricing = () => {
                                 backdropFilter: 'blur(20px)',
                                 border: '1px solid var(--glass-border)',
                                 borderRadius: '24px',
-                                padding: '3.5rem 2.5rem 3rem',
+                                padding: '3rem 2rem',
                                 transition: 'all 0.4s cubic-bezier(0.23, 1, 0.32, 1)',
                                 transform: hoveredPlan === plan.id ? 'translateY(-10px)' : 'none',
                                 borderColor: hoveredPlan === plan.id ? plan.color : 'var(--glass-border)',
-                                boxShadow: hoveredPlan === plan.id ? `0 20px 40px rgba(0,0,0,0.5), 0 0 20px ${plan.color}20` : 'none'
+                                boxShadow: hoveredPlan === plan.id ? `0 20px 40px rgba(0,0,0,0.5), 0 0 20px ${plan.color}20` : 'none',
+                                display: 'flex',
+                                flexDirection: 'column'
                             }}
                             onMouseEnter={() => setHoveredPlan(plan.id)}
                             onMouseLeave={() => setHoveredPlan(null)}
@@ -140,86 +144,66 @@ const Pricing = () => {
                             {plan.featured && (
                                 <div style={{
                                     position: 'absolute',
-                                    top: '0',
+                                    top: '-15px',
                                     left: '50%',
-                                    transform: 'translate(-50%, -50%)',
+                                    transform: 'translateX(-50%)',
                                     background: 'var(--primary)',
                                     color: 'var(--bg-deep)',
-                                    padding: '0.6rem 2rem',
+                                    padding: '0.4rem 1.5rem',
                                     borderRadius: '100px',
-                                    fontSize: '0.75rem',
-                                    fontWeight: '900',
+                                    fontSize: '0.7rem',
+                                    fontWeight: '800',
                                     letterSpacing: '0.15em',
-                                    boxShadow: '0 10px 20px rgba(45, 212, 191, 0.3)'
+                                    boxShadow: '0 10px 20px rgba(45, 212, 191, 0.3)',
+                                    zIndex: 2
                                 }}>
-                                    RECOMMENDED
+                                    MOST POPULAR
                                 </div>
                             )}
 
-                            <div style={{ marginBottom: '2.5rem' }}>
-                                <span style={{
-                                    color: plan.color,
-                                    fontSize: '0.8rem',
-                                    fontWeight: '800',
-                                    textTransform: 'uppercase',
-                                    letterSpacing: '0.15em',
-                                    display: 'block',
-                                    marginBottom: '0.8rem'
-                                }}>{plan.tagline}</span>
-                                <h3 style={{ fontSize: '2.2rem', fontWeight: '900', marginBottom: '1.2rem' }}>{plan.name}</h3>
-                                <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.5rem' }}>
-                                    <span style={{
-                                        fontSize: '4rem',
-                                        fontWeight: '900',
-                                        color: 'var(--text-primary)',
-                                        fontFamily: "'Share Tech Mono', monospace"
-                                    }}>${plan.price}</span>
-                                    <span style={{ color: 'var(--text-tertiary)', fontSize: '1rem' }}>/setup</span>
-                                </div>
+                            <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+                                <h3 style={{ fontSize: '1.8rem', fontWeight: '800', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>{plan.name}</h3>
+                                <p style={{ color: plan.color, fontSize: '0.8rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{plan.tagline}</p>
                             </div>
 
-                            <p style={{
-                                color: 'var(--text-secondary)',
-                                marginBottom: '2.5rem',
-                                lineHeight: '1.7',
-                                fontSize: '0.95rem'
-                            }}>{plan.description}</p>
+                            <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+                                <div style={{ display: 'inline-flex', alignItems: 'flex-start', justifyContent: 'center', color: 'var(--text-primary)' }}>
+                                    <span style={{ fontSize: '1.5rem', marginTop: '0.5rem', marginRight: '0.2rem' }}>$</span>
+                                    <span style={{ fontSize: '3.5rem', fontWeight: '800', lineHeight: '1' }}>{plan.price}</span>
+                                </div>
+                                <p style={{ color: 'var(--text-tertiary)', fontSize: '0.9rem', marginTop: '0.5rem' }}>One-time payment</p>
+                            </div>
 
                             <div style={{
-                                background: 'rgba(255,255,255,0.02)',
-                                border: '1px solid var(--glass-border)',
-                                borderRadius: '16px',
-                                padding: '1.5rem',
-                                marginBottom: '3rem'
+                                padding: '1.5rem 0',
+                                borderTop: '1px solid rgba(255,255,255,0.05)',
+                                borderBottom: '1px solid rgba(255,255,255,0.05)',
+                                marginBottom: '2rem',
+                                flexGrow: 1
                             }}>
-                                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                                <ul style={{ listStyle: 'none', padding: 0, margin: 0, textAlign: 'left' }}>
                                     {plan.features.map((feat, idx) => (
                                         <li key={idx} style={{
                                             display: 'flex',
-                                            justifyContent: 'space-between',
                                             alignItems: 'center',
-                                            marginBottom: idx === plan.features.length - 1 ? 0 : '1.2rem'
+                                            gap: '1rem',
+                                            marginBottom: '1rem',
+                                            fontSize: '0.95rem',
+                                            color: 'var(--text-secondary)'
                                         }}>
-                                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-                                                <div style={{
-                                                    width: '18px',
-                                                    height: '18px',
-                                                    borderRadius: '50%',
-                                                    background: `${plan.color}20`,
-                                                    display: 'flex',
-                                                    alignItems: 'center',
-                                                    justifyContent: 'center'
-                                                }}>
-                                                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke={plan.color} strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                                </div>
-                                                <span style={{ color: 'var(--text-primary)', fontSize: '0.9rem', fontWeight: '500' }}>{feat.text}</span>
+                                            <div style={{
+                                                minWidth: '20px',
+                                                height: '20px',
+                                                borderRadius: '50%',
+                                                background: `${plan.color}20`,
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                color: plan.color
+                                            }}>
+                                                ✓
                                             </div>
-                                            <span style={{
-                                                fontSize: '0.7rem',
-                                                color: 'var(--text-tertiary)',
-                                                textTransform: 'uppercase',
-                                                letterSpacing: '0.05em'
-                                            }}>{feat.detail}</span>
+                                            <span>{feat.text}</span>
                                         </li>
                                     ))}
                                 </ul>
@@ -228,53 +212,22 @@ const Pricing = () => {
                             <button
                                 style={{
                                     width: '100%',
-                                    padding: '1.2rem',
+                                    padding: '1rem',
                                     borderRadius: '12px',
                                     border: plan.featured ? 'none' : `1px solid ${plan.color}`,
                                     background: plan.featured ? plan.color : 'transparent',
                                     color: plan.featured ? 'var(--bg-deep)' : plan.color,
                                     fontSize: '0.9rem',
-                                    fontWeight: '900',
-                                    letterSpacing: '0.1em',
-                                    textTransform: 'uppercase',
+                                    fontWeight: '800',
+                                    letterSpacing: '0.05em',
                                     cursor: 'pointer',
                                     transition: 'all 0.3s',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    gap: '0.8rem',
-                                    boxShadow: plan.featured ? `0 10px 20px ${plan.color}30` : 'none'
-                                }}
-                                onMouseEnter={(e) => {
-                                    if (!plan.featured) {
-                                        e.currentTarget.style.background = `${plan.color}10`;
-                                    } else {
-                                        e.currentTarget.style.transform = 'scale(1.02)';
-                                        e.currentTarget.style.boxShadow = `0 15px 30px ${plan.color}50`;
-                                    }
-                                }}
-                                onMouseLeave={(e) => {
-                                    if (!plan.featured) {
-                                        e.currentTarget.style.background = 'transparent';
-                                    } else {
-                                        e.currentTarget.style.transform = 'scale(1)';
-                                        e.currentTarget.style.boxShadow = `0 10px 20px ${plan.color}30`;
-                                    }
+                                    marginTop: 'auto'
                                 }}
                                 onClick={() => handleCheckout(plan.name, plan.amount)}
                                 disabled={loading === plan.name}
                             >
-                                {loading === plan.name ? (
-                                    <>
-                                        <div className="spinner"></div>
-                                        Connecting Hub...
-                                    </>
-                                ) : (
-                                    <>
-                                        Initiate Manifest
-                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                                    </>
-                                )}
+                                {loading === plan.name ? 'Processing...' : 'Choose Plan'}
                             </button>
                         </div>
                     ))}

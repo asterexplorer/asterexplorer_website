@@ -34,147 +34,124 @@ const Footer = () => {
 
     return (
         <footer style={{
-            padding: '4rem 0 2rem',
+            padding: '5rem 0 2rem',
             background: 'var(--bg-deep)',
             borderTop: '1px solid var(--glass-border)',
             position: 'relative',
             overflow: 'hidden'
         }}>
-            <div className="glow-bg" style={{ bottom: '-10%', right: '-5%', width: '500px', height: '500px', opacity: '0.05' }}></div>
+            <div className="glow-bg" style={{ bottom: '-20%', right: '-10%', width: '600px', height: '600px', opacity: '0.05' }}></div>
 
-            <div className="container">
+            <div className="container" style={{ position: 'relative', zIndex: 1 }}>
                 <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: '1.5fr repeat(3, 1fr)',
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    justifyContent: 'space-between',
                     gap: '4rem',
-                    marginBottom: '6rem'
+                    marginBottom: '5rem'
                 }}>
                     {/* Brand Column */}
-                    <div>
+                    <div style={{ maxWidth: '400px' }}>
                         <a href="#" style={{
-                            fontSize: '2.5rem',
+                            fontSize: '1.8rem',
                             fontWeight: '900',
                             color: 'var(--text-primary)',
-                            letterSpacing: '0.2rem',
+                            letterSpacing: '0.1em',
                             textDecoration: 'none',
-                            display: 'block',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.8rem',
                             marginBottom: '1.5rem'
-                        }}>ASTER <span style={{ color: 'var(--primary)' }}>EXPLORER TECHNOLOGIES</span></a>
+                        }}>
+                            <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'linear-gradient(135deg, var(--primary), var(--secondary))' }}></div>
+                            <span>ASTER <span style={{ color: 'var(--primary)' }}>TECHNOLOGIES</span></span>
+                        </a>
+                        <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '2rem', fontSize: '1rem' }}>
+                            Architecting the digital future with precision engineering and creative intelligence.
+                        </p>
 
-                        <div style={{ display: 'flex', gap: '1.2rem', flexWrap: 'wrap' }}>
-                            {socialLinks.map((social) => (
+                        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                            {socialLinks.filter(s => ['GitHub', 'LinkedIn', 'X', 'Instagram'].includes(s.name)).map((social) => (
                                 <a
                                     key={social.name}
                                     href={social.href}
-                                    style={{
-                                        color: 'var(--text-primary)',
-                                        transition: '0.3s',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        width: '50px',
-                                        height: '50px',
-                                        borderRadius: '12px',
-                                        background: 'rgba(255,255,255,0.05)',
-                                        border: '1px solid var(--glass-border)'
-                                    }}
-                                    className="footer-social"
-                                    onMouseEnter={(e) => {
-                                        e.currentTarget.style.color = social.color;
-                                        e.currentTarget.style.borderColor = social.color;
-                                        e.currentTarget.style.background = `${social.color}10`;
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        e.currentTarget.style.color = 'var(--text-primary)';
-                                        e.currentTarget.style.borderColor = 'var(--glass-border)';
-                                        e.currentTarget.style.background = 'rgba(255,255,255,0.05)';
-                                    }}
+                                    className="social-icon-btn"
+                                    style={{ '--social-color': social.color }}
+                                    aria-label={social.name}
                                 >
-                                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ position: 'relative', zIndex: 2 }}>
                                         {social.icon}
                                     </svg>
+                                    <div className="social-glow"></div>
                                 </a>
                             ))}
                         </div>
                     </div>
 
                     {/* Links Columns */}
-                    {Object.entries(footerLinks).map(([title, links]) => (
-                        <div key={title}>
-                            <h4 style={{
-                                color: 'var(--text-primary)',
-                                fontSize: '0.9rem',
-                                fontWeight: '800',
-                                textTransform: 'uppercase',
-                                letterSpacing: '0.15em',
-                                marginBottom: '2rem'
-                            }}>{title}</h4>
-                            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                                {links.map((link) => (
-                                    <li key={link.name}>
-                                        <a
-                                            href={link.href}
-                                            style={{
-                                                color: 'var(--text-primary)',
-                                                textDecoration: 'none',
-                                                fontSize: '1.1rem',
-                                                transition: '0.3s'
-                                            }}
-                                            className="footer-link"
-                                        >
-                                            {link.name}
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    ))}
+                    <div style={{ display: 'flex', gap: '4rem', flexWrap: 'wrap' }}>
+                        {Object.entries(footerLinks).map(([title, links]) => (
+                            <div key={title} style={{ minWidth: '140px' }}>
+                                <h4 style={{
+                                    color: 'var(--text-primary)',
+                                    fontSize: '0.85rem',
+                                    fontWeight: '800',
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '0.1em',
+                                    marginBottom: '1.5rem',
+                                    opacity: 0.8
+                                }}>{title}</h4>
+                                <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
+                                    {links.map((link) => (
+                                        <li key={link.name}>
+                                            <a
+                                                href={link.href}
+                                                style={{
+                                                    color: 'var(--text-secondary)',
+                                                    textDecoration: 'none',
+                                                    fontSize: '0.95rem',
+                                                    transition: '0.3s',
+                                                    fontWeight: '500'
+                                                }}
+                                                className="footer-link"
+                                            >
+                                                {link.name}
+                                            </a>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
+                    </div>
                 </div>
 
-                {/* Bottom Area: System Status & Copyright */}
+                {/* Bottom Area: Copyright & Location */}
                 <div style={{
-                    paddingTop: '3rem',
-                    borderTop: '1px solid var(--glass-border)',
+                    paddingTop: '2rem',
+                    borderTop: '1px solid rgba(255,255,255,0.05)',
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
                     flexWrap: 'wrap',
-                    gap: '2rem'
+                    gap: '1rem'
                 }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                        <p style={{
-                            color: 'var(--text-primary)',
-                            fontSize: '0.85rem',
-                            fontWeight: '700',
-                            letterSpacing: '0.05em'
-                        }}>
-                            &copy; 2026 ASTER EXPLORER TECHNOLOGIES.
-                        </p>
-
-                    </div>
-
-                    <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '2.5rem',
-                        flexWrap: 'wrap'
+                    <p style={{
+                        color: 'var(--text-tertiary)',
+                        fontSize: '0.8rem',
+                        fontWeight: '500'
                     }}>
+                        &copy; 2026 Aster Technologies. All rights reserved.
+                    </p>
 
-
-                        {/* Region */}
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-                            <span style={{
-                                fontSize: '0.75rem',
-                                color: 'var(--text-tertiary)',
-                                fontWeight: '500',
-                                borderLeft: '1px solid var(--glass-border)',
-                                paddingLeft: '2.5rem'
-                            }}>
-                                TAMIL NADU, INDIA
-                            </span>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', opacity: 0.7 }}>
+                            <span style={{ fontSize: '1rem' }}>🇮🇳</span>
+                            <span style={{ fontSize: '0.75rem', fontWeight: '600', color: 'var(--text-secondary)', letterSpacing: '0.05em' }}>CHENNAI, INDIA</span>
                         </div>
-
-
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', opacity: 0.7 }}>
+                            <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10b981', boxShadow: '0 0 5px #10b981' }}></div>
+                            <span style={{ fontSize: '0.75rem', fontWeight: '600', color: 'var(--text-secondary)', letterSpacing: '0.05em' }}>SYSTEMS ONLINE</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -182,24 +159,46 @@ const Footer = () => {
             <style>{`
                 .footer-link:hover {
                     color: var(--primary) !important;
-                    padding-left: 5px;
+                    transform: translateX(3px);
+                    display: inline-block;
                 }
-                .footer-social:hover {
-                    background: rgba(45, 212, 191, 0.05) !important;
-                    transform: translateY(-3px);
-                    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+                
+                .social-icon-btn {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 48px;
+                    height: 48px;
+                    border-radius: 14px;
+                    background: rgba(255,255,255,0.03);
+                    border: 1px solid var(--glass-border);
+                    color: var(--text-secondary);
+                    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                    overflow: hidden;
                 }
-                @keyframes heartbeat {
-                    0% { transform: scale(1); }
-                    14% { transform: scale(1.1); }
-                    28% { transform: scale(1); }
-                    42% { transform: scale(1.1); }
-                    70% { transform: scale(1); }
+                
+                .social-glow {
+                    position: absolute;
+                    inset: 0;
+                    background: var(--social-color);
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                    filter: blur(20px);
+                    transform: scale(0.5);
+                    z-index: 1;
                 }
-                @keyframes pulse {
-                    0% { transform: scale(0.95); opacity: 0.5; }
-                    50% { transform: scale(1.05); opacity: 1; }
-                    100% { transform: scale(0.95); opacity: 0.5; }
+
+                .social-icon-btn:hover {
+                    color: white;
+                    border-color: var(--social-color);
+                    transform: translateY(-5px);
+                    box-shadow: 0 10px 20px -5px rgba(0,0,0,0.3);
+                }
+
+                .social-icon-btn:hover .social-glow {
+                    opacity: 0.4;
+                    transform: scale(1.5);
                 }
             `}</style>
         </footer>

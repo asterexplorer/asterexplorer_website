@@ -43,6 +43,12 @@ const Services = () => {
             description: "Robust and secure database architecture for data-driven applications.",
             tech: ["SQL", "NoSQL", "Optimization"],
             icon: "💾"
+        },
+        {
+            title: "Auto CAD Design",
+            description: "Precision 2D/3D drafting and design services for engineering and architecture.",
+            tech: ["AutoCAD", "Revit", "3D Modeling"],
+            icon: "📐"
         }
     ];
 
@@ -60,17 +66,20 @@ const Services = () => {
                             The Aster <span className="text-gradient">Ecosystem</span>
                         </h2>
 
-                        <div style={{ display: 'grid', gap: '2rem' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
                             {services.map((service, index) => (
                                 <div key={index} className="card" style={{
                                     display: 'flex',
-                                    gap: '2rem',
-                                    padding: '2rem',
+                                    flexDirection: 'column',
+                                    alignItems: 'flex-start',
+                                    gap: '1.5rem',
+                                    padding: '1.8rem',
                                     background: 'rgba(255,255,255,0.01)',
                                     border: '1px solid var(--glass-border)',
                                     transition: 'all 0.3s ease',
                                     position: 'relative',
-                                    overflow: 'hidden'
+                                    overflow: 'hidden',
+                                    height: '100%'
                                 }}
                                     onMouseEnter={(e) => {
                                         e.currentTarget.style.borderColor = 'var(--primary)';
@@ -82,10 +91,10 @@ const Services = () => {
                                     }}>
                                     <div style={{
                                         fontSize: '2rem',
-                                        width: '60px',
-                                        height: '60px',
+                                        width: '50px',
+                                        height: '50px',
                                         background: 'rgba(45, 212, 191, 0.05)',
-                                        borderRadius: '16px',
+                                        borderRadius: '12px',
                                         display: 'flex',
                                         alignItems: 'center',
                                         justifyContent: 'center',
@@ -95,19 +104,19 @@ const Services = () => {
                                         {service.icon}
                                     </div>
                                     <div>
-                                        <h3 style={{ fontSize: '1.3rem', marginBottom: '0.8rem', fontWeight: '800' }}>{service.title}</h3>
-                                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.7', marginBottom: '1.2rem' }}>{service.description}</p>
-                                        <div style={{ display: 'flex', gap: '1rem' }}>
+                                        <h3 style={{ fontSize: '1.1rem', marginBottom: '0.6rem', fontWeight: '800' }}>{service.title}</h3>
+                                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: '1.6', marginBottom: '1rem' }}>{service.description}</p>
+                                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
                                             {service.tech.map((t, i) => (
                                                 <span key={i} style={{
-                                                    fontSize: '0.65rem',
-                                                    fontWeight: '900',
+                                                    fontSize: '0.6rem',
+                                                    fontWeight: '800',
                                                     color: 'var(--primary)',
                                                     textTransform: 'uppercase',
-                                                    letterSpacing: '0.1em',
+                                                    letterSpacing: '0.05em',
                                                     background: 'rgba(45, 212, 191, 0.05)',
-                                                    padding: '0.3rem 0.8rem',
-                                                    borderRadius: '6px'
+                                                    padding: '0.25rem 0.6rem',
+                                                    borderRadius: '4px'
                                                 }}>
                                                     {t}
                                                 </span>
