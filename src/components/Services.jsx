@@ -70,20 +70,6 @@ const Services = () => {
                 letterSpacing: '0.2em'
             }}>Engineered</div>
 
-            {/* Scanning Line Effect */}
-            <div style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '1px',
-                background: 'linear-gradient(90deg, transparent, var(--primary), transparent)',
-                opacity: 0.15,
-                zIndex: 1,
-                pointerEvents: 'none',
-                animation: 'scan 8s linear infinite'
-            }}></div>
-
             {/* Hexagon Mesh Pattern */}
             <div style={{
                 position: 'absolute',
@@ -221,10 +207,6 @@ const Services = () => {
                 </div>
             </div>
             <style>{`
-                @keyframes scan {
-                    0% { top: 0%; }
-                    100% { top: 100%; }
-                }
                 @keyframes pulse-border {
                     0%, 100% { border-color: var(--glass-border); }
                     50% { border-color: var(--primary); }
