@@ -77,10 +77,11 @@ const Pricing = () => {
 
     return (
         <section id="pricing" className="section-padding" style={{
+            paddingTop: '4rem',
             background: 'var(--bg-deep)',
             position: 'relative',
             overflow: 'hidden',
-            paddingBottom: '2rem'
+            paddingBottom: '0'
         }}>
             {/* Pricing Visual Effects */}
             <div style={{
