@@ -54,6 +54,48 @@ const Services = () => {
 
     return (
         <section id="services" className="section-padding" style={{ background: 'var(--bg-surface)', position: 'relative', overflow: 'hidden' }}>
+            {/* Services Visual Effects */}
+            <div style={{
+                position: 'absolute',
+                top: '5%',
+                right: '5%',
+                fontSize: '12vw',
+                fontWeight: '900',
+                color: 'rgba(255,255,255,0.012)',
+                whiteSpace: 'nowrap',
+                pointerEvents: 'none',
+                zIndex: 0,
+                fontFamily: "'Space Grotesk', sans-serif",
+                textTransform: 'uppercase',
+                letterSpacing: '0.2em'
+            }}>Engineered</div>
+
+            {/* Scanning Line Effect */}
+            <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '1px',
+                background: 'linear-gradient(90deg, transparent, var(--primary), transparent)',
+                opacity: 0.15,
+                zIndex: 1,
+                pointerEvents: 'none',
+                animation: 'scan 8s linear infinite'
+            }}></div>
+
+            {/* Hexagon Mesh Pattern */}
+            <div style={{
+                position: 'absolute',
+                inset: 0,
+                opacity: 0.2,
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l25.98 15v30L30 60 4.02 45V15z' fill-rule='evenodd' stroke='rgba(255,255,255,0.1)' fill='none'/%3E%3C/svg%3E")`,
+                backgroundSize: '80px 80px',
+                zIndex: 0,
+                pointerEvents: 'none',
+                maskImage: 'radial-gradient(circle at right, black, transparent 70%)'
+            }}></div>
+
             <div className="glow-bg" style={{ top: '20%', left: '-10%', width: '500px', height: '500px', opacity: '0.05' }}></div>
 
             <div className="container">
@@ -178,6 +220,20 @@ const Services = () => {
 
                 </div>
             </div>
+            <style>{`
+                @keyframes scan {
+                    0% { top: 0%; }
+                    100% { top: 100%; }
+                }
+                @keyframes pulse-border {
+                    0%, 100% { border-color: var(--glass-border); }
+                    50% { border-color: var(--primary); }
+                }
+                .service-card-hover:hover {
+                    box-shadow: 0 0 30px rgba(45, 212, 191, 0.1);
+                    transform: translateY(-5px);
+                }
+            `}</style>
         </section>
     );
 };
