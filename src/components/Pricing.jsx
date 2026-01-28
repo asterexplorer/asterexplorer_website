@@ -82,8 +82,33 @@ const Pricing = () => {
             overflow: 'hidden',
             paddingBottom: '2rem'
         }}>
-            {/* Background Accent */}
-            <div className="glow-bg" style={{ top: '20%', left: '50%', transform: 'translateX(-50%)', opacity: '0.03', width: '800px', height: '800px' }}></div>
+            {/* Pricing Visual Effects */}
+            <div style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%) rotate(5deg)',
+                fontSize: '25vw',
+                fontWeight: '900',
+                color: 'rgba(255,255,255,0.01)',
+                whiteSpace: 'nowrap',
+                pointerEvents: 'none',
+                zIndex: 0,
+                fontFamily: "'Space Grotesk', sans-serif",
+                textTransform: 'uppercase',
+                letterSpacing: '0.1em'
+            }}>Pricing</div>
+
+            {/* Floating Currency Fragments */}
+            <div className="pricing-visuals" style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none' }}>
+                <div className="float-fragment" style={{ top: '10%', left: '10%', fontSize: '5rem', opacity: 0.05, animationDelay: '0s' }}>$</div>
+                <div className="float-fragment" style={{ top: '60%', right: '15%', fontSize: '7rem', opacity: 0.03, animationDelay: '-10s' }}>$</div>
+                <div className="float-fragment" style={{ bottom: '15%', left: '20%', fontSize: '4rem', opacity: 0.04, animationDelay: '-5s' }}>$</div>
+            </div>
+
+            {/* Moving Glow Accents */}
+            <div className="moving-glow" style={{ top: '0%', left: '30%', width: '400px', height: '400px', background: 'var(--primary)', opacity: '0.05', filter: 'blur(100px)', animation: 'drift 15s ease-in-out infinite' }}></div>
+            <div className="moving-glow" style={{ bottom: '0%', right: '20%', width: '500px', height: '500px', background: 'var(--secondary)', opacity: '0.05', filter: 'blur(100px)', animation: 'drift 20s ease-in-out infinite reverse' }}></div>
 
             <div className="container">
                 <div style={{ textAlign: 'center', marginBottom: '6rem' }}>
@@ -106,7 +131,7 @@ const Pricing = () => {
                             fontWeight: '800'
                         }}>Pricing Structure v2.4</span>
                     </div>
-                    <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: '900' }}>
+                    <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: '900', fontFamily: "'Space Grotesk', sans-serif" }}>
                         Strategic <span className="text-gradient">Investment</span>
                     </h2>
                     <p style={{ color: 'var(--text-tertiary)', maxWidth: '600px', margin: '1.5rem auto 0', fontSize: '1.1rem' }}>
@@ -260,6 +285,23 @@ const Pricing = () => {
                 }
                 @keyframes spin {
                     to { transform: rotate(360deg); }
+                }
+                @keyframes drift {
+                    0%, 100% { transform: translate(0, 0); }
+                    50% { transform: translate(50px, -30px); }
+                }
+                @keyframes float-currency {
+                    0%, 100% { transform: translateY(0) rotate(0deg); }
+                    50% { transform: translateY(-30px) rotate(15deg); }
+                }
+                .float-fragment {
+                    position: absolute;
+                    color: white;
+                    animation: float-currency 12s ease-in-out infinite;
+                }
+                .moving-glow {
+                    position: absolute;
+                    border-radius: 50%;
                 }
             `}</style>
         </section>
