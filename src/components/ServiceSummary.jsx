@@ -207,6 +207,53 @@ const ServiceSummary = () => {
 
     return (
         <section id="solutions" className="section-padding" style={{ background: 'var(--bg-deep)', position: 'relative', overflow: 'hidden' }}>
+            {/* Solutions Visual Effects */}
+            <div style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                fontSize: '20vw',
+                fontWeight: '900',
+                color: 'rgba(255,255,255,0.012)',
+                whiteSpace: 'nowrap',
+                pointerEvents: 'none',
+                zIndex: 0,
+                fontFamily: "'Space Grotesk', sans-serif",
+                textTransform: 'uppercase',
+                letterSpacing: '0.1em'
+            }}>Solutions</div>
+
+            <div style={{
+                position: 'absolute',
+                inset: 0,
+                opacity: 0.3,
+                zIndex: 0,
+                pointerEvents: 'none',
+                background: 'radial-gradient(circle at 20% 30%, rgba(45, 212, 191, 0.05) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(56, 189, 248, 0.05) 0%, transparent 40%)'
+            }}></div>
+
+            {/* Floating Geometric Elements */}
+            <div className="floating-elements" style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none' }}>
+                <div className="float-shape" style={{ top: '15%', left: '10%', width: '100px', height: '100px', border: '1px solid rgba(45, 212, 191, 0.1)', animationDelay: '0s' }}></div>
+                <div className="float-shape" style={{ top: '40%', right: '5%', width: '150px', height: '150px', border: '1px solid rgba(56, 189, 248, 0.1)', animationDelay: '-5s', borderRadius: '50%' }}></div>
+                <div className="float-shape" style={{ bottom: '20%', left: '15%', width: '80px', height: '80px', border: '1px solid rgba(139, 92, 246, 0.1)', animationDelay: '-10s', transform: 'rotate(45deg)' }}></div>
+            </div>
+
+            {/* Technical Grid Overlay */}
+            <div style={{
+                position: 'absolute',
+                inset: 0,
+                backgroundImage: `
+                    linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px)
+                `,
+                backgroundSize: '100px 100px',
+                maskImage: 'radial-gradient(ellipse at center, black, transparent 80%)',
+                zIndex: 0,
+                pointerEvents: 'none'
+            }}></div>
+
             <div className="glow-bg" style={{ bottom: '-10%', left: '50%', transform: 'translateX(-50%)', width: '800px', height: '800px', opacity: '0.05' }}></div>
 
             <div className="container">
@@ -221,6 +268,15 @@ const ServiceSummary = () => {
                 </div>
 
                 <style>{`
+                    @keyframes float {
+                        0%, 100% { transform: translateY(0) rotate(0deg); }
+                        50% { transform: translateY(-20px) rotate(10deg); }
+                    }
+                    .float-shape {
+                        position: absolute;
+                        animation: float 15s ease-in-out infinite;
+                        opacity: 0.5;
+                    }
                     @media (min-width: 768px) {
                          .solutions-grid {
                             grid-template-columns: repeat(2, 1fr) !important;
