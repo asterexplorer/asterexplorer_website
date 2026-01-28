@@ -5,12 +5,7 @@ const Contact = () => {
     const [status, setStatus] = React.useState({ type: '', msg: '' });
     const [isSubmitting, setIsSubmitting] = React.useState(false);
 
-    const projectTypes = [
-        { id: 'web', label: 'Web Platform', icon: '🌐' },
-        { id: 'mobile', label: 'Mobile App', icon: '📱' },
-        { id: 'ai', label: 'AI Integration', icon: '🤖' },
-        { id: 'design', label: 'Brand UI/UX', icon: '🎨' }
-    ];
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -38,7 +33,64 @@ const Contact = () => {
     };
 
     return (
-        <section id="contact" style={{ padding: '6rem 0', background: 'var(--bg-deep)', position: 'relative', overflow: 'hidden' }}>
+        <section id="contact" style={{ padding: '2rem 0', background: 'var(--bg-deep)', position: 'relative', overflow: 'hidden' }}>
+            {/* Multiple Watermark Layers */}
+            <div className="watermark-container" style={{ position: 'absolute', inset: 0, zIndex: 0, opacity: 0.4 }}>
+                <div className="watermark-scroll-left" style={{
+                    position: 'absolute',
+                    top: '10%',
+                    fontSize: '15vw',
+                    fontWeight: '900',
+                    color: 'rgba(255,255,255,0.02)',
+                    whiteSpace: 'nowrap',
+                    fontFamily: "'Space Grotesk', sans-serif",
+                    textTransform: 'uppercase'
+                }}>
+                    Aster Explorer &nbsp; Aster Explorer &nbsp; Aster Explorer &nbsp; Aster Explorer
+                </div>
+                <div className="watermark-scroll-right" style={{
+                    position: 'absolute',
+                    top: '45%',
+                    fontSize: '15vw',
+                    fontWeight: '900',
+                    color: 'rgba(255,255,255,0.015)',
+                    whiteSpace: 'nowrap',
+                    fontFamily: "'Space Grotesk', sans-serif",
+                    textTransform: 'uppercase'
+                }}>
+                    Aster Explorer &nbsp; Aster Explorer &nbsp; Aster Explorer &nbsp; Aster Explorer
+                </div>
+                <div className="watermark-scroll-left" style={{
+                    position: 'absolute',
+                    bottom: '5%',
+                    fontSize: '15vw',
+                    fontWeight: '900',
+                    color: 'rgba(255,255,255,0.02)',
+                    whiteSpace: 'nowrap',
+                    fontFamily: "'Space Grotesk', sans-serif",
+                    textTransform: 'uppercase'
+                }}>
+                    Aster Explorer &nbsp; Aster Explorer &nbsp; Aster Explorer &nbsp; Aster Explorer
+                </div>
+            </div>
+
+            <style>{`
+                @keyframes scrollLeft {
+                    from { transform: translateX(0); }
+                    to { transform: translateX(-50%); }
+                }
+                @keyframes scrollRight {
+                    from { transform: translateX(-50%); }
+                    to { transform: translateX(0); }
+                }
+                .watermark-scroll-left {
+                    animation: scrollLeft 60s linear infinite;
+                }
+                .watermark-scroll-right {
+                    animation: scrollRight 60s linear infinite;
+                }
+            `}</style>
+
             <div className="glow-bg" style={{ top: '10%', right: '-10%', width: '600px', height: '600px', opacity: '0.1' }}></div>
 
             <div className="container" style={{ position: 'relative', zIndex: 1, paddingBottom: '4rem' }}>
@@ -63,7 +115,13 @@ const Contact = () => {
                         }}>Partnership Proposal</span>
                     </div>
 
-                    <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: '900', lineHeight: '1.1' }}>
+                    <h2 style={{
+                        fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+                        fontWeight: '900',
+                        lineHeight: '1.1',
+                        fontFamily: "'Space Grotesk', sans-serif",
+                        letterSpacing: '-0.02em'
+                    }}>
                         Start Your <span className="text-gradient">Project</span>
                     </h2>
                     <p style={{ color: 'var(--text-tertiary)', maxWidth: '600px', margin: '1.5rem auto 0', fontSize: '1.1rem', lineHeight: '1.6' }}>
@@ -88,43 +146,23 @@ const Contact = () => {
                                 </div>
                             )}
 
-                            <div>
-                                <label style={{ fontSize: '0.9rem', fontWeight: '700', color: 'var(--text-primary)', marginBottom: '1rem', display: 'block' }}>I am interested in...</label>
-                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '1rem' }}>
-                                    {projectTypes.map(type => (
-                                        <button
-                                            key={type.id}
-                                            type="button"
-                                            onClick={() => setFormData({ ...formData, projectType: type.id })}
-                                            style={{
-                                                padding: '1rem',
-                                                borderRadius: '12px',
-                                                background: formData.projectType === type.id ? 'var(--primary)' : 'rgba(255,255,255,0.03)',
-                                                border: formData.projectType === type.id ? 'none' : '1px solid var(--glass-border)',
-                                                color: formData.projectType === type.id ? 'var(--bg-deep)' : 'var(--text-secondary)',
-                                                cursor: 'pointer',
-                                                transition: 'all 0.3s ease',
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                justifyContent: 'center',
-                                                gap: '0.6rem',
-                                                fontWeight: '700',
-                                                fontSize: '0.9rem'
-                                            }}
-                                        >
-                                            <span style={{ fontSize: '1.2rem' }}>{type.icon}</span>
-                                            {type.label}
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
+
 
                             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
                                 <div className="input-group">
-                                    <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', fontWeight: '700', color: 'var(--text-secondary)' }}>Your Name</label>
+                                    <label style={{
+                                        display: 'block',
+                                        marginBottom: '0.8rem',
+                                        fontSize: '0.8rem',
+                                        fontWeight: '600',
+                                        color: 'var(--primary)',
+                                        textTransform: 'uppercase',
+                                        letterSpacing: '0.1em',
+                                        fontFamily: "'Space Grotesk', sans-serif"
+                                    }}>Your Name</label>
                                     <input
                                         type="text"
-                                        placeholder="John Doe"
+                                        placeholder="Share your Name"
                                         value={formData.name}
                                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                         required
@@ -133,10 +171,19 @@ const Contact = () => {
                                     />
                                 </div>
                                 <div className="input-group">
-                                    <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', fontWeight: '700', color: 'var(--text-secondary)' }}>Work Email</label>
+                                    <label style={{
+                                        display: 'block',
+                                        marginBottom: '0.8rem',
+                                        fontSize: '0.8rem',
+                                        fontWeight: '600',
+                                        color: 'var(--primary)',
+                                        textTransform: 'uppercase',
+                                        letterSpacing: '0.1em',
+                                        fontFamily: "'Space Grotesk', sans-serif"
+                                    }}>Email</label>
                                     <input
                                         type="email"
-                                        placeholder="john@company.com"
+                                        placeholder="Share your Email"
                                         value={formData.email}
                                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                         required
@@ -147,7 +194,16 @@ const Contact = () => {
                             </div>
 
                             <div className="input-group">
-                                <label style={{ display: 'block', marginBottom: '0.5rem', fontSize: '0.9rem', fontWeight: '700', color: 'var(--text-secondary)' }}>Project Details</label>
+                                <label style={{
+                                    display: 'block',
+                                    marginBottom: '0.8rem',
+                                    fontSize: '0.8rem',
+                                    fontWeight: '600',
+                                    color: 'var(--primary)',
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '0.1em',
+                                    fontFamily: "'Space Grotesk', sans-serif"
+                                }}>Project Details</label>
                                 <textarea
                                     placeholder="Tell us about your project goals, timeline, and budget..."
                                     value={formData.message}
@@ -163,7 +219,7 @@ const Contact = () => {
                                 type="submit"
                                 style={{
                                     width: '100%',
-                                    padding: '1.2rem',
+                                    padding: '1.4rem',
                                     fontSize: '1rem',
                                     borderRadius: '12px',
                                     background: 'var(--primary)',
@@ -172,16 +228,23 @@ const Contact = () => {
                                     border: 'none',
                                     cursor: 'pointer',
                                     textTransform: 'uppercase',
-                                    letterSpacing: '0.1em',
+                                    letterSpacing: '0.2em',
                                     boxShadow: '0 10px 30px rgba(45, 212, 191, 0.3)',
-                                    transition: 'transform 0.2s',
-                                    marginTop: '1rem'
+                                    transition: 'all 0.4s cubic-bezier(0.23, 1, 0.32, 1)',
+                                    marginTop: '1.5rem',
+                                    fontFamily: "'Space Grotesk', sans-serif"
                                 }}
                                 disabled={isSubmitting}
-                                onMouseEnter={(e) => e.target.style.transform = 'scale(1.02)'}
-                                onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
+                                onMouseEnter={(e) => {
+                                    e.target.style.transform = 'translateY(-2px)';
+                                    e.target.style.boxShadow = '0 15px 40px rgba(45, 212, 191, 0.4)';
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.target.style.transform = 'translateY(0)';
+                                    e.target.style.boxShadow = '0 10px 30px rgba(45, 212, 191, 0.3)';
+                                }}
                             >
-                                {isSubmitting ? 'Sending Proposal...' : 'Send Proposal'}
+                                {isSubmitting ? 'Sending Proposal...' : 'Submit Proposal'}
                             </button>
                         </form>
                     </div>
@@ -191,14 +254,14 @@ const Contact = () => {
                             <span style={{ fontSize: '1.2rem' }}>📩</span>
                             <div>
                                 <div style={{ fontSize: '0.8rem', opacity: 0.7 }}>Email Us</div>
-                                <a href="mailto:hello@aster.dev" style={{ color: 'var(--text-primary)', fontWeight: '600', textDecoration: 'none' }}>hello@aster.dev</a>
+                                <a href="mailto:Asterexplorer@gmail.com" style={{ color: 'var(--text-primary)', fontWeight: '600', textDecoration: 'none' }}>Asterexplorer@gmail.com</a>
                             </div>
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: 'var(--text-secondary)' }}>
                             <span style={{ fontSize: '1.2rem' }}>📍</span>
                             <div>
                                 <div style={{ fontSize: '0.8rem', opacity: 0.7 }}>Location</div>
-                                <span style={{ color: 'var(--text-primary)', fontWeight: '600' }}>Chennai HQ / Global-Remote</span>
+                                <span style={{ color: 'var(--text-primary)', fontWeight: '600' }}>Global HQ : Chennai (Tamil Nadu)</span>
                             </div>
                         </div>
                     </div>

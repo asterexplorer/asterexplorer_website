@@ -79,7 +79,8 @@ const Pricing = () => {
         <section id="pricing" className="section-padding" style={{
             background: 'var(--bg-deep)',
             position: 'relative',
-            overflow: 'hidden'
+            overflow: 'hidden',
+            paddingBottom: '2rem'
         }}>
             {/* Background Accent */}
             <div className="glow-bg" style={{ top: '20%', left: '50%', transform: 'translateX(-50%)', opacity: '0.03', width: '800px', height: '800px' }}></div>

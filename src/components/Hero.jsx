@@ -1,4 +1,5 @@
 import React from 'react';
+import Background from './Background';
 
 const Hero = () => {
     return (
@@ -11,6 +12,7 @@ const Hero = () => {
             overflow: 'hidden',
             background: 'radial-gradient(ellipse at center, rgba(45, 212, 191, 0.03) 0%, var(--bg-deep) 70%)'
         }}>
+            <Background />
             {/* Subtle Animated Background Grid */}
             <div style={{
                 position: 'absolute',
