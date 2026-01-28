@@ -118,16 +118,19 @@ const Navbar = () => {
 
 
 
+
+
           <a href="https://github.com/asterexplorer" target="_blank" rel="noopener noreferrer" style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            width: '40px',
-            height: '40px',
+            width: '36px',
+            height: '36px',
             borderRadius: '50%',
-            background: 'rgba(255,255,255,0.05)',
+            background: 'rgba(255,255,255,0.03)',
             color: 'var(--text-primary)',
-            transition: 'all 0.3s'
+            transition: 'all 0.3s',
+            border: '1px solid var(--glass-border)'
           }} className="github-link">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
@@ -135,10 +138,10 @@ const Navbar = () => {
           </a>
 
           <a href="#contact" className="btn btn-primary" style={{
-            padding: '0.8rem 2rem',
-            fontSize: '0.75rem',
+            padding: '0.6rem 1.6rem',
+            fontSize: '0.7rem',
             borderRadius: '100px',
-            boxShadow: '0 10px 20px rgba(45, 212, 191, 0.2)'
+            boxShadow: '0 8px 15px rgba(45, 212, 191, 0.2)'
           }}>
             PROPOSAL
           </a>

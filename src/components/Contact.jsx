@@ -218,18 +218,19 @@ const Contact = () => {
                             <button
                                 type="submit"
                                 style={{
-                                    width: '100%',
-                                    padding: '1.4rem',
-                                    fontSize: '1rem',
-                                    borderRadius: '12px',
+                                    width: 'fit-content',
+                                    alignSelf: 'center',
+                                    padding: '1rem 3rem',
+                                    fontSize: '0.9rem',
+                                    borderRadius: '100px',
                                     background: 'var(--primary)',
                                     color: 'var(--bg-deep)',
                                     fontWeight: '800',
                                     border: 'none',
                                     cursor: 'pointer',
                                     textTransform: 'uppercase',
-                                    letterSpacing: '0.2em',
-                                    boxShadow: '0 10px 30px rgba(45, 212, 191, 0.3)',
+                                    letterSpacing: '0.15em',
+                                    boxShadow: '0 8px 25px rgba(45, 212, 191, 0.3)',
                                     transition: 'all 0.4s cubic-bezier(0.23, 1, 0.32, 1)',
                                     marginTop: '1.5rem',
                                     fontFamily: "'Space Grotesk', sans-serif"
@@ -237,14 +238,14 @@ const Contact = () => {
                                 disabled={isSubmitting}
                                 onMouseEnter={(e) => {
                                     e.target.style.transform = 'translateY(-2px)';
-                                    e.target.style.boxShadow = '0 15px 40px rgba(45, 212, 191, 0.4)';
+                                    e.target.style.boxShadow = '0 12px 35px rgba(45, 212, 191, 0.4)';
                                 }}
                                 onMouseLeave={(e) => {
                                     e.target.style.transform = 'translateY(0)';
-                                    e.target.style.boxShadow = '0 10px 30px rgba(45, 212, 191, 0.3)';
+                                    e.target.style.boxShadow = '0 8px 25px rgba(45, 212, 191, 0.3)';
                                 }}
                             >
-                                {isSubmitting ? 'Sending Proposal...' : 'Submit Proposal'}
+                                {isSubmitting ? 'Sending...' : 'Submit Proposal'}
                             </button>
                         </form>
                     </div>
