@@ -89,9 +89,19 @@ const ServiceCard = ({ sol }) => {
                 <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(to top, rgba(10, 10, 15, 0.9), transparent)` }}></div>
             </div>
 
-            <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-                <h3 style={{ fontSize: '1.5rem', marginBottom: '1.5rem', fontWeight: '900', lineHeight: '1.2', letterSpacing: '-0.02em', color: viewMode === 1 ? sol.accent : 'inherit' }}>{sol.title}</h3>
-                <div style={{ marginBottom: '1.5rem', flexGrow: 1 }}>
+            <div style={{ padding: '2.5rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+                <h3 style={{
+                    fontSize: '1.5rem',
+                    marginBottom: '1.5rem',
+                    fontWeight: '900',
+                    lineHeight: '1.2',
+                    letterSpacing: '-0.02em',
+                    minHeight: '3.6rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    color: viewMode === 1 ? sol.accent : 'inherit'
+                }}>{sol.title}</h3>
+                <div style={{ marginBottom: '2rem', flexGrow: 1 }}>
                     {sol.description.split('\n').map((line, i) => (
                         <div key={i} style={{
                             marginBottom: '0.8rem',
@@ -137,8 +147,8 @@ const ServiceCard = ({ sol }) => {
                     ))}
                 </div>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: sol.accent, fontWeight: '700', fontSize: '0.9rem', marginTop: 'auto' }}>
-                    Explore Solution <span style={{ transition: 'transform 0.3s ease' }} className="arrow-icon">→</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: sol.accent, fontWeight: '800', fontSize: '0.9rem', marginTop: 'auto', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+                    View Case Study <span style={{ transition: 'transform 0.3s ease' }} className="arrow-icon">→</span>
                 </div>
             </div>
         </div>
@@ -257,14 +267,14 @@ const ServiceSummary = () => {
             <div className="glow-bg" style={{ bottom: '-10%', left: '50%', transform: 'translateX(-50%)', width: '800px', height: '800px', opacity: '0.05' }}></div>
 
             <div className="container">
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '6rem' }}>
-                    <div style={{ maxWidth: '600px' }}>
+                <div style={{ textAlign: 'center', marginBottom: '6rem' }}>
+                    <div style={{ maxWidth: '800px', margin: '0 auto' }}>
                         <span style={{ color: 'var(--primary)', textTransform: 'uppercase', letterSpacing: '0.4rem', fontSize: '0.9rem', fontWeight: '800' }}>Operational Excellence</span>
-                        <h2 style={{ marginTop: '1.5rem', fontSize: 'clamp(2.5rem, 5vw, 4.5rem)' }}>Engineered for <span className="text-gradient">Impact</span></h2>
+                        <h2 style={{ marginTop: '1.5rem', marginBottom: '2rem', fontSize: 'clamp(2.5rem, 5vw, 4.5rem)' }}>Engineered for <span className="text-gradient">Impact</span></h2>
+                        <p style={{ color: 'var(--text-tertiary)', maxWidth: '600px', margin: '0 auto', fontSize: '1.1rem', lineHeight: '1.8' }}>
+                            Cutting-edge solutions designed to transform technical complexity into your greatest competitive advantage.
+                        </p>
                     </div>
-                    <p style={{ color: 'var(--text-tertiary)', maxWidth: '400px', fontSize: '1rem', lineHeight: '1.8', marginBottom: '1rem' }}>
-                        Cutting-edge solutions designed to transform technical complexity into your greatest competitive advantage.
-                    </p>
                 </div>
 
                 <style>{`
