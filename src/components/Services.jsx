@@ -5,7 +5,7 @@ const Services = () => {
         {
             title: "Full Stack Development",
             description: "End-to-end web solutions using modern stacks for scalable applications.",
-            tech: ["React", "Node.js", "MongoDB"],
+            tech: ["React", "Node.js", "PostgreSQL"],
             icon: "💻"
         },
         {
