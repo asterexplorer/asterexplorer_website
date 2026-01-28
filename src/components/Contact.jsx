@@ -46,7 +46,7 @@ const Contact = () => {
                     fontFamily: "'Space Grotesk', sans-serif",
                     textTransform: 'uppercase'
                 }}>
-                    Aster Explorer &nbsp; Aster Explorer &nbsp; Aster Explorer &nbsp; Aster Explorer
+                    Aster explorer tech &nbsp; Aster explorer tech &nbsp; Aster explorer tech &nbsp; Aster explorer tech
                 </div>
                 <div className="watermark-scroll-right" style={{
                     position: 'absolute',
@@ -58,7 +58,7 @@ const Contact = () => {
                     fontFamily: "'Space Grotesk', sans-serif",
                     textTransform: 'uppercase'
                 }}>
-                    Aster Explorer &nbsp; Aster Explorer &nbsp; Aster Explorer &nbsp; Aster Explorer
+                    Aster explorer tech &nbsp; Aster explorer tech &nbsp; Aster explorer tech &nbsp; Aster explorer tech
                 </div>
                 <div className="watermark-scroll-left" style={{
                     position: 'absolute',
@@ -70,7 +70,7 @@ const Contact = () => {
                     fontFamily: "'Space Grotesk', sans-serif",
                     textTransform: 'uppercase'
                 }}>
-                    Aster Explorer &nbsp; Aster Explorer &nbsp; Aster Explorer &nbsp; Aster Explorer
+                    Aster explorer tech &nbsp; Aster explorer tech &nbsp; Aster explorer tech &nbsp; Aster explorer tech
                 </div>
             </div>
 

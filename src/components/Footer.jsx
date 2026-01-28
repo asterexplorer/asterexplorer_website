@@ -64,7 +64,7 @@ const Footer = () => {
                             marginBottom: '1.5rem'
                         }}>
 
-                            <span>ASTER <span style={{ color: 'var(--primary)' }}>EXPLORER TECHNOLOGIES</span></span>
+                            <span className="logo-text-effect">Aster explorer <span style={{ marginLeft: '0.4rem' }}>tech</span></span>
                         </a>
                         <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6', marginBottom: '2rem', fontSize: '1rem' }}>
                             Architecting the digital future with precision engineering and creative intelligence.
@@ -156,6 +156,20 @@ const Footer = () => {
             </div>
 
             <style>{`
+                @keyframes logoGradient {
+                    0% { background-position: 0% 50%; }
+                    50% { background-position: 100% 50%; }
+                    100% { background-position: 0% 50%; }
+                }
+                .logo-text-effect {
+                    background: linear-gradient(90deg, #fff, var(--primary), #fff);
+                    background-size: 200% auto;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    animation: logoGradient 3s linear infinite;
+                    font-weight: 800;
+                    text-transform: capitalize;
+                }
                 .footer-link:hover {
                     color: var(--primary) !important;
                     transform: translateX(3px);

@@ -75,8 +75,8 @@ const Navbar = () => {
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" /></svg>
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.3) 50%, transparent 60%)', backgroundSize: '200% 200%', animation: 'shimmer 3s infinite' }}></div>
           </div>
-          <span style={{ lineHeight: 1, display: 'flex', alignItems: 'center' }}>
-            ASTER <span style={{ color: 'var(--primary)', marginLeft: '0.4rem' }}>EXPLORER TECHNOLOGIES</span>
+          <span className="logo-text-effect" style={{ lineHeight: 1, display: 'flex', alignItems: 'center' }}>
+            Aster explorer <span style={{ marginLeft: '0.4rem' }}>tech</span>
           </span>
         </a>
 
@@ -159,6 +159,20 @@ const Navbar = () => {
       }}></div>
 
       <style>{`
+        @keyframes logoGradient {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        .logo-text-effect {
+          background: linear-gradient(90deg, #fff, var(--primary), #fff);
+          background-size: 200% auto;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: logoGradient 3s linear infinite;
+          font-weight: 800;
+          text-transform: capitalize;
+        }
         @keyframes shimmer {
           0% { background-position: -200% 0; }
           100% { background-position: 200% 0; }
