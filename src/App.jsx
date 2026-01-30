@@ -4,8 +4,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ProjectBridge from './components/ProjectBridge';
 import About from './components/About';
-import Services from './components/Services';
-import ServiceSummary from './components/ServiceSummary';
+import ServicesSolutions from './components/ServicesSolutions';
 import Pricing from './components/Pricing';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -35,8 +34,7 @@ const HomePage = () => {
       <div className="reveal"><Hero /></div>
       <ProjectBridge />
       <div className="reveal"><About /></div>
-      <div className="reveal"><Services /></div>
-      <div className="reveal"><ServiceSummary /></div>
+      <div className="reveal"><ServicesSolutions /></div>
       <div className="reveal"><Pricing /></div>
       <div className="reveal"><Contact /></div>
     </>
