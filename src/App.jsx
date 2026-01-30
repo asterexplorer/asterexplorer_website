@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import ProjectBridge from './components/ProjectBridge';
@@ -8,8 +9,9 @@ import ServiceSummary from './components/ServiceSummary';
 import Pricing from './components/Pricing';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import CaseStudy from './components/CaseStudy';
 
-function App() {
+const HomePage = () => {
   useEffect(() => {
     const observerOptions = {
       threshold: 0.1,
@@ -29,8 +31,7 @@ function App() {
   }, []);
 
   return (
-    <div className="app">
-      <Navbar />
+    <>
       <div className="reveal"><Hero /></div>
       <ProjectBridge />
       <div className="reveal"><About /></div>
@@ -38,8 +39,22 @@ function App() {
       <div className="reveal"><ServiceSummary /></div>
       <div className="reveal"><Pricing /></div>
       <div className="reveal"><Contact /></div>
-      <Footer />
-    </div>
+    </>
+  );
+};
+
+function App() {
+  return (
+    <Router>
+      <div className="app">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/case-study/:id" element={<CaseStudy />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

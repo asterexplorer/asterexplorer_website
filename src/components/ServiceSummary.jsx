@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import webDevImg from '../assets/summary/web_dev.png';
 import mobileAppImg from '../assets/summary/mobile_app.png';
 import databaseImg from '../assets/summary/database.png';
@@ -14,7 +15,7 @@ const ServiceCard = ({ sol }) => {
     const modes = [
         { name: 'Standard View', filter: 'none', borderColor: 'var(--glass-border)', bg: 'rgba(10, 10, 15, 0.6)' },
         { name: 'Analytical Mode', filter: 'hue-rotate(45deg) contrast(1.2)', borderColor: sol.accent, bg: 'rgba(15, 23, 42, 0.8)' },
-        { name: 'Schematic Mode', filter: 'grayscale(1) contrast(1.1) brightness(0.8)', borderColor: '#ffffff50', bg: 'rgba(20, 20, 20, 0.9)' }
+        { name: 'Schematic Mode', filter: 'grayscale(1) contrast(1.1) brightness(0.8)', borderColor: '#ffffff50', bg: 'rgba(20, 20, 15, 0.9)' }
     ];
 
     const currentMode = modes[viewMode];
@@ -24,18 +25,21 @@ const ServiceCard = ({ sol }) => {
     };
 
     return (
-        <div className="card solution-card" style={{
-            padding: 0,
-            background: currentMode.bg,
-            border: `1px solid ${currentMode.borderColor}`,
-            borderRadius: '24px',
-            overflow: 'hidden',
-            display: 'flex',
-            flexDirection: 'column',
-            transition: 'all 0.5s cubic-bezier(0.23, 1, 0.32, 1)',
-            height: '100%',
-            position: 'relative'
-        }}>
+        <div
+            className="card solution-card"
+            style={{
+                padding: 0,
+                background: currentMode.bg,
+                border: `1px solid ${currentMode.borderColor}`,
+                borderRadius: '24px',
+                overflow: 'hidden',
+                display: 'flex',
+                flexDirection: 'column',
+                transition: 'all 0.5s cubic-bezier(0.23, 1, 0.32, 1)',
+                height: '100%',
+                position: 'relative'
+            }}
+        >
             <div
                 style={{ position: 'relative', height: '160px', overflow: 'hidden', cursor: 'pointer' }}
                 onClick={toggleMode}
@@ -147,9 +151,23 @@ const ServiceCard = ({ sol }) => {
                     ))}
                 </div>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', color: sol.accent, fontWeight: '800', fontSize: '0.9rem', marginTop: 'auto', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+                <Link
+                    to={`/case-study/${sol.id || 'full-stack-development'}`}
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.8rem',
+                        color: sol.accent,
+                        fontWeight: '800',
+                        fontSize: '0.9rem',
+                        marginTop: 'auto',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.1em',
+                        textDecoration: 'none'
+                    }}
+                >
                     View Case Study <span style={{ transition: 'transform 0.3s ease' }} className="arrow-icon">→</span>
-                </div>
+                </Link>
             </div>
         </div>
     );
@@ -158,6 +176,7 @@ const ServiceCard = ({ sol }) => {
 const ServiceSummary = () => {
     const solutions = [
         {
+            id: 'full-stack-development',
             title: "Full Stack Development",
             description: "Problem: Disjointed systems causing performance bottlenecks. \nSolution: Unified, scalable architectures using Next.js/MERN for seamless data flow and high availability.",
             features: ["MERN Stack", "Next.js", "Scalable API"],
@@ -165,6 +184,7 @@ const ServiceSummary = () => {
             accent: 'var(--primary)'
         },
         {
+            id: 'graphic-design',
             title: "Graphic Design",
             description: "Problem: Generic visuals failing to capture brand identity. \nSolution: Custom, high-impact assets created with Adobe Creative Suite to forge a memorable brand presence.",
             features: ["Adobe Suite", "Brand Identity", "Vector Art"],
@@ -172,6 +192,7 @@ const ServiceSummary = () => {
             accent: 'var(--secondary)'
         },
         {
+            id: 'modern-web-design',
             title: "Modern Web Design",
             description: "Problem: Outdated interfaces driving users away. \nSolution: Cutting-edge, responsive designs utilizing the latest software to deliver intuitive cross-device experiences.",
             features: ["Figma/XD", "Responsive", "UI/UX"],
@@ -179,6 +200,7 @@ const ServiceSummary = () => {
             accent: '#38bdf8'
         },
         {
+            id: 'mobile-app-development',
             title: "Mobile App Development",
             description: "Problem: Poor engagement on mobile channels. \nSolution: High-performance native and cross-platform apps tailored for speed, stability, and user retention.",
             features: ["React Native", "iOS & Android", "Optimized"],
@@ -186,6 +208,7 @@ const ServiceSummary = () => {
             accent: 'var(--accent)'
         },
         {
+            id: 'ai-chatbot-agents',
             title: "AI Chatbot Agents",
             description: "Problem: Overwhelmed support and delayed responses. \nSolution: Intelligent, 24/7 AI-driven conversational agents that automate interactions and enhance satisfaction.",
             features: ["NLP/LLM", "24/7 Support", "Automation"],
@@ -193,6 +216,7 @@ const ServiceSummary = () => {
             accent: '#8b5cf6'
         },
         {
+            id: 'ai-website-integration',
             title: "AI Website Integration",
             description: "Problem: Static content that doesn't convert. \nSolution: Dynamic, AI-enhanced web platforms that personalize content in real-time to maximize user engagement.",
             features: ["Personalization", "AI Analytics", "Dynamic Content"],
@@ -200,6 +224,7 @@ const ServiceSummary = () => {
             accent: '#f43f5e'
         },
         {
+            id: 'database-development',
             title: "Database Development",
             description: "Problem: Data silos and slow retrieval speeds. \nSolution: Robust, secure, and optimized database architectures designed for rapid access and zero data loss.",
             features: ["SQL/NoSQL", "Optimization", "Security"],
@@ -207,6 +232,7 @@ const ServiceSummary = () => {
             accent: '#10b981'
         },
         {
+            id: 'auto-cad-design',
             title: "Auto CAD Design",
             description: "Problem: Inaccurate drafts and costly errors. \nSolution: Precision engineering and architectural drafts using Auto CAD for error-free implementation and planning.",
             features: ["2D/3D Drafting", "Precision", "Blueprints"],
