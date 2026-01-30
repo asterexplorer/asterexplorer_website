@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
-
-
+import { Link, useLocation } from 'react-router-dom';
 
 const navLinks = [
-  { name: 'Services & Solutions', href: '#services-solutions' },
-  { name: 'Pricing', href: '#pricing' },
-  { name: 'About', href: '#about' },
+  { name: 'Services & Solutions', href: '/solutions' },
+  { name: 'Pricing', href: '/pricing' },
+  { name: 'Future', href: '/#future' },
+  { name: 'About', href: '/#about' },
 ];
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,14 +21,9 @@ const Navbar = () => {
       setScrollProgress(progress);
     };
 
-    const timeInterval = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 10000);
-
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      clearInterval(timeInterval);
     };
   }, []);
 
@@ -53,7 +47,7 @@ const Navbar = () => {
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
 
         {/* Logo Section */}
-        <a href="#" style={{
+        <Link to="/" style={{
           fontSize: '0.9rem',
           fontWeight: '900',
           fontFamily: 'var(--font-heading)',
@@ -84,15 +78,15 @@ const Navbar = () => {
           <span className="logo-text-effect" style={{ lineHeight: 1, display: 'flex', alignItems: 'center' }}>
             Aster explorer <span style={{ marginLeft: '0.4rem' }}>tech</span>
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav style={{ display: 'flex', alignItems: 'center', gap: '3rem' }} className="desktop-menu">
           <ul style={{ display: 'flex', gap: '2rem', listStyle: 'none', margin: 0, padding: 0 }}>
             {navLinks.map((link) => (
               <li key={link.name}>
-                <a
-                  href={link.href}
+                <Link
+                  to={link.href}
                   className="nav-link"
                   style={{
                     fontSize: '0.8rem',
@@ -107,38 +101,11 @@ const Navbar = () => {
                   }}
                 >
                   {link.name}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
 
-          {/* Integrated Tool Bar Mesh */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '1.2rem',
-            background: 'rgba(255, 255, 255, 0.03)',
-            padding: '0.5rem 1.2rem',
-            borderRadius: '100px',
-            border: '1px solid rgba(255, 255, 255, 0.08)',
-            backdropFilter: 'blur(10px)',
-            marginLeft: '1rem'
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-              <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--primary)', boxShadow: '0 0 8px var(--primary)', animation: 'pulse 2s infinite' }}></div>
-              <span style={{ fontSize: '0.6rem', fontWeight: '900', color: 'rgba(255,255,255,0.4)', letterSpacing: '0.1em' }}>LIVE</span>
-            </div>
-            <div style={{ width: '1px', height: '14px', background: 'rgba(255,255,255,0.1)' }}></div>
-            <div style={{
-              fontFamily: "'Space Mono', monospace",
-              fontSize: '0.7rem',
-              color: 'var(--primary)',
-              fontWeight: '700',
-              letterSpacing: '0.05em'
-            }}>
-              {currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}
-            </div>
-          </div>
 
           <a href="#contact" className="btn btn-primary" style={{
             padding: '0.6rem 1.6rem',

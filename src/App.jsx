@@ -9,6 +9,9 @@ import Pricing from './components/Pricing';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import CaseStudy from './components/CaseStudy';
+import FutureHorizon from './components/FutureHorizon';
+import PricingPage from './components/PricingPage';
+import SolutionsPage from './components/SolutionsPage';
 
 const HomePage = () => {
   useEffect(() => {
@@ -36,6 +39,7 @@ const HomePage = () => {
       <div className="reveal"><About /></div>
       <div className="reveal"><ServicesSolutions /></div>
       <div className="reveal"><Pricing /></div>
+      <div className="reveal"><FutureHorizon /></div>
       <div className="reveal"><Contact /></div>
     </>
   );
@@ -48,6 +52,8 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/solutions" element={<SolutionsPage />} />
+          <Route path="/pricing" element={<PricingPage />} />
           <Route path="/case-study/:id" element={<CaseStudy />} />
         </Routes>
         <Footer />

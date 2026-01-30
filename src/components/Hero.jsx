@@ -48,6 +48,16 @@ const Hero = () => {
                     }}>
                         <span style={{ width: '6px', height: '6px', background: 'var(--primary)', borderRadius: '50%', boxShadow: '0 0 10px var(--primary)' }}></span>
                         Next-Generation Systems
+                        <span style={{
+                            marginLeft: '0.8rem',
+                            padding: '0.2rem 0.6rem',
+                            background: 'var(--accent)',
+                            borderRadius: '4px',
+                            fontSize: '0.65rem',
+                            color: 'white',
+                            fontWeight: '900',
+                            animation: 'pulse 2s infinite'
+                        }}>NEW</span>
                     </div>
 
                     {/* Main Headline */}

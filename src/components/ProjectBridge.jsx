@@ -199,16 +199,33 @@ const ProjectBridge = () => {
                                             style={{ background: 'rgba(0,0,0,0.3)', border: '1px solid var(--glass-border)', color: 'var(--primary)', fontSize: '0.8rem', textAlign: 'center', padding: '0.8rem', borderRadius: '12px', width: '100%' }}
                                             placeholder="URL Link (e.g. #contact)"
                                         />
-                                        <button
-                                            onClick={() => handleSave(index)}
-                                            className="btn-primary"
-                                            style={{ padding: '0.8rem', fontSize: '0.8rem', borderRadius: '12px', marginTop: '0.5rem' }}
-                                        >
-                                            Save Card
-                                        </button>
+                                        <div style={{ display: 'flex', gap: '0.5rem' }}>
+                                            <button
+                                                onClick={() => handleSave(index)}
+                                                className="btn-primary"
+                                                style={{ flex: 1, padding: '0.8rem', fontSize: '0.8rem', borderRadius: '12px', marginTop: '0.5rem' }}
+                                            >
+                                                Save
+                                            </button>
+                                            <button
+                                                onClick={() => {
+                                                    const newProjects = projects.filter((_, i) => i !== index);
+                                                    setProjects(newProjects);
+                                                    localStorage.setItem('aster_project_blueprints', JSON.stringify(newProjects));
+                                                    setEditingIndex(null);
+                                                }}
+                                                className="btn-outline"
+                                                style={{ flex: 1, padding: '0.8rem', fontSize: '0.8rem', borderRadius: '12px', marginTop: '0.5rem', borderColor: 'var(--accent)', color: 'var(--accent)' }}
+                                            >
+                                                Delete
+                                            </button>
+                                        </div>
                                     </div>
                                 ) : (
                                     <>
+                                        {project.isNew && (
+                                            <div style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'var(--primary)', color: 'var(--bg-deep)', padding: '0.2rem 0.5rem', borderRadius: '4px', fontSize: '0.6rem', fontWeight: '900', zIndex: 5 }}>NEW</div>
+                                        )}
                                         <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>{project.icon}</div>
                                         <h4 style={{ color: 'white', fontSize: '1.25rem' }}>{project.title}</h4>
                                         <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', flexGrow: 1 }}>{project.desc}</p>
@@ -229,17 +246,79 @@ const ProjectBridge = () => {
                                                 Edit
                                             </button>
                                         </div>
+                                        <div className="blueprint-hover-effect"></div>
                                     </>
                                 )}
-
-                                <div className="blueprint-hover-effect"></div>
                             </div>
                         ))}
+
+                        {/* Add New Project Card */}
+                        <div
+                            onClick={() => {
+                                const newProject = { title: 'New Initiative', icon: '🚀', desc: 'Define your next vision', link: '#contact', isNew: true };
+                                const newProjects = [...projects, newProject];
+                                setProjects(newProjects);
+                                setEditingIndex(newProjects.length - 1);
+                            }}
+                            className="blueprint-card add-new-card"
+                            style={{
+                                padding: '2.5rem',
+                                background: 'rgba(255,255,255,0.01)',
+                                border: '2px dashed var(--glass-border)',
+                                borderRadius: '24px',
+                                textAlign: 'center',
+                                cursor: 'pointer',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                minHeight: '320px',
+                                transition: 'all 0.5s cubic-bezier(0.23, 1, 0.32, 1)',
+                                position: 'relative',
+                                overflow: 'hidden'
+                            }}
+                        >
+                            <div className="add-new-glow"></div>
+                            <div style={{
+                                fontSize: '3rem',
+                                color: 'var(--primary)',
+                                padding: '1.5rem',
+                                background: 'rgba(45, 212, 191, 0.05)',
+                                borderRadius: '50%',
+                                marginBottom: '1.5rem',
+                                transition: '0.3s'
+                            }} className="add-icon-wrapper">
+                                +
+                            </div>
+                            <h4 style={{ color: 'var(--text-primary)', fontSize: '1.2rem', fontWeight: '800', letterSpacing: '0.05em' }}>Initiate New Blueprint</h4>
+                            <p style={{ color: 'var(--text-tertiary)', fontSize: '0.85rem', marginTop: '0.5rem' }}>Strategic Expansion</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <style>{`
+                .add-new-card:hover {
+                    border-color: var(--primary) !important;
+                    background: rgba(45, 212, 191, 0.03) !important;
+                    transform: translateY(-12px) scale(1.02) !important;
+                }
+                .add-new-card:hover .add-icon-wrapper {
+                    transform: scale(1.1) rotate(90deg);
+                    background: rgba(45, 212, 191, 0.15);
+                    box-shadow: 0 0 30px rgba(45, 212, 191, 0.2);
+                }
+                .add-new-glow {
+                    position: absolute;
+                    inset: 0;
+                    background: radial-gradient(circle at center, var(--primary) 0%, transparent 70%);
+                    opacity: 0;
+                    transition: opacity 0.5s ease;
+                    pointer-events: none;
+                }
+                .add-new-card:hover .add-new-glow {
+                    opacity: 0.05;
+                }
                 .blueprint-card:hover {
                     transform: translateY(-10px);
                     border-color: var(--primary);

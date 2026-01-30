@@ -260,7 +260,6 @@ const Pricing = () => {
                     ))}
                 </div>
 
-                {/* Tactical Warning / Note */}
                 <div style={{
                     marginTop: '4rem',
                     textAlign: 'center',
@@ -269,9 +268,22 @@ const Pricing = () => {
                     borderRadius: '20px',
                     border: '1px dashed var(--glass-border)'
                 }}>
-                    <p style={{ color: 'var(--text-tertiary)', fontSize: '0.85rem', maxWidth: '800px', margin: '0 auto' }}>
+                    <p style={{ color: 'var(--text-tertiary)', fontSize: '0.85rem', maxWidth: '800px', margin: '0 auto', marginBottom: '1.5rem' }}>
                         <span style={{ color: 'var(--primary)', fontWeight: '700' }}>NOTE:</span> Custom tiers include dedicated account managers and military-grade encryption protocols as standard. Development cycles typically initiate within 72 hours of manifest authorization.
                     </p>
+                    <a href="/pricing" style={{
+                        color: 'var(--primary)',
+                        fontSize: '0.8rem',
+                        fontWeight: '900',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.2em',
+                        textDecoration: 'none',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.5rem'
+                    }} className="pricing-detail-link">
+                        View Detailed Feature Comparison <span style={{ transition: '0.3s' }}>→</span>
+                    </a>
                 </div>
             </div>
 
@@ -303,6 +315,9 @@ const Pricing = () => {
                 .moving-glow {
                     position: absolute;
                     border-radius: 50%;
+                }
+                .pricing-detail-link:hover span {
+                    transform: translateX(5px);
                 }
             `}</style>
         </section>
