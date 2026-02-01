@@ -130,24 +130,68 @@ const HomePage = () => {
   );
 };
 
+const AppContent = () => {
+  const { pathname } = useLocation();
+
+  return (
+    <div className="app">
+      <NoiseOverlay />
+      <MeshBackground />
+      <Navbar />
+      <AnimatePresence mode="wait">
+        <Routes key={pathname}>
+          <Route path="/" element={
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <HomePage />
+            </motion.div>
+          } />
+          <Route path="/solutions" element={
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <SolutionsPage />
+            </motion.div>
+          } />
+          <Route path="/pricing" element={
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <PricingPage />
+            </motion.div>
+          } />
+          <Route path="/case-study/:id" element={
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <CaseStudy />
+            </motion.div>
+          } />
+        </Routes>
+      </AnimatePresence>
+      <Footer />
+    </div>
+  );
+};
+
 function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="app">
-        <NoiseOverlay />
-        <MeshBackground />
-        <Navbar />
-        <AnimatePresence mode="wait">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/solutions" element={<SolutionsPage />} />
-            <Route path="/pricing" element={<PricingPage />} />
-            <Route path="/case-study/:id" element={<CaseStudy />} />
-          </Routes>
-        </AnimatePresence>
-        <Footer />
-      </div>
+      <AppContent />
     </Router>
   );
 }
