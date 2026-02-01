@@ -1,43 +1,56 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Target, Lightbulb, ShieldCheck, Gem, Rocket, MapPin } from 'lucide-react';
 
 // Import images
-import graphicImg from '../assets/summary/graphic_design.png';
-import aiImg from '../assets/summary/ai_web.png';
-import devImg from '../assets/summary/web_dev.png';
+import aiEngineImg from '../assets/generated/ai_engine.png';
+import architectureImg from '../assets/generated/architecture.png';
+import securityImg from '../assets/generated/security.png';
 
 const About = () => {
     const [visionIndex, setVisionIndex] = useState(0);
+    const cardRef = useRef(null);
+    const [rotateX, setRotateX] = useState(0);
+    const [rotateY, setRotateY] = useState(0);
+
+    const handleMouseMove = (e) => {
+        if (!cardRef.current) return;
+        const rect = cardRef.current.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        setRotateX((y - centerY) / 15);
+        setRotateY((centerX - x) / 15);
+    };
 
     const visions = [
         {
-            id: 'innovation',
-            title: 'Innovation Hub',
-            subtitle: 'Where ideas meet execution.',
-            image: graphicImg,
-            filter: 'contrast(1.1) brightness(1.1)',
-            borderColor: 'var(--primary)',
-            accent: 'var(--primary)',
-            description: 'Where true creativity thrives.'
-        },
-        {
             id: 'intelligence',
             title: 'Digital Intelligence',
-            subtitle: 'Powered by advanced AI.',
-            image: aiImg,
-            filter: 'hue-rotate(20deg) contrast(1.2)',
-            borderColor: 'var(--secondary)',
-            accent: 'var(--secondary)',
-            description: 'Data-driven decision engines.'
+            subtitle: 'Neural Core Adaptation.',
+            image: aiEngineImg,
+            accent: 'var(--primary)',
+            icon: <Target size={24} />,
+            description: 'Advanced AI integration for autonomous scale.'
         },
         {
             id: 'architecture',
             title: 'System Architecture',
-            subtitle: 'Built for massive scale.',
-            image: devImg,
-            filter: 'grayscale(1) contrast(1.1) brightness(1.2)',
-            borderColor: '#64748b',
-            accent: '#64748b',
-            description: 'Robust engineering foundations.'
+            subtitle: 'Bespoke Digital Blueprints.',
+            image: architectureImg,
+            accent: 'var(--secondary)',
+            icon: <ShieldCheck size={24} />,
+            description: 'Engineering resilient foundations for global commerce.'
+        },
+        {
+            id: 'security',
+            title: 'Sovereign Security',
+            subtitle: 'Encrypted Digital Vaults.',
+            image: securityImg,
+            accent: 'var(--accent)',
+            icon: <Lightbulb size={24} />,
+            description: 'Military-grade protection protocols for your ecosystem.'
         }
     ];
 
@@ -48,198 +61,225 @@ const About = () => {
     };
 
     return (
-        <section id="about" className="section-padding" style={{ background: 'var(--bg-deep)', position: 'relative', overflow: 'hidden' }}>
-            {/* About Visual Effects */}
+        <section id="about" className="section-padding" style={{ position: 'relative', overflow: 'hidden' }}>
+            {/* Large Watermark */}
             <div style={{
                 position: 'absolute',
                 top: '50%',
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
-                fontSize: '22vw',
+                fontSize: '25vw',
                 fontWeight: '900',
-                color: 'rgba(255,255,255,0.01)',
+                color: 'rgba(0,0,0,0.03)',
                 whiteSpace: 'nowrap',
                 pointerEvents: 'none',
                 zIndex: 0,
-                fontFamily: "'Space Grotesk', sans-serif",
+                fontFamily: 'var(--font-heading)',
                 textTransform: 'uppercase',
-                letterSpacing: '0.15em'
-            }}>Vision</div>
-
-            {/* Orbiting Particles Background */}
-            <div className="orbit-container" style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none' }}>
-                <div className="orbit-item" style={{ top: '20%', left: '15%', width: '4px', height: '4px', background: 'var(--primary)', boxShadow: '0 0 15px var(--primary)', animationDelay: '0s' }}></div>
-                <div className="orbit-item" style={{ bottom: '25%', right: '10%', width: '3px', height: '3px', background: 'var(--secondary)', boxShadow: '0 0 10px var(--secondary)', animationDelay: '-10s' }}></div>
-                <div className="orbit-item" style={{ top: '60%', right: '20%', width: '5px', height: '5px', background: '#38bdf8', boxShadow: '0 0 20px #38bdf8', animationDelay: '-5s' }}></div>
-            </div>
-
-            <div className="glow-bg" style={{ top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '1000px', height: '1000px', opacity: '0.05' }}></div>
+                letterSpacing: '0.1em'
+            }}>VISION</div>
 
             <div className="container" style={{ position: 'relative', zIndex: 1 }}>
 
-                {/* Header Section - Centered for better focus */}
-                <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 6rem' }}>
+                {/* Header */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 6rem' }}
+                >
                     <div style={{
                         display: 'inline-flex',
                         alignItems: 'center',
-                        gap: '0.8rem',
-                        padding: '0.5rem 1.2rem',
-                        background: 'rgba(255,255,255,0.03)',
+                        gap: '12px',
+                        padding: '8px 16px',
+                        background: 'var(--glass-bg)',
                         borderRadius: '100px',
                         border: '1px solid var(--glass-border)',
-                        marginBottom: '1.5rem'
+                        marginBottom: '24px',
+                        color: 'var(--primary)',
+                        fontSize: '0.8rem',
+                        fontWeight: '800',
+                        textTransform: 'uppercase',
+                        letterSpacing: '2px'
                     }}>
-                        <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--primary)', boxShadow: '0 0 10px var(--primary)' }}></div>
-                        <span style={{
-                            color: 'var(--text-secondary)',
-                            textTransform: 'uppercase',
-                            letterSpacing: '0.2rem',
-                            fontSize: '0.75rem',
-                            fontWeight: '800'
-                        }}>Our Vision</span>
+                        <Target size={16} />
+                        Our Mission
                     </div>
 
-                    <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: '900', lineHeight: '1.1', marginBottom: '1.5rem' }}>
-                        Architecting the <span className="text-gradient">Digital Future</span>
+                    <h2 style={{ marginBottom: '24px' }}>
+                        Architecting the <span className="text-gradient">Digital Tomorrow</span>
                     </h2>
-                    <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', lineHeight: '1.8' }}>
-                        Aster Explorer Technologies is a premier diverse digital force. We blend creative artistry with engineering precision to build systems that define tomorrow.
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', lineHeight: '1.8' }}>
+                        Aster Tech is a diverse digital collective. We blend complex engineering with modern aesthetics to build systems that define the next era of commerce.
                     </p>
-                </div>
+                </motion.div>
 
-                {/* Main Content Grid */}
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '4rem', alignItems: 'center' }}>
+                <div className="about-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))', gap: '40px', alignItems: 'center' }}>
 
-                    {/* Visual Element - Interactive */}
-                    <div
-                        style={{ position: 'relative', padding: '1rem', cursor: 'pointer', perspective: '1000px' }}
-                        onClick={nextVision}
-                        title="Click to change vision"
-                    >
-                        <div style={{
-                            position: 'absolute',
-                            inset: 0,
-                            background: `linear-gradient(135deg, ${currentVision.accent}, var(--bg-deep))`,
-                            borderRadius: '30px',
-                            opacity: 0.2,
-                            transform: 'rotate(-5deg) scale(0.95)',
-                            transition: 'all 0.5s ease',
-                            zIndex: 1
-                        }}></div>
-
-                        <div style={{
+                    {/* Vision Switcher */}
+                    <motion.div
+                        ref={cardRef}
+                        onMouseMove={handleMouseMove}
+                        onMouseLeave={() => { setRotateX(0); setRotateY(0); }}
+                        whileHover={{ scale: 1.02 }}
+                        transition={{ duration: 0.4 }}
+                        style={{
                             position: 'relative',
-                            zIndex: 2,
-                            borderRadius: '24px',
-                            overflow: 'hidden',
-                            boxShadow: `0 30px 60px -10px ${currentVision.accent}40`,
-                            border: `1px solid ${currentVision.borderColor}`,
-                            transition: 'all 0.5s ease',
+                            cursor: 'pointer',
+                            perspective: '1000px',
+                            rotateX: rotateX,
+                            rotateY: rotateY,
                             transformStyle: 'preserve-3d'
-                        }}>
-                            <div style={{
-                                position: 'absolute',
-                                top: '20px',
-                                right: '20px',
-                                background: 'rgba(0,0,0,0.6)',
-                                padding: '5px 10px',
-                                borderRadius: '20px',
-                                fontSize: '0.7rem',
-                                color: 'white',
-                                zIndex: 10,
-                                backdropFilter: 'blur(5px)',
-                                pointerEvents: 'none'
-                            }}>
-                                ⏱ Click to Switch
-                            </div>
+                        }}
+                        onClick={nextVision}
+                    >
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={currentVision.id}
+                                initial={{ opacity: 0, scale: 0.95, rotateY: -10 }}
+                                animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                                exit={{ opacity: 0, scale: 1.05, rotateY: 10 }}
+                                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                                className="card-modern"
+                                style={{ padding: 0, borderRadius: '32px', border: `1px solid ${currentVision.accent}40` }}
+                            >
+                                <div style={{ position: 'relative', height: '420px', overflow: 'hidden', transform: 'translateZ(0px)' }}>
+                                    <img
+                                        src={currentVision.image}
+                                        alt={currentVision.title}
+                                        style={{ width: '100%', height: '100%', objectFit: 'cover', transform: 'scale(1.1) translateZ(20px)' }}
+                                    />
+                                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, var(--bg-surface) 0%, transparent 50%)' }} />
 
-                            <img
-                                src={currentVision.image}
-                                alt={currentVision.title}
-                                style={{
-                                    width: '100%',
-                                    display: 'block',
-                                    transform: 'scale(1.05)',
-                                    filter: currentVision.filter,
-                                    transition: 'all 0.5s ease'
-                                }}
-                            />
-                            <div style={{
-                                position: 'absolute',
-                                inset: 0,
-                                background: 'linear-gradient(to top, rgba(10,10,15,0.9), transparent)',
-                                transition: 'all 0.5s ease'
-                            }}></div>
+                                    {/* Vision HUD Scanner */}
+                                    <motion.div
+                                        animate={{ rotate: 360 }}
+                                        transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
+                                        style={{
+                                            position: 'absolute',
+                                            top: '15%',
+                                            right: '15%',
+                                            width: '100px',
+                                            height: '100px',
+                                            border: '1px solid var(--primary)',
+                                            borderRadius: '50%',
+                                            opacity: 0.2,
+                                            borderLeftColor: 'transparent',
+                                            transform: 'translateZ(40px)'
+                                        }}
+                                    />
 
-                            <div style={{ position: 'absolute', bottom: '2rem', left: '2rem', right: '2rem' }}>
-                                <h4 style={{ color: 'white', fontSize: '1.5rem', fontWeight: '800', marginBottom: '0.5rem', transition: 'all 0.3s' }}>
-                                    {currentVision.title}
-                                </h4>
-                                <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.9rem' }}>{currentVision.subtitle}</p>
+                                    <motion.div
+                                        animate={{ top: ['0%', '100%', '0%'] }}
+                                        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                                        style={{
+                                            position: 'absolute',
+                                            left: 0,
+                                            right: 0,
+                                            height: '2px',
+                                            background: 'linear-gradient(90deg, transparent, var(--secondary), transparent)',
+                                            opacity: 0.4,
+                                            zIndex: 5
+                                        }}
+                                    />
+
+                                    <div style={{ position: 'absolute', bottom: '32px', left: '32px', transform: 'translateZ(60px)' }}>
+                                        <div style={{ color: currentVision.accent, marginBottom: '8px' }}>{currentVision.icon}</div>
+                                        <h3 style={{ fontSize: '2rem', marginBottom: '8px', lineHeight: 1 }}>{currentVision.title}</h3>
+                                        <p style={{ color: 'var(--text-secondary)', fontWeight: 600 }}>{currentVision.subtitle}</p>
+                                    </div>
+                                    <div style={{
+                                        position: 'absolute',
+                                        top: '24px',
+                                        right: '24px',
+                                        padding: '8px 16px',
+                                        background: 'var(--glass-bg)',
+                                        backdropFilter: 'blur(12px)',
+                                        borderRadius: '100px',
+                                        fontSize: '0.65rem',
+                                        fontWeight: 900,
+                                        color: 'var(--primary)',
+                                        border: '1px solid var(--glass-border)',
+                                        letterSpacing: '1px',
+                                        transform: 'translateZ(80px)'
+                                    }}>ANALYZING VISION</div>
+                                </div>
+                            </motion.div>
+                        </AnimatePresence>
+                    </motion.div>
+
+                    {/* Stats & Points */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+                            <div className="card-modern" style={{ padding: '32px' }}>
+                                <div style={{ fontSize: '2.5rem', fontWeight: '900', color: 'var(--primary)', marginBottom: '4px' }}>50+</div>
+                                <div style={{ fontSize: '0.8rem', fontWeight: '700', color: 'var(--text-tertiary)', textTransform: 'uppercase' }}>Shipments</div>
                             </div>
+                            <div className="card-modern" style={{ padding: '32px' }}>
+                                <div style={{ fontSize: '2.5rem', fontWeight: '900', color: 'var(--secondary)', marginBottom: '4px' }}>20+</div>
+                                <div style={{ fontSize: '0.8rem', fontWeight: '700', color: 'var(--text-tertiary)', textTransform: 'uppercase' }}>Global Partners</div>
+                            </div>
+                        </div>
+
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+                            {[
+                                {
+                                    icon: <Gem className="text-gradient" />,
+                                    title: 'Sovereign Precision',
+                                    text: 'We engineering digital infrastructure with surgical accuracy and uncompromising quality.'
+                                },
+                                {
+                                    icon: <Rocket style={{ color: 'var(--secondary)' }} />,
+                                    title: 'Interstellar Speed',
+                                    text: 'Leveraging modern stacks and AI automation to deliver results at the speed of light.'
+                                },
+                                {
+                                    icon: <MapPin style={{ color: 'var(--accent)' }} />,
+                                    title: 'Global Remote',
+                                    text: 'Based in Chennai, India, operating everywhere. Bridging the gap between elite talent and global scale.'
+                                }
+                            ].map((item, idx) => (
+                                <motion.div
+                                    key={idx}
+                                    initial={{ opacity: 0, x: 20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.5, delay: idx * 0.1 }}
+                                    style={{ display: 'flex', gap: '24px' }}
+                                >
+                                    <div style={{
+                                        minWidth: '56px',
+                                        height: '56px',
+                                        borderRadius: '16px',
+                                        background: 'var(--glass-bg)',
+                                        border: '1px solid var(--glass-border)',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center'
+                                    }}>
+                                        {item.icon}
+                                    </div>
+                                    <div>
+                                        <h4 style={{ fontSize: '1.25rem', marginBottom: '8px' }}>{item.title}</h4>
+                                        <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>{item.text}</p>
+                                    </div>
+                                </motion.div>
+                            ))}
                         </div>
                     </div>
 
-                    {/* Stats & Details - Clearer Layout */}
-                    <div>
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '3rem' }}>
-                            <div style={{ padding: '2rem', background: 'rgba(255,255,255,0.02)', borderRadius: '24px', border: '1px solid var(--glass-border)', backdropFilter: 'blur(10px)' }}>
-                                <div style={{ fontSize: '3rem', fontWeight: '900', color: 'var(--primary)', marginBottom: '0.5rem', lineHeight: '1', fontFamily: "'Space Grotesk', sans-serif" }}>50+</div>
-                                <div style={{ fontSize: '0.85rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-tertiary)' }}>Projects Delivered</div>
-                            </div>
-                            <div style={{ padding: '2rem', background: 'rgba(255,255,255,0.02)', borderRadius: '24px', border: '1px solid var(--glass-border)', backdropFilter: 'blur(10px)' }}>
-                                <div style={{ fontSize: '3rem', fontWeight: '900', color: 'var(--secondary)', marginBottom: '0.5rem', lineHeight: '1', fontFamily: "'Space Grotesk', sans-serif" }}>20+</div>
-                                <div style={{ fontSize: '0.85rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--text-tertiary)' }}>Global Clients</div>
-                            </div>
-                        </div>
-
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
-                            <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start', padding: '1.5rem', borderRadius: '20px', transition: '0.3s', cursor: 'default' }} className="about-list-item">
-                                <div style={{ minWidth: '50px', height: '50px', borderRadius: '14px', background: 'rgba(45, 212, 191, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)', fontSize: '1.4rem', border: '1px solid rgba(45, 212, 191, 0.2)' }}>💎</div>
-                                <div>
-                                    <h5 style={{ fontSize: '1.2rem', fontWeight: '800', marginBottom: '0.4rem', color: 'var(--text-primary)' }}>Premium Craftsmanship</h5>
-                                    <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: '1.7' }}>
-                                        We don't just write code; we craft digital experiences with pixel-perfect attention to detail and surgical precision in every line.
-                                    </p>
-                                </div>
-                            </div>
-                            <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start', padding: '1.5rem', borderRadius: '20px', transition: '0.3s', cursor: 'default' }} className="about-list-item">
-                                <div style={{ minWidth: '50px', height: '50px', borderRadius: '14px', background: 'rgba(147, 51, 234, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--secondary)', fontSize: '1.4rem', border: '1px solid rgba(147, 51, 234, 0.2)' }}>🚀</div>
-                                <div>
-                                    <h5 style={{ fontSize: '1.2rem', fontWeight: '800', marginBottom: '0.4rem', color: 'var(--text-primary)' }}>Future-Proof Tech</h5>
-                                    <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: '1.7' }}>
-                                        Leveraging modern frameworks, custom AI agents, and modular architectures to ensure your platform evolves with the market.
-                                    </p>
-                                </div>
-                            </div>
-                            <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start', padding: '1.5rem', borderRadius: '20px', transition: '0.3s', cursor: 'default' }} className="about-list-item">
-                                <div style={{ minWidth: '50px', height: '50px', borderRadius: '14px', background: 'rgba(56, 189, 248, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#38bdf8', fontSize: '1.4rem', border: '1px solid rgba(56, 189, 248, 0.2)' }}>🤝</div>
-                                <div>
-                                    <h5 style={{ fontSize: '1.2rem', fontWeight: '800', marginBottom: '0.4rem', color: 'var(--text-primary)' }}>Our Philosophy</h5>
-                                    <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: '1.7' }}>
-                                        Based in <strong>Chennai, India</strong>, Aster Explorer Tech operates as a global-remote team, bridging the gap between elite engineering and strategic business growth.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <style>{`
-                @keyframes orbit {
-                    0% { transform: translate(0, 0) scale(1); }
-                    33% { transform: translate(30px, -50px) scale(1.2); }
-                    66% { transform: translate(-20px, 20px) scale(0.8); }
-                    100% { transform: translate(0, 0) scale(1); }
+                @media (max-width: 1024px) {
+                    .about-grid { grid-template-columns: 1fr !important; gap: 60px !important; }
+                    .about-grid > div:last-child { margin-top: 40px; }
                 }
-                .orbit-item {
-                    position: absolute;
-                    border-radius: 50%;
-                    animation: orbit 20s ease-in-out infinite;
-                }
-                .about-list-item:hover {
-                    background: rgba(255,255,255,0.03);
-                    transform: translateX(10px);
+                @media (max-width: 640px) {
+                    .about-grid { grid-template-columns: 1fr !important; }
+                    .container { padding: 0 20px; }
                 }
             `}</style>
         </section>

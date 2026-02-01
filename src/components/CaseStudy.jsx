@@ -309,8 +309,8 @@ const CaseStudy = () => {
             }}></div>
 
             {/* Background Texture */}
-            <div style={{ position: 'fixed', inset: 0, zIndex: 0, opacity: 0.3, pointerEvents: 'none' }}>
-                <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px)', backgroundSize: '60px 60px' }}></div>
+            <div style={{ position: 'fixed', inset: 0, zIndex: 0, opacity: 0.5, pointerEvents: 'none' }}>
+                <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px)', backgroundSize: '60px 60px' }}></div>
             </div>
 
             <div className="container" style={{ position: 'relative', zIndex: 1 }}>
@@ -320,13 +320,13 @@ const CaseStudy = () => {
                         ← BACK TO CORE INTERFACE
                     </button>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 350px', gap: '6rem', alignItems: 'end' }}>
+                    <div className="study-header-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 350px', gap: '6rem', alignItems: 'end' }}>
                         <div>
                             <span style={{ color: 'var(--primary)', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '0.4em', fontSize: '0.8rem', display: 'block', marginBottom: '1.5rem' }}>{study.category}</span>
                             <h1 style={{ fontSize: 'clamp(3rem, 7vw, 6rem)', fontWeight: '900', lineHeight: '0.9', letterSpacing: '-0.05em', marginBottom: '2.5rem' }}>{study.title}</h1>
                             <p style={{ fontSize: '1.4rem', color: 'var(--text-secondary)', lineHeight: '1.6', maxWidth: '800px' }}>{study.description}</p>
                         </div>
-                        <div className="card" style={{ padding: '2.5rem', background: 'rgba(255,255,255,0.02)', border: '1px solid var(--glass-border)', borderRadius: '32px' }}>
+                        <div className="card" style={{ padding: '2.5rem', background: 'var(--bg-card)', border: '1px solid var(--glass-border)', borderRadius: '32px' }}>
                             <div style={{ display: 'grid', gap: '2rem' }}>
                                 <div>
                                     <label style={{ fontSize: '0.65rem', color: 'var(--text-tertiary)', textTransform: 'uppercase', display: 'block', marginBottom: '0.5rem' }}>Metric Impact</label>
@@ -348,13 +348,13 @@ const CaseStudy = () => {
                 </div>
 
                 {/* Main Hero Visual */}
-                <div className="reveal-study" style={{ borderRadius: '48px', overflow: 'hidden', height: '650px', position: 'relative', border: '1px solid var(--glass-border)', marginBottom: '8rem', boxShadow: '0 80px 150px -50px rgba(0,0,0,0.8)' }}>
+                <div className="reveal-study" style={{ borderRadius: '48px', overflow: 'hidden', height: '650px', position: 'relative', border: '1px solid var(--glass-border)', marginBottom: '8rem', boxShadow: 'var(--shadow-premium)' }}>
                     <img src={study.mainImage} alt={study.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, var(--bg-deep), transparent)' }}></div>
                 </div>
 
                 {/* The Matrix: Challenge & Solution */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8rem', marginBottom: '12rem' }}>
+                <div className="study-matrix-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8rem', marginBottom: '12rem' }}>
                     <div className="reveal-study">
                         <h2 style={{ fontSize: '2.8rem', fontWeight: '900', marginBottom: '2.5rem' }}>The <span style={{ color: 'var(--accent)' }}>Challenge</span></h2>
                         <div style={{ paddingLeft: '2.5rem', borderLeft: '3px solid var(--accent)', fontSize: '1.25rem', color: 'var(--text-secondary)', lineHeight: '1.8' }}>
@@ -370,7 +370,7 @@ const CaseStudy = () => {
                 </div>
 
                 {/* Architecture Visual Section */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '8rem', alignItems: 'center', marginBottom: '12rem' }}>
+                <div className="study-dual-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '8rem', alignItems: 'center', marginBottom: '12rem' }}>
                     <div className="reveal-study">
                         <div style={{ color: 'var(--primary)', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '0.4em', fontSize: '0.7rem', marginBottom: '1.5rem' }}>System Infrastructure</div>
                         <h2 style={{ fontSize: '3rem', fontWeight: '900', marginBottom: '2rem' }}>Architectural <span className="text-gradient">Integrity</span></h2>
@@ -388,7 +388,7 @@ const CaseStudy = () => {
                         </div>
                     </div>
                     <div className="reveal-study" style={{ position: 'relative' }}>
-                        <div style={{ borderRadius: '32px', overflow: 'hidden', border: '1px solid var(--glass-border)', boxShadow: '0 40px 100px -20px rgba(0,0,0,0.6)' }}>
+                        <div style={{ borderRadius: '32px', overflow: 'hidden', border: '1px solid var(--glass-border)', boxShadow: 'var(--shadow-premium)' }}>
                             <img src={study.archImage} alt="Architecture" style={{ width: '100%', display: 'block' }} />
                         </div>
                         {/* Decorative HUD */}
@@ -405,7 +405,7 @@ const CaseStudy = () => {
                     </div>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
                         {study.strategy.map((item, i) => (
-                            <div key={i} className="card" style={{ padding: '3rem 2rem', background: 'rgba(255,255,255,0.01)', border: '1px solid var(--glass-border)', borderRadius: '24px', position: 'relative' }}>
+                            <div key={i} className="card" style={{ padding: '3rem 2rem', background: 'var(--bg-card)', border: '1px solid var(--glass-border)', borderRadius: '24px', position: 'relative' }}>
                                 <div style={{ position: 'absolute', top: '1.5rem', right: '1.5rem', fontSize: '2rem', fontWeight: '900', opacity: 0.05, fontFamily: 'serif' }}>{item.phase}</div>
                                 <h4 style={{ fontSize: '1.2rem', fontWeight: '800', color: 'var(--primary)', marginBottom: '1.2rem' }}>{item.title}</h4>
                                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: '1.7' }}>{item.detail}</p>
@@ -415,9 +415,9 @@ const CaseStudy = () => {
                 </div>
 
                 {/* Interface Deep Dive Section */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '10rem', alignItems: 'center', marginBottom: '12rem' }}>
+                <div className="study-reverse-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '10rem', alignItems: 'center', marginBottom: '12rem' }}>
                     <div className="reveal-study">
-                        <div style={{ borderRadius: '32px', overflow: 'hidden', border: '1px solid var(--glass-border)', boxShadow: '0 60px 120px -30px rgba(0,0,0,0.7)', transform: 'perspective(1000px) rotateY(-5deg)' }}>
+                        <div style={{ borderRadius: '32px', overflow: 'hidden', border: '1px solid var(--glass-border)', boxShadow: 'var(--shadow-premium)', transform: 'perspective(1000px) rotateY(-5deg)' }}>
                             <img src={study.uiImage} alt="UI Interface" style={{ width: '100%', display: 'block' }} />
                         </div>
                     </div>
@@ -429,7 +429,7 @@ const CaseStudy = () => {
                         </p>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
                             {study.tech.map((t, i) => (
-                                <span key={i} style={{ padding: '0.8rem 1.8rem', background: 'rgba(255,255,255,0.03)', border: '1px solid var(--glass-border)', borderRadius: '12px', fontSize: '0.9rem', fontWeight: '700' }}>{t}</span>
+                                <span key={i} style={{ padding: '0.8rem 1.8rem', background: 'var(--bg-card)', border: '1px solid var(--glass-border)', borderRadius: '12px', fontSize: '0.9rem', fontWeight: '700' }}>{t}</span>
                             ))}
                         </div>
                     </div>
@@ -437,7 +437,7 @@ const CaseStudy = () => {
 
                 {/* Security Hardening Section - New */}
                 {study.securityImage && (
-                    <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '8rem', alignItems: 'center', marginBottom: '12rem' }}>
+                    <div className="study-dual-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '8rem', alignItems: 'center', marginBottom: '12rem' }}>
                         <div className="reveal-study">
                             <div style={{ color: 'var(--primary)', fontWeight: '900', textTransform: 'uppercase', letterSpacing: '0.4em', fontSize: '0.7rem', marginBottom: '1.5rem' }}>Protocol Shield</div>
                             <h2 style={{ fontSize: '3rem', fontWeight: '900', marginBottom: '2rem' }}>Security <span className="text-gradient">Hardening</span></h2>
@@ -454,7 +454,7 @@ const CaseStudy = () => {
                             </div>
                         </div>
                         <div className="reveal-study">
-                            <div style={{ borderRadius: '32px', overflow: 'hidden', border: '1px solid var(--glass-border)', boxShadow: '0 60px 120px -30px rgba(0,0,0,0.7)', transform: 'perspective(1000px) rotateY(10deg)' }}>
+                            <div style={{ borderRadius: '32px', overflow: 'hidden', border: '1px solid var(--glass-border)', boxShadow: 'var(--shadow-premium)', transform: 'perspective(1000px) rotateY(10deg)' }}>
                                 <img src={study.securityImage} alt="Security Visual" style={{ width: '100%', display: 'block' }} />
                             </div>
                         </div>
@@ -485,6 +485,22 @@ const CaseStudy = () => {
                 .reveal-study { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.23, 1, 0.32, 1); }
                 .reveal-study.active { opacity: 1; transform: translateY(0); }
                 .text-gradient { background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+                
+                @media (max-width: 1024px) {
+                    .study-header-grid, .study-matrix-grid, .study-dual-grid, .study-reverse-grid {
+                        grid-template-columns: 1fr !important;
+                        gap: 4rem !important;
+                        margin-bottom: 6rem !important;
+                    }
+                    .study-reverse-grid > div:first-child { order: 2; }
+                    .study-reverse-grid > div:last-child { order: 1; }
+                    h1 { font-size: 3.5rem !important; }
+                }
+                @media (max-width: 768px) {
+                    .container { padding: 0 24px; }
+                    blockquote { font-size: 1.5rem !important; }
+                    .metric-card { padding: 1.5rem !important; }
+                }
             `}</style>
         </div>
     );
