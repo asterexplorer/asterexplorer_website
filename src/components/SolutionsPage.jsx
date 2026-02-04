@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from './Navbar';
-import Footer from './Footer';
+import { Link } from 'react-router-dom';
 import ServicesSolutions from './ServicesSolutions';
-import { motion, AnimatePresence } from 'framer-motion';
-import solutionsHeroImg from '../assets/generated/solutions_premium_hero.png';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
+import { Terminal, Shield, Cpu, Activity, ArrowRight, Settings, MousePointer2, Box } from 'lucide-react';
+import solutionsHeroImg from '../assets/generated/hero_quantum.png';
 
 const SolutionsPage = () => {
+    const { scrollYProgress } = useScroll();
+    const heroScale = useTransform(scrollYProgress, [0, 0.2], [1, 1.1]);
+    const heroOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
+
     useEffect(() => {
         window.scrollTo(0, 0);
 
@@ -35,259 +39,280 @@ const SolutionsPage = () => {
             style={{
                 minHeight: '100vh',
                 position: 'relative',
-                overflowX: 'hidden'
+                overflowX: 'hidden',
+                background: 'var(--bg-deep)'
             }}
         >
             <div style={{ position: 'relative', zIndex: 10 }}>
-                {/* Cinematic Hero Header */}
+                {/* Modern Cinematic Hero */}
                 <div
-                    className="solutions-hero section-padding"
+                    className="solutions-hero"
                     style={{
-                        paddingTop: '160px',
-                        paddingBottom: '100px',
-                        textAlign: 'center',
-                        position: 'relative'
+                        minHeight: '100vh',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        position: 'relative',
+                        padding: '120px 0'
                     }}
                 >
-                    <div className="container reveal">
-                        <div style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '1rem',
-                            padding: '0.6rem 1.5rem',
-                            background: 'var(--glass-bg)',
-                            borderRadius: '100px',
-                            border: '1px solid var(--glass-border)',
-                            marginBottom: '2rem',
-                            backdropFilter: 'blur(10px)'
-                        }}>
-                            <div className="pulse-dot"></div>
-                            <span style={{ fontSize: '0.75rem', fontWeight: '900', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-tertiary)' }}>
-                                Technical Excellence
-                            </span>
+                    <div className="container" style={{ position: 'relative', zIndex: 5 }}>
+                        <div style={{ textAlign: 'center', maxWidth: '1000px', margin: '0 auto' }}>
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                style={{
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    gap: '12px',
+                                    padding: '8px 24px',
+                                    background: 'rgba(0, 242, 255, 0.05)',
+                                    borderRadius: '100px',
+                                    border: '1px solid rgba(0, 242, 255, 0.1)',
+                                    marginBottom: '40px'
+                                }}
+                            >
+                                <span className="pulse-dot"></span>
+                                <span style={{ fontSize: '0.75rem', fontWeight: '900', letterSpacing: '3px', textTransform: 'uppercase', color: 'var(--primary)' }}>
+                                    Neural Engineering Suite
+                                </span>
+                            </motion.div>
+
+                            <motion.h1
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                                style={{
+                                    fontSize: 'clamp(3.5rem, 10vw, 7.5rem)',
+                                    fontWeight: '900',
+                                    lineHeight: '0.9',
+                                    marginBottom: '40px',
+                                    letterSpacing: '-0.04em'
+                                }}
+                            >
+                                Engineering <br />
+                                <span className="text-gradient">Possibility</span>
+                            </motion.h1>
+
+                            <motion.p
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.2 }}
+                                style={{
+                                    color: 'var(--text-secondary)',
+                                    fontSize: '1.4rem',
+                                    maxWidth: '800px',
+                                    margin: '0 auto 60px',
+                                    lineHeight: '1.6'
+                                }}
+                            >
+                                Architecting high-fidelity digital systems. We bridge the gap between abstract creative vision and surgical technical execution.
+                            </motion.p>
                         </div>
 
-                        <h1 style={{
-                            fontSize: 'clamp(3.5rem, 10vw, 7rem)',
-                            fontWeight: '900',
-                            lineHeight: '0.9',
-                            marginBottom: '2rem',
-                            letterSpacing: '-0.04em'
-                        }}>
-                            Engineering <span className="text-gradient">Possibility</span>
-                        </h1>
-
-                        <p style={{
-                            color: 'var(--text-secondary)',
-                            fontSize: '1.25rem',
-                            maxWidth: '700px',
-                            margin: '0 auto',
-                            lineHeight: '1.6'
-                        }}>
-                            High-fidelity digital systems architecture. We bridge the gap between creative vision and surgical technical execution.
-                        </p>
-
-                        {/* Interactive Hero Visual */}
+                        {/* Interactive Hero Schematic */}
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
                             style={{
                                 position: 'relative',
-                                marginTop: '4rem',
-                                perspective: '1200px',
-                                zIndex: 5
+                                width: '100%',
+                                maxWidth: '1000px',
+                                margin: '0 auto',
+                                perspective: '2000px',
+                                transformStyle: 'preserve-3d',
+                                scale: heroScale
                             }}
                         >
                             <motion.div
-                                whileHover={{ rotateX: 5, rotateY: -5 }}
+                                initial={{ opacity: 0, rotateX: 20 }}
+                                animate={{ opacity: 1, rotateX: 0 }}
+                                transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
                                 style={{
                                     position: 'relative',
-                                    borderRadius: '48px',
+                                    borderRadius: '40px',
                                     overflow: 'hidden',
                                     border: '1px solid var(--glass-border)',
-                                    boxShadow: 'var(--shadow-premium), 0 40px 100px rgba(0, 136, 255, 0.1)',
-                                    background: 'var(--bg-surface)',
-                                    transformStyle: 'preserve-3d'
+                                    boxShadow: '0 40px 100px -20px rgba(0,0,0,0.8), 0 0 40px rgba(0, 242, 255, 0.1)',
+                                    background: 'var(--bg-card)'
                                 }}
                             >
                                 <img
                                     src={solutionsHeroImg}
-                                    alt="Neural Architecture"
-                                    style={{ width: '100%', display: 'block', scale: 1.05 }}
+                                    alt="Quantum Engineering"
+                                    style={{ width: '100%', display: 'block' }}
                                 />
+                                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, var(--bg-deep) 0%, transparent 60%)' }} />
 
-                                {/* Tactical HUD Layers */}
-                                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, var(--bg-surface) 0%, transparent 40%)', opacity: 0.6 }} />
-
-                                <motion.div
-                                    animate={{ top: ['-10%', '110%'] }}
-                                    transition={{ duration: 5, repeat: Infinity, ease: 'linear' }}
-                                    style={{
-                                        position: 'absolute',
-                                        left: 0,
-                                        right: 0,
-                                        height: '2px',
-                                        background: 'linear-gradient(90deg, transparent, var(--primary), transparent)',
-                                        boxShadow: '0 0 20px var(--primary)',
-                                        opacity: 0.4
-                                    }}
-                                />
+                                {/* Technical HUD Overlays */}
+                                <div className="scan-line-horizontal" />
+                                <div style={{
+                                    position: 'absolute',
+                                    top: '32px',
+                                    right: '32px',
+                                    padding: '12px 20px',
+                                    background: 'var(--glass-bg)',
+                                    backdropFilter: 'blur(20px)',
+                                    borderRadius: '12px',
+                                    border: '1px solid var(--glass-border)',
+                                    fontSize: '0.65rem',
+                                    fontWeight: 900,
+                                    color: 'var(--primary)',
+                                    letterSpacing: '2px'
+                                }}>
+                                    SCHEMATIC_LOADED::8K_RES
+                                </div>
 
                                 <div style={{
                                     position: 'absolute',
-                                    top: '40px',
-                                    right: '40px',
-                                    padding: '12px 24px',
-                                    background: 'var(--glass-bg)',
-                                    backdropFilter: 'blur(12px)',
-                                    borderRadius: '16px',
-                                    border: '1px solid var(--glass-border)',
-                                    fontSize: '0.6rem',
-                                    fontWeight: 900,
-                                    letterSpacing: '2px',
-                                    color: 'var(--primary)',
-                                    transform: 'translateZ(40px)'
-                                }}>SYSTEM.MAPPING_ACTIVE</div>
+                                    bottom: '32px',
+                                    left: '32px',
+                                    display: 'flex',
+                                    gap: '16px'
+                                }}>
+                                    <div className="hud-metric">
+                                        <Activity size={12} style={{ opacity: 0.6 }} />
+                                        <span>SYSTEM_SYNC_99.9%</span>
+                                    </div>
+                                    <div className="hud-metric">
+                                        <Settings size={12} style={{ opacity: 0.6 }} />
+                                        <span>ARCH_CORE_ACTIVE</span>
+                                    </div>
+                                </div>
                             </motion.div>
                         </motion.div>
-
-                        {/* Interactive Data Metrics */}
-                        <div className="solutions-stats-grid" style={{
-                            display: 'flex',
-                            justifyContent: 'center',
-                            gap: '4rem',
-                            marginTop: '4rem',
-                            flexWrap: 'wrap'
-                        }}>
-                            {[
-                                { val: '99.9%', label: 'Sys Resilience' },
-                                { val: '<50ms', label: 'Edge Latency' },
-                                { val: '256-bit', label: 'Sec Layer' }
-                            ].map((stat, i) => (
-                                <div key={i} style={{ textAlign: 'center' }}>
-                                    <div style={{ fontSize: '2rem', fontWeight: '900', color: 'var(--primary)', marginBottom: '0.4rem' }}>{stat.val}</div>
-                                    <div style={{ fontSize: '0.7rem', fontWeight: '800', textTransform: 'uppercase', color: 'var(--text-tertiary)', letterSpacing: '2px' }}>{stat.label}</div>
-                                </div>
-                            ))}
-                        </div>
                     </div>
 
-                    <div style={{
-                        position: 'absolute',
-                        top: '40px',
-                        left: '40px',
-                        width: '30px',
-                        height: '30px',
-                        borderTop: '2px solid var(--glass-border)',
-                        borderLeft: '2px solid var(--glass-border)'
-                    }}></div>
-                    <div style={{
-                        position: 'absolute',
-                        bottom: '40px',
-                        right: '40px',
-                        width: '30px',
-                        height: '30px',
-                        borderBottom: '2px solid var(--glass-border)',
-                        borderRight: '2px solid var(--glass-border)'
-                    }}></div>
+                    {/* Ambient Background Elements */}
+                    <div style={{ position: 'absolute', top: '15%', left: '-5%', width: '400px', height: '400px', borderRadius: '50%', background: 'var(--primary-glow)', filter: 'blur(100px)', opacity: 0.1, zIndex: 0 }} />
+                    <div style={{ position: 'absolute', bottom: '15%', right: '-5%', width: '500px', height: '500px', borderRadius: '50%', background: 'var(--secondary-glow)', filter: 'blur(120px)', opacity: 0.1, zIndex: 0 }} />
+                </div>
 
-                    {/* Background Holographic Elements */}
+                {/* Performance Readout Grid */}
+                <div className="container" style={{ position: 'relative', marginTop: '-100px', zIndex: 15, marginBottom: '150px' }}>
                     <div style={{
-                        position: 'absolute',
-                        top: '20%',
-                        right: '-5%',
-                        width: '30%',
-                        height: '60%',
-                        opacity: 0.03,
-                        zIndex: -1,
-                        transform: 'rotate(10deg)'
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                        gap: '24px'
                     }}>
-                        <svg viewBox="0 0 200 200" style={{ width: '100%', height: '100%' }}>
-                            <path d="M 0 100 Q 50 0 100 100 T 200 100" fill="none" stroke="white" strokeWidth="0.5" />
-                            <path d="M 0 110 Q 50 10 100 110 T 200 110" fill="none" stroke="white" strokeWidth="0.5" />
-                            <path d="M 0 120 Q 50 20 100 120 T 200 120" fill="none" stroke="white" strokeWidth="0.5" />
-                        </svg>
+                        {[
+                            { icon: <Shield />, val: '256-Bit', label: 'End-to-End Sec', sub: 'Military-grade logic encryption' },
+                            { icon: <Cpu />, val: '0.004ms', label: 'Logic Latency', sub: 'Optimized neural hot-paths' },
+                            { icon: <Box />, val: 'Infinity', label: 'Cloud Scale', sub: 'Horizontal node multiplication' }
+                        ].map((stat, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ delay: i * 0.1 }}
+                                style={{
+                                    padding: '40px',
+                                    background: 'var(--bg-card)',
+                                    borderRadius: '32px',
+                                    border: '1px solid var(--glass-border)',
+                                    textAlign: 'left'
+                                }}
+                            >
+                                <div style={{ color: 'var(--primary)', marginBottom: '24px' }}>{stat.icon}</div>
+                                <div style={{ fontSize: '2.5rem', fontWeight: '900', color: 'var(--text-primary)', marginBottom: '8px' }}>{stat.val}</div>
+                                <div style={{ fontSize: '0.8rem', fontWeight: '900', textTransform: 'uppercase', color: 'var(--primary)', letterSpacing: '2px', marginBottom: '12px' }}>{stat.label}</div>
+                                <p style={{ color: 'var(--text-tertiary)', fontSize: '0.9rem', margin: 0 }}>{stat.sub}</p>
+                            </motion.div>
+                        ))}
                     </div>
                 </div>
 
-                {/* Main Content: Reusing ServicesSolutions with optimized layout */}
+                {/* Main Capabilities: ServicesSolutions with Deep Integration */}
                 <div style={{ position: 'relative' }}>
-                    <div style={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        width: '100%',
-                        height: '100px',
-                        background: 'linear-gradient(to bottom, var(--bg-deep), transparent)',
-                        zIndex: 2
-                    }}></div>
-
+                    <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+                        <h2 style={{ fontSize: '3rem', fontWeight: 900 }}>Technical <span className="text-gradient">Capabilities</span></h2>
+                        <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '20px auto 0' }}>Surgical execution across every layer of the digital stack.</p>
+                    </div>
                     <ServicesSolutions />
                 </div>
 
-                {/* Specialized Methodology Section */}
-                <div className="section-padding" style={{ position: 'relative', overflow: 'hidden' }}>
+                {/* Advanced Methodology: The Workflow */}
+                <div className="section-padding" style={{ background: 'rgba(255,255,255,0.01)', position: 'relative' }}>
                     <div className="container">
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem' }}>
-                            <div className="reveal">
-                                <h2 style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>The <span className="text-gradient">Process</span></h2>
-                                <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', lineHeight: '1.8' }}>
-                                    Our methodology is rooted in **Precision Engineering**. We don't just draft; we simulate, stress-test, and refine until the digital architecture is unbreakable.
-                                </p>
+                        <div style={{ textAlign: 'center', marginBottom: '100px' }}>
+                            <span style={{ color: 'var(--primary)', letterSpacing: '4px', fontWeight: 900, textTransform: 'uppercase', fontSize: '0.75rem' }}>Our Protocol</span>
+                            <h2 style={{ fontSize: '3.5rem', marginTop: '24px' }}>The <span className="text-gradient">Engineering Workflow</span></h2>
+                        </div>
 
-                                <div style={{ marginTop: '3rem', display: 'grid', gap: '1.5rem' }}>
-                                    {[
-                                        { n: '01', t: 'Discovery & Schema', d: 'Extracting core business logic and mapping data flow.' },
-                                        { n: '02', t: 'Visual Prototype', d: 'High-fidelity interactive UI mocks for early validation.' },
-                                        { n: '03', t: 'Surgical Build', d: 'Clean, optimized, and scalable code production.' },
-                                        { n: '04', t: 'Optimization Pulse', d: 'Performance tuning and edge delivery configuration.' }
-                                    ].map((step, i) => (
-                                        <div key={i} style={{ display: 'flex', gap: '1.5rem', padding: '1.5rem', background: 'var(--bg-surface)', borderRadius: '16px', border: '1px solid var(--glass-border)' }}>
-                                            <div style={{ fontSize: '1.5rem', fontWeight: '900', color: 'var(--primary)', opacity: 0.5 }}>{step.n}</div>
-                                            <div>
-                                                <div style={{ fontWeight: '800', marginBottom: '0.4rem' }}>{step.t}</div>
-                                                <div style={{ fontSize: '0.85rem', color: 'var(--text-tertiary)' }}>{step.d}</div>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-
-                            <div className="reveal" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                <div className="hologram-cube" style={{
-                                    width: '300px',
-                                    height: '300px',
-                                    background: 'linear-gradient(135deg, var(--primary) 20%, var(--secondary))',
-                                    borderRadius: '30px',
-                                    opacity: 0.1,
-                                    filter: 'blur(40px)',
-                                    animation: 'pulse-glow 5s infinite alternate'
-                                }}></div>
-                                <div style={{
-                                    position: 'absolute',
-                                    padding: '3rem',
-                                    border: '1px solid var(--primary)',
-                                    borderRadius: '50%',
-                                    width: '350px',
-                                    height: '350px',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center'
-                                }}>
-                                    <div style={{ textAlign: 'center' }}>
-                                        <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>⚡</div>
-                                        <div style={{ fontWeight: '900', textTransform: 'uppercase', letterSpacing: '0.2em', fontSize: '0.7rem' }}>Sovereign Tech</div>
+                        <div style={{
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                            gap: '40px',
+                            position: 'relative'
+                        }}>
+                            {[
+                                { n: '01', t: 'Neural Mapping', d: 'Extracting deep business logic and mapping multi-dimensional data flows.' },
+                                { n: '02', t: 'Precision Prototyping', d: 'High-fidelity technical mocks for immediate validation of core systems.' },
+                                { n: '03', t: 'Surgical Development', d: 'Production of highly-optimized, sovereign codebases built for zero-downtime.' },
+                                { n: '04', t: 'Edge Sync', d: 'Deployment across global edge points with sub-millisecond consistency.' }
+                            ].map((step, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: i * 0.1 }}
+                                    style={{ position: 'relative' }}
+                                >
+                                    <div style={{ fontSize: '4rem', fontWeight: 900, color: 'var(--primary)', opacity: 0.1, position: 'absolute', top: '-20px', left: '-10px' }}>{step.n}</div>
+                                    <div style={{ position: 'relative', zIndex: 2 }}>
+                                        <h4 style={{ fontSize: '1.25rem', fontWeight: 900, marginBottom: '20px', color: 'var(--text-primary)' }}>{step.t}</h4>
+                                        <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, fontSize: '0.95rem' }}>{step.d}</p>
                                     </div>
-                                    <div className="orbit-line" style={{ position: 'absolute', width: '100%', height: '100%', border: '1px dashed var(--primary)', borderRadius: '50%', opacity: 0.2, animation: 'spin 20s linear infinite' }}></div>
-                                </div>
-                            </div>
+                                    {i < 3 && (
+                                        <div className="workflow-connector desktop-only" />
+                                    )}
+                                </motion.div>
+                            ))}
                         </div>
                     </div>
+                </div>
+
+                {/* Final Call to Action */}
+                <div className="container" style={{ padding: '150px 0' }}>
+                    <motion.div
+                        whileInView={{ scale: [0.95, 1], opacity: [0, 1] }}
+                        style={{
+                            padding: '100px 60px',
+                            borderRadius: '60px',
+                            background: 'var(--bg-card)',
+                            border: '1px solid var(--glass-border)',
+                            textAlign: 'center',
+                            position: 'relative',
+                            overflow: 'hidden'
+                        }}
+                    >
+                        <div className="mesh-circle mesh-1" style={{ top: '-40%', left: '-20%', opacity: 0.1, width: '600px', height: '600px' }} />
+                        <div style={{ position: 'relative', zIndex: 5 }}>
+                            <h2 style={{ fontSize: '4rem', fontWeight: 900, marginBottom: '24px' }}>Ready for <span className="text-gradient">Tactical Shift?</span></h2>
+                            <p style={{ fontSize: '1.4rem', color: 'var(--text-secondary)', maxWidth: '700px', margin: '0 auto 60px' }}>
+                                We don't just build websites; we design digital sovereign systems. Partner with our engineering core today.
+                            </p>
+                            <Link to="/innovation" className="btn" style={{
+                                padding: '24px 60px',
+                                background: 'var(--primary)',
+                                color: 'white',
+                                fontSize: '1.1rem',
+                                fontWeight: 900,
+                                textDecoration: 'none',
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '16px'
+                            }}>
+                                Explore Innovation Core <ArrowRight size={20} />
+                            </Link>
+                        </div>
+                    </motion.div>
                 </div>
             </div>
 
             <style>{`
+                .solutions-page-root {
+                    background-image: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.02) 1px, transparent 1px);
+                    background-size: 50px 50px;
+                }
                 .pulse-dot {
                     width: 8px;
                     height: 8px;
@@ -296,25 +321,47 @@ const SolutionsPage = () => {
                     box-shadow: 0 0 10px var(--primary);
                     animation: pulse 2s infinite;
                 }
-                @keyframes pulse-glow {
-                    from { transform: scale(1); opacity: 0.1; }
-                    to { transform: scale(1.2); opacity: 0.2; }
+                .scan-line-horizontal {
+                    position: absolute;
+                    width: 100%;
+                    height: 2px;
+                    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+                    top: -100%;
+                    animation: scan-vertical 6s linear infinite;
+                    opacity: 0.3;
+                    z-index: 10;
                 }
-                @keyframes spin {
-                    from { transform: rotate(0deg); }
-                    to { transform: rotate(360deg); }
+                @keyframes scan-vertical {
+                    0% { top: -10%; }
+                    100% { top: 110%; }
                 }
-                .solutions-page-root .section-padding {
-                    padding: clamp(4rem, 8vw, 8rem) 0;
+                .hud-metric {
+                    padding: 8px 16px;
+                    background: rgba(0,0,0,0.5);
+                    backdrop-filter: blur(10px);
+                    border: 1px solid rgba(255,255,255,0.1);
+                    border-radius: 8px;
+                    display: flex;
+                    alignItems: center;
+                    gap: 8px;
+                    font-size: 0.6rem;
+                    font-weight: 900;
+                    letter-spacing: 1px;
+                }
+                .workflow-connector {
+                    position: absolute;
+                    top: 25px;
+                    right: -20px;
+                    width: 40px;
+                    height: 1px;
+                    background: linear-gradient(90deg, var(--primary), transparent);
+                    opacity: 0.3;
                 }
                 @media (max-width: 1024px) {
-                    .solutions-hero h1 { font-size: 4.5rem !important; }
-                    .solutions-stats-grid { gap: 2rem !important; }
+                    .desktop-only { display: none; }
                 }
                 @media (max-width: 768px) {
-                    .solutions-hero h1 { font-size: 3rem !important; }
-                    .solutions-hero { padding-top: 120px !important; }
-                    .hologram-cube { width: 220px !important; height: 220px !important; }
+                    .solutions-hero h1 { font-size: 3.5rem !important; }
                     .solutions-hero p { font-size: 1.1rem !important; }
                 }
             `}</style>

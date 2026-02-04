@@ -124,33 +124,6 @@ const Pricing = () => {
                     ))}
                 </div>
 
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    style={{
-                        marginTop: '64px',
-                        textAlign: 'center',
-                        padding: '32px',
-                        borderRadius: '24px',
-                        background: 'rgba(255,255,255,0.01)',
-                        border: '1px dashed var(--glass-border)'
-                    }}
-                >
-                    <p style={{ color: 'var(--text-tertiary)', fontSize: '0.9rem', marginBottom: '24px' }}>
-                        Custom requirements? We design bespoke ecosystems for global-scale operations.
-                    </p>
-                    <Link to="/pricing" style={{
-                        color: 'var(--primary)',
-                        textDecoration: 'none',
-                        fontWeight: 800,
-                        fontSize: '0.85rem',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '8px'
-                    }}>
-                        DETAILED COMPARISON <ArrowRight size={16} />
-                    </Link>
-                </motion.div>
             </div>
         </section>
     );

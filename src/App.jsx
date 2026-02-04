@@ -3,16 +3,12 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import ProjectBridge from './components/ProjectBridge';
-import About from './components/About';
 import ServicesSolutions from './components/ServicesSolutions';
 import Pricing from './components/Pricing';
-import Contact from './components/Contact';
 import Footer from './components/Footer';
-import CaseStudy from './components/CaseStudy';
-import InnovationCore from './components/InnovationCore';
 import PricingPage from './components/PricingPage';
 import SolutionsPage from './components/SolutionsPage';
+import LoginPage from './components/LoginPage';
 import Lenis from 'lenis';
 
 const ScrollToTop = () => {
@@ -36,18 +32,71 @@ const ScrollToTop = () => {
 };
 
 const NoiseOverlay = () => <div className="noise-overlay" />;
+const StarField = () => {
+  const stars = React.useMemo(() => Array.from({ length: 40 }).map((_, i) => ({
+    id: i,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    size: Math.random() * 2 + 0.5,
+    duration: Math.random() * 10 + 5,
+  })), []);
+
+  return (
+    <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
+      {stars.map((star) => (
+        <motion.div
+          key={star.id}
+          initial={{ opacity: 0.1, y: 0 }}
+          animate={{
+            opacity: [0.1, 0.6, 0.1],
+            y: [0, -50, 0]
+          }}
+          transition={{
+            duration: star.duration,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          style={{
+            position: 'absolute',
+            left: `${star.x}%`,
+            top: `${star.y}%`,
+            width: `${star.size}px`,
+            height: `${star.size}px`,
+            borderRadius: '50%',
+            background: 'var(--primary)',
+            boxShadow: '0 0 4px var(--primary)'
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
 const MeshBackground = () => {
   const [mousePos, setMousePos] = React.useState({ x: 50, y: 50 });
+  const [isHovering, setIsHovering] = React.useState(false);
 
   React.useEffect(() => {
     const handleMove = (e) => {
-      setMousePos({
-        x: (e.clientX / window.innerWidth) * 100,
-        y: (e.clientY / window.innerHeight) * 100
-      });
+      const x = (e.clientX / window.innerWidth) * 100;
+      const y = (e.clientY / window.innerHeight) * 100;
+      setMousePos({ x, y });
+
+      document.documentElement.style.setProperty('--mouse-x', `${x}%`);
+      document.documentElement.style.setProperty('--mouse-y', `${y}%`);
     };
+
+    const handleDown = () => setIsHovering(true);
+    const handleUp = () => setIsHovering(false);
+
     window.addEventListener('mousemove', handleMove);
-    return () => window.removeEventListener('mousemove', handleMove);
+    window.addEventListener('mousedown', handleDown);
+    window.addEventListener('mouseup', handleUp);
+    return () => {
+      window.removeEventListener('mousemove', handleMove);
+      window.removeEventListener('mousedown', handleDown);
+      window.removeEventListener('mouseup', handleUp);
+    };
   }, []);
 
   return (
@@ -55,16 +104,84 @@ const MeshBackground = () => {
       '--m-x': `${mousePos.x}%`,
       '--m-y': `${mousePos.y}%`
     }}>
-      <div className="mesh-circle mesh-1" style={{ transform: `translate(${(mousePos.x - 50) * 0.2}px, ${(mousePos.y - 50) * 0.2}px)` }} />
-      <div className="mesh-circle mesh-2" style={{ transform: `translate(${(mousePos.x - 50) * -0.3}px, ${(mousePos.y - 50) * -0.3}px)` }} />
-      <div className="mesh-circle mesh-3" style={{ transform: `translate(${(mousePos.x - 50) * 0.15}px, ${(mousePos.y - 50) * 0.15}px)` }} />
+      {/* Dynamic Star Field */}
+      <StarField />
 
-      {/* Global Technical Grid */}
+      {/* Deep Mesh Layers - Enhanced */}
+      <motion.div
+        className="mesh-circle mesh-1"
+        animate={{
+          scale: isHovering ? 1.4 : 1,
+          x: (mousePos.x - 50) * 0.5,
+          y: (mousePos.y - 50) * 0.5,
+        }}
+        transition={{ type: 'spring', stiffness: 50, damping: 20 }}
+        style={{ opacity: 0.15 }}
+      />
+      <motion.div
+        className="mesh-circle mesh-2"
+        animate={{
+          scale: isHovering ? 1.2 : 1,
+          x: (mousePos.x - 50) * -0.6,
+          y: (mousePos.y - 50) * -0.6,
+        }}
+        transition={{ type: 'spring', stiffness: 40, damping: 20 }}
+        style={{ opacity: 0.12 }}
+      />
+      <motion.div
+        className="mesh-circle mesh-3"
+        animate={{
+          scale: isHovering ? 1.1 : 1,
+          x: (mousePos.x - 50) * 0.3,
+          y: (mousePos.y - 50) * 0.3,
+        }}
+        transition={{ type: 'spring', stiffness: 60, damping: 20 }}
+        style={{ opacity: 0.1 }}
+      />
+      {/* Extra Depth Layer */}
+      <motion.div
+        className="mesh-circle"
+        style={{
+          width: '800px',
+          height: '800px',
+          background: 'radial-gradient(circle, rgba(99, 102, 241, 0.15), transparent 70%)',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          zIndex: -1
+        }}
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.1, 0.2, 0.1]
+        }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {/* High-Fidelity Technical Grid */}
       <div className="global-grid-overlay" />
 
-      {/* Dynamic Cursor Spotlight */}
-      <div className="global-spotlight" style={{
-        background: `radial-gradient(1200px circle at ${mousePos.x}% ${mousePos.y}%, var(--primary-glow), transparent 80%)`
+      {/* Neural Pulse Effect - Dynamic */}
+      <motion.div
+        className="system-pulse"
+        style={{
+          background: `radial-gradient(circle at ${mousePos.x}% ${mousePos.y}%, rgba(0, 255, 204, 0.08), transparent 50%)`
+        }}
+        animate={{
+          opacity: [0.3, 0.5, 0.3],
+        }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {/* Cinematic HUD Scan Line */}
+      <div className="global-scan-line" />
+
+      {/* Vignette Overlay for focus */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'radial-gradient(circle at center, transparent 0%, var(--bg-deep) 120%)',
+        pointerEvents: 'none',
+        zIndex: 1
       }} />
     </div>
   );
@@ -74,12 +191,12 @@ const HomePage = () => {
   useEffect(() => {
     // Initialize Lenis for smooth inertia scrolling
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.4,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1,
+      wheelMultiplier: 1.1,
       smoothTouch: false,
       touchMultiplier: 2,
       infinite: false,
@@ -93,8 +210,8 @@ const HomePage = () => {
     requestAnimationFrame(raf);
 
     const observerOptions = {
-      threshold: 0.15,
-      rootMargin: '0px 0px -100px 0px'
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -117,15 +234,12 @@ const HomePage = () => {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
+      transition={{ duration: 1.2 }}
+      className="page-smooth"
     >
-      <div className="reveal"><Hero /></div>
-      <ProjectBridge />
-      <div className="reveal"><About /></div>
-      <div className="reveal"><InnovationCore /></div>
-      <div className="reveal"><ServicesSolutions /></div>
-      <div className="reveal"><Pricing /></div>
-      <div className="reveal"><Contact /></div>
+      <div className="reveal magnetic-wrap"><Hero /></div>
+      <div className="reveal magnetic-wrap"><ServicesSolutions /></div>
+      <div className="reveal magnetic-wrap"><Pricing /></div>
     </motion.div>
   );
 };
@@ -170,14 +284,14 @@ const AppContent = () => {
               <PricingPage />
             </motion.div>
           } />
-          <Route path="/case-study/:id" element={
+          <Route path="/login" element={
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             >
-              <CaseStudy />
+              <LoginPage />
             </motion.div>
           } />
         </Routes>

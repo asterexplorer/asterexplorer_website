@@ -8,10 +8,7 @@ const Footer = () => {
             { name: 'Pricing', href: '#pricing' },
         ],
         Company: [
-            { name: 'About Vision', href: '#about' },
-            { name: 'Strategy', href: '#' },
-            { name: 'Network', href: '#' },
-            { name: 'Contact', href: '#contact' }
+            { name: 'Connect Portal', href: '/innovation' },
         ],
         Legal: [
             { name: 'Privacy Policy', href: '#' },
@@ -32,7 +29,7 @@ const Footer = () => {
                             <span className="text-gradient" style={{ fontFamily: 'var(--font-heading)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Aster <span style={{ color: 'var(--text-primary)' }}>Tech</span></span>
                         </a>
                         <p style={{ color: 'var(--text-tertiary)', lineHeight: 1.6, fontSize: '0.95rem' }}>
-                            Architecting the digital future with precision engineering and creative intelligence. Based in Chennai, operating globally.
+                            Architecting the software future. <br />Engineered in India, operating globally.
                         </p>
                     </div>
 

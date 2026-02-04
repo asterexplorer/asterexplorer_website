@@ -1,35 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ArrowUpRight, Moon, Sun } from 'lucide-react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 
 const navLinks = [
   { name: 'Solutions', href: '/solutions' },
-  { name: 'Innovation', href: '/#innovation' },
   { name: 'Pricing', href: '/pricing' },
-  { name: 'About', href: '/#about' },
-  { name: 'Contact', href: '/#contact' },
 ];
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isDark, setIsDark] = useState(() => {
-    return localStorage.getItem('aster_theme') === 'dark' ||
-      (!localStorage.getItem('aster_theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-  });
   const { pathname } = useLocation();
 
   useEffect(() => {
-    const root = window.document.documentElement;
-    if (isDark) {
-      root.setAttribute('data-theme', 'dark');
-      localStorage.setItem('aster_theme', 'dark');
-    } else {
-      root.setAttribute('data-theme', 'light');
-      localStorage.setItem('aster_theme', 'light');
-    }
-  }, [isDark]);
+    // Force dark theme on mount
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }, []);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,11 +29,8 @@ const Navbar = () => {
 
   // Close mobile menu on route change
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsMobileMenuOpen(false);
   }, [pathname]);
-
-  const toggleTheme = () => setIsDark(!isDark);
 
   return (
     <header
@@ -65,7 +50,7 @@ const Navbar = () => {
     >
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
 
-        {/* Logo Section */}
+        {/* Premium Logo Section */}
         <Link to="/" className="navbar-logo" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '12px' }}>
           <div className="logo-icon" style={{
             width: '40px',
@@ -93,6 +78,7 @@ const Navbar = () => {
           </span>
         </Link>
 
+
         {/* Desktop Navigation */}
         <nav className="desktop-menu" style={{ display: 'flex', alignItems: 'center', gap: '40px' }}>
           <ul style={{ display: 'flex', gap: '32px', listStyle: 'none', margin: 0, padding: 0 }}>
@@ -119,29 +105,19 @@ const Navbar = () => {
             ))}
           </ul>
 
-          <button
-            onClick={toggleTheme}
-            style={{
-              background: 'var(--glass-bg)',
-              border: '1px solid var(--glass-border)',
-              borderRadius: '12px',
-              width: '40px',
-              height: '40px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: 'var(--text-primary)',
-              cursor: 'pointer',
-              transition: 'var(--transition-fast)'
-            }}
-            className="theme-toggle"
-          >
-            {isDark ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
 
-          <Link to="/#contact" className="btn btn-primary" style={{ padding: '10px 24px', fontSize: '0.9rem' }}>
-            Get Started
-          </Link>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
+            <Link to="/login" style={{
+              fontSize: '0.75rem',
+              fontWeight: 800,
+              color: 'var(--primary)',
+              textDecoration: 'none',
+              textTransform: 'uppercase',
+              letterSpacing: '1px'
+            }}>
+              Sign In
+            </Link>
+          </div>
         </nav>
 
         {/* Mobile Toggle */}
@@ -190,32 +166,6 @@ const Navbar = () => {
                   </Link>
                 </li>
               ))}
-              <li style={{ display: 'flex', alignItems: 'center', gap: '16px', paddingTop: '20px', borderTop: '1px solid var(--glass-border)' }}>
-                <span style={{ fontSize: '0.9rem', fontWeight: '800', color: 'var(--text-secondary)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Appearance</span>
-                <button
-                  onClick={toggleTheme}
-                  style={{
-                    background: 'var(--glass-bg)',
-                    border: '1px solid var(--glass-border)',
-                    borderRadius: '12px',
-                    padding: '12px 24px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '12px',
-                    color: 'var(--text-primary)',
-                    cursor: 'pointer',
-                    fontSize: '0.9rem',
-                    fontWeight: '700'
-                  }}
-                >
-                  {isDark ? <><Sun size={20} /> Light</> : <><Moon size={20} /> Dark</>}
-                </button>
-              </li>
-              <li>
-                <Link to="/#contact" className="btn btn-primary" style={{ display: 'block', textAlign: 'center', marginTop: '20px' }}>
-                  Get Started
-                </Link>
-              </li>
             </ul>
           </motion.div>
         )}
